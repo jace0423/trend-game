@@ -1733,10 +1733,26 @@ function detectInAppBrowser() {
 function setupInAppWarn() {
   const det = detectInAppBrowser();
   if (!det.any) return;
-  // 已選擇仍然繼續的不再顯示
   if (sessionStorage.getItem("inapp_dismissed") === "1") return;
   const warn = document.getElementById("inapp-warn");
   if (!warn) return;
+
+  // 標示當下使用的 App
+  const nameEl = document.getElementById("inappName");
+  if (nameEl) {
+    nameEl.textContent =
+      det.isLine ? "LINE" :
+      det.isFB ? "Facebook" :
+      det.isIG ? "Instagram" :
+      det.isWeChat ? "WeChat" : "App";
+  }
+
+  // 對應 App 的步驟才顯示
+  const stepLine = document.getElementById("stepLine");
+  const stepFB = document.getElementById("stepFB");
+  if (stepLine) stepLine.style.display = det.isLine ? "" : "none";
+  if (stepFB) stepFB.style.display = (det.isFB || det.isIG) ? "" : "none";
+
   warn.classList.remove("hidden");
 
   document.getElementById("btnDismissInapp")?.addEventListener("click", () => {
@@ -1744,23 +1760,24 @@ function setupInAppWarn() {
     warn.classList.add("hidden");
   });
 
-  document.getElementById("btnOpenExternal")?.addEventListener("click", () => {
-    const url = location.href;
-    if (det.isLine) {
-      // LINE 接受這個 magic param 強制改用外部瀏覽器
-      const sep = url.includes("?") ? "&" : "?";
-      location.href = url + sep + "openExternalBrowser=1";
-    } else if (det.isFB) {
-      // FB 內建沒辦法直接開外部，提示複製連結
-      navigator.clipboard?.writeText(url).catch(() => {});
-      alert("已複製網址，請手動貼到 Chrome / Safari 打開");
-    } else if (det.isIG) {
-      navigator.clipboard?.writeText(url).catch(() => {});
-      alert("Instagram 內建瀏覽器無法直接開外部，已複製網址");
-    } else {
-      navigator.clipboard?.writeText(url).catch(() => {});
-      alert("已複製網址，請手動貼到外部瀏覽器");
+  document.getElementById("btnCopyUrl")?.addEventListener("click", async () => {
+    const url = location.href.split("?")[0];
+    const btn = document.getElementById("btnCopyUrl");
+    const orig = btn.textContent;
+    try {
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "✓ 已複製";
+    } catch (e) {
+      // fallback
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); btn.textContent = "✓ 已複製"; }
+      catch (_) { btn.textContent = "複製失敗，請長按網址"; }
+      ta.remove();
     }
+    setTimeout(() => (btn.textContent = orig), 2000);
   });
 }
 
