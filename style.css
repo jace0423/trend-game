@@ -726,30 +726,87 @@ main {
 
 /* ----- 列印樣式（PDF 輸出） ----- */
 @media print {
-  body { background: white !important; color: black !important; }
+  /* 重設背景與顏色 */
+  html, body {
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* 隱藏所有非結算頁元素 */
   #login-screen, #game-screen,
   #btnAgain, #btnBackLogin, .result-actions,
-  .scanline, .grid-bg, .corner { display: none !important; }
-  #result-screen { background: white; height: auto; min-height: 0; }
-  .cyber-screen { display: block; padding: 20px; }
+  .scanline, .grid-bg, .corner,
+  header, main, aside, .controls, .meta, audio { display: none !important; }
+
+  /* 結算頁解除 fixed 定位，改為文件流 */
+  #result-screen,
+  #result-screen.cyber-screen {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: white !important;
+    padding: 16px !important;
+    z-index: auto !important;
+  }
+
+  /* 結算卡片 */
   .cyber-card.result-card {
     background: white !important;
-    box-shadow: none;
-    border: 2px solid #333;
+    box-shadow: none !important;
+    border: 2px solid #333 !important;
     color: black !important;
     page-break-inside: avoid;
+    max-width: 600px;
+    margin: 0 auto !important;
+    padding: 16px !important;
   }
-  .cyber-glitch { color: black !important; text-shadow: none !important; animation: none; }
+
+  /* 標題與文字去掉霓虹效果 */
+  .cyber-glitch {
+    color: black !important;
+    text-shadow: none !important;
+    animation: none !important;
+    background: none !important;
+  }
   .cyber-glitch::before, .cyber-glitch::after { display: none !important; }
   .cyber-sub { color: #555 !important; }
+
+  /* 內容元素 */
   .reveal-block, .result-stats { color: black !important; }
   .reveal-stock, .rs-val, .rs-val.big-val,
-  .reveal-range, .rs-label { color: black !important; text-shadow: none !important; }
-  .verdict, .verdict.win, .verdict.lose, .verdict.mixed {
-    color: black !important; text-shadow: none !important; border: 1px solid #333; padding: 8px;
+  .reveal-range, .rs-label,
+  .reveal-label, .stat-label {
+    color: black !important;
+    text-shadow: none !important;
   }
+
+  /* 評價文字 */
+  .verdict, .verdict.win, .verdict.lose, .verdict.mixed {
+    color: black !important;
+    text-shadow: none !important;
+    border: 1px solid #333 !important;
+    padding: 8px !important;
+    background: none !important;
+  }
+
+  /* 賺賠顏色 */
   .good { color: #006400 !important; }
   .bad { color: #8b0000 !important; }
+
+  /* 不要分頁切斷 */
+  .reveal-block, .result-stats, .verdict { page-break-inside: avoid; }
+
+  /* 隱藏滾動條/裝飾 */
+  ::-webkit-scrollbar { display: none !important; }
 }
 
 .result-actions {
