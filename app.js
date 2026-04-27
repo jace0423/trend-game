@@ -1439,7 +1439,8 @@ async function newGame() {
 
 document.getElementById("btnBuy").addEventListener("click", buy);
 document.getElementById("btnSell").addEventListener("click", sell);
-document.getElementById("btnNext").addEventListener("click", nextDay);
+document.getElementById("btnNext")?.addEventListener("click", nextDay);
+document.getElementById("btnNextPanel")?.addEventListener("click", nextDay);
 document.getElementById("btnNew").addEventListener("click", () => newGame());
 
 function applyMarketUI() {

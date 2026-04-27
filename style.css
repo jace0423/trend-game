@@ -555,6 +555,19 @@ button {
 button:hover { border-color: var(--accent); }
 button.buy { background: var(--buy); border-color: var(--buy); color: white; font-weight: 600; }
 button.sell { background: var(--sell); border-color: var(--sell); color: white; font-weight: 600; }
+button.next {
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--cyber-cyan);
+  color: var(--cyber-cyan);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px var(--cyber-cyan);
+  width: 100%;
+}
+button.next:hover {
+  background: rgba(0, 240, 255, 0.22);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
 button.ghost {
   background: transparent;
   border: 1px solid rgba(255, 0, 212, 0.4);
