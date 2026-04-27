@@ -10,7 +10,7 @@
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="style.css?v=14" />
+<link rel="stylesheet" href="style.css?v=16" />
 </head>
 <body>
 
@@ -48,10 +48,10 @@
 
     <div id="setup-box" class="setup-box">
       <label class="field-label">市場</label>
-      <div class="market-toggle setup-market">
-        <button class="market-btn active" data-market="TW">台股 NTD</button>
-        <button class="market-btn" data-market="US" data-lock="market:US">美股 USD 🔒</button>
-      </div>
+      <select id="marketSelect" class="cyber-select">
+        <option value="TW" selected>台股 NTD</option>
+        <option value="US" data-lock="market:US">美股 USD 🔒</option>
+      </select>
 
       <label class="field-label">起始資金</label>
       <select id="cashSelect" class="cyber-select">
@@ -222,7 +222,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=14"></script>
-<script src="app.js?v=14"></script>
+<script src="sound.js?v=16"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

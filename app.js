@@ -259,8 +259,8 @@ function setupChart() {
   ma5Line = chart.addLineSeries({ color: "#5a9cf8", lineWidth: 1, priceLineVisible: false, lastValueVisible: false });
   ma20Line = chart.addLineSeries({ color: "#f0b75c", lineWidth: 1, priceLineVisible: false, lastValueVisible: false });
   ma60Line = chart.addLineSeries({ color: "#b37cf0", lineWidth: 1, priceLineVisible: false, lastValueVisible: false });
-  bbUpper = chart.addLineSeries({ color: "rgba(180,180,180,0.5)", lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
-  bbLower = chart.addLineSeries({ color: "rgba(180,180,180,0.5)", lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
+  bbUpper = chart.addLineSeries({ color: "rgba(255,255,255,0.85)", lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
+  bbLower = chart.addLineSeries({ color: "rgba(255,255,255,0.85)", lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
 
   // KD / RSI 副圖
   const indEl = document.getElementById("ind-chart");
@@ -1150,9 +1150,13 @@ document.getElementById("btnNext").addEventListener("click", nextDay);
 document.getElementById("btnNew").addEventListener("click", () => newGame());
 
 function applyMarketUI() {
+  // 同步 game-header 的按鈕（如果還在）
   document.querySelectorAll(".market-btn").forEach((b) => {
     b.classList.toggle("active", b.dataset.market === state.market);
   });
+  // 同步登入頁的下拉選單
+  const sel = document.getElementById("marketSelect");
+  if (sel) sel.value = state.market;
   const qty = document.getElementById("qty");
   const lot = currentCosts().lot;
   qty.min = lot;
@@ -1194,8 +1198,10 @@ function refreshPoolHint() {
 
 function applyUnlocks() {
   const hist = getHistory(getNick());
-  // 下拉 cash
-  document.querySelectorAll("#cashSelect option[data-lock]").forEach((o) => {
+  // 下拉 cash + market
+  document.querySelectorAll(
+    "#cashSelect option[data-lock], #marketSelect option[data-lock]"
+  ).forEach((o) => {
     const ok = isUnlocked(o.dataset.lock, hist);
     o.disabled = !ok;
     if (!ok) {
@@ -1263,11 +1269,24 @@ document.querySelectorAll(".market-btn").forEach((b) => {
   });
 });
 
-// ----- 設定（起始資金 / 難度）handlers -----
+// ----- 設定（起始資金 / 市場 / 難度）handlers -----
 document.getElementById("cashSelect")?.addEventListener("change", (e) => {
   state.initialCash = +e.target.value || DEFAULT_INITIAL_CASH;
   localStorage.setItem(LS_CASH, String(state.initialCash));
   refreshPoolHint();
+});
+document.getElementById("marketSelect")?.addEventListener("change", (e) => {
+  const v = e.target.value;
+  // 鎖定狀態下回退
+  const opt = e.target.selectedOptions[0];
+  if (opt?.disabled) {
+    e.target.value = state.market;
+    window.SFX && SFX.error();
+    return;
+  }
+  state.market = v;
+  localStorage.setItem(LS_MARKET, state.market);
+  applyMarketUI();
 });
 document.querySelectorAll(".diff-btn").forEach((b) => {
   b.addEventListener("click", () => {
@@ -1294,6 +1313,41 @@ document.getElementById("indicatorSelect")?.addEventListener("change", (e) => {
 // ----- 存 PDF（直接產生，無對話框）-----
 document.getElementById("btnPrintResult")?.addEventListener("click", printResult);
 document.getElementById("btnExportAll")?.addEventListener("click", exportAllHistory);
+
+// ----- 攔截 Ctrl+P / 瀏覽器原生列印，注入乾淨交易明細報表 -----
+let _printOverlay = null;
+window.addEventListener("beforeprint", () => {
+  if (_printOverlay) return;
+  // 結算頁顯示中 → 用單局報表；登入頁 → 用全戰績報表
+  const onResult = !document.getElementById("result-screen").classList.contains("hidden");
+  const onLogin = !document.getElementById("login-screen").classList.contains("hidden");
+  let el = null;
+  if (onResult && lastResult) {
+    el = buildReportElement();
+  } else if (onLogin) {
+    el = buildAllHistoryReportElement();
+  }
+  if (!el) return;
+  // 移到可見位置，覆蓋原內容
+  el.style.position = "fixed";
+  el.style.left = "0";
+  el.style.top = "0";
+  el.style.width = "100%";
+  el.style.background = "white";
+  el.style.zIndex = "99999";
+  el.id = "_print_overlay";
+  document.body.appendChild(el);
+  _printOverlay = el;
+  // 隱藏其他內容
+  document.body.classList.add("printing");
+});
+window.addEventListener("afterprint", () => {
+  if (_printOverlay) {
+    _printOverlay.remove();
+    _printOverlay = null;
+  }
+  document.body.classList.remove("printing");
+});
 document.getElementById("btnEnd").addEventListener("click", endGameEarly);
 document.getElementById("btnMute").addEventListener("click", () => {
   const m = !window.soundMute.isMuted();

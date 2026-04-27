@@ -736,7 +736,16 @@ main {
     overflow: visible !important;
   }
 
-  /* 隱藏所有非結算頁元素 */
+  /* printing 模式：除了我們注入的 overlay，其他全藏 */
+  body.printing > *:not(#_print_overlay) { display: none !important; }
+  body.printing #_print_overlay {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 16px !important;
+  }
+
+  /* 一般 print（沒有 overlay 時的 fallback） */
   #login-screen, #game-screen,
   #btnAgain, #btnBackLogin, .result-actions,
   .scanline, .grid-bg, .corner,
