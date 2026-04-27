@@ -14,24 +14,54 @@
 
 | 項目 | 選項 |
 |---|---|
-| 市場 | 台股 NTD / 美股 USD |
-| 起始資金 | 100K / 300K / 500K（預設） / 1M / 3M / 10M |
-| 難度 | 穩定（年化波動 < 30%）/ 高波動（≥ 30%）/ 多空切換 |
+| 市場 | 台股 NTD / 美股 USD（解鎖制） |
+| 起始資金 | **100K（預設）** / 300K / 500K / 1M / 3M / 10M（依等級解鎖） |
+| 難度 | 穩定（年化波動 < 30%）/ 高波動（≥ 30%）/ 多空切換（解鎖制） |
 | 副圖指標 | KD(9,3,3) / RSI(14)（遊戲中下拉切換） |
 | 交易成本 | 台股 0.1425% + 0.3% 證交稅（最低 NT$20）；美股 0% |
 | 股數單位 | 兩市場皆零股（最小 1 股） |
 
+## 等級解鎖系統
+
+從 10 萬起步，依累積戰績與勝率（roi > 0 比例）逐步開放更高選項。每場結束自動檢查進度，登入頁底部顯示「下個解鎖」提示。
+
+| 階 | 解鎖項目 | 條件 |
+|---|---|---|
+| 0 | 100K 起始 / 台股 / 穩定 | 預設 |
+| 1 | 300K 起始 | 3 場 + 勝率 40% |
+| 2 | 500K 起始 | 8 場 + 勝率 45% |
+| 3 | 高波動難度 | 10 場 + 勝率 50% |
+| 4 | 1M 起始 | 15 場 + 勝率 50% |
+| 5 | 美股市場 | 20 場 + 勝率 55% |
+| 6 | 多空切換難度 | 25 場 + 勝率 55% |
+| 7 | 3M 起始 | 30 場 + 勝率 55% |
+| 8 | 10M 起始 | 50 場 + 勝率 60% |
+
+「清除紀錄」可重置該帳號的歷史戰績（解鎖會回到階 0）。
+
+## 結算判定（4 象限）
+
+| 賺錢 (roi>0) | 擊敗大盤 (alpha>0) | 文字 | 顏色 |
+|---|---|---|---|
+| ✓ | ✓ | ✦ 完美擊敗市場 ✦ | win 青 |
+| ✓ | ✗ | ✓ 賺錢但跑輸大盤 | mixed 黃 |
+| ✗ | ✓ | △ 虧損但贏過大盤 | mixed 黃 |
+| ✗ | ✗ | × 雙雙落敗 × | lose 紫 |
+| 打平 | — | ━ 與市場打平 ━ | 無 |
+
+「勝率」統計改以 **roi > 0**（實際賺錢）為準，不再以「擊敗大盤」為唯一判準。
+
 ## 資料
 
-- **台股**：508 檔（TWSE 上市 + TPEX 上櫃，市值/成交量前段），10 年日 K
-- **美股**：~520 檔（S&P 500 + Nasdaq 100 去重），10 年日 K
+- **台股**：508 檔（TWSE 上市 + TPEX 上櫃，市值前段），10 年日 K
+- **美股**：~375 檔（S&P 500 + Nasdaq 100 部分），10 年日 K
 - **指數**：台指 / 日經 225 / Nasdaq 100，含日 K + 5 分 K
 - 資料來源：Yahoo Finance（透過 `yfinance` 套件）
 - 名稱對照：TWSE / TPEX 公開 OpenAPI（`data/tw_names.json`）
 
 ### 檔案格式
 
-```json
+```jsonc
 // data/prices/{id}.json
 [{"t":"YYYY-MM-DD","o":..,"h":..,"l":..,"c":..,"v":..}, ...]
 
@@ -71,10 +101,10 @@ pip install yfinance pandas requests
 抓取主要股票（台股 + 美股 10 年日 K）：
 
 ```bash
-python fetch_history.py                  # 全抓 (TW curated 182 + US Wikipedia)
+python fetch_history.py                  # 全抓 (TW curated + US S&P500/Nasdaq100)
 python fetch_history.py --markets tw     # 只抓台股
 python fetch_history.py --markets us     # 只抓美股
-python fetch_history.py --tw-all         # 加入全部 TWSE+TPEX 上市櫃
+python fetch_history.py --tw-all         # 加入全部 TWSE+TPEX 上市櫃 (~1965 檔)
 python fetch_history.py --limit 5        # 測試用，只抓前 5 檔
 python fetch_history.py --force          # 忽略快取，重新下載
 python fetch_history.py --names-only     # 僅下載中文名稱對照表
@@ -114,6 +144,7 @@ python rebuild_catalog.py
 - 圖表：[lightweight-charts](https://github.com/tradingview/lightweight-charts) v4 (CDN)
 - 純 HTML/CSS/JS，無 build step
 - 主圖：K 線 + MA5/MA20/MA60 + 布林帶
-- 副圖：KD(9,3,3) 或 RSI(14)（下拉切換）
+- 副圖：KD(9,3,3) 或 RSI(14)（下拉切換、與主圖時間軸同步）
 - 爬蟲：Python + yfinance
 - 個人戰績：localStorage（無伺服器）
+- RWD：手機/桌機自適應 + 列印樣式（PDF 友善）
