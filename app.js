@@ -814,10 +814,24 @@ function showResult({ equity, roi, bench, alpha }) {
   // 局結束可能達成解鎖條件
   applyUnlocks();
   refreshPoolHint();
-  // 嚴重虧損 → 觸發冷卻
+  // 嚴重虧損 → 觸發冷卻 + 完全重置（清紀錄、回預設 100K、降到階 0）
   if (roi <= COOLDOWN_ROI_THRESHOLD) {
+    const nick = getNick();
     const until = Date.now() + COOLDOWN_DURATION_MS;
-    setCooldownUntil(getNick(), until);
+    setCooldownUntil(nick, until);
+    // 清掉這個帳號的所有歷史戰績（解鎖也跟著回階 0）
+    if (nick) {
+      const all = JSON.parse(localStorage.getItem(LS_HIST) || "{}");
+      delete all[nick];
+      localStorage.setItem(LS_HIST, JSON.stringify(all));
+    }
+    // 起始資金回預設 10 萬，市場/難度回最低階
+    state.initialCash = DEFAULT_INITIAL_CASH;
+    state.market = "TW";
+    state.difficulty = "stable";
+    localStorage.setItem(LS_CASH, String(DEFAULT_INITIAL_CASH));
+    localStorage.setItem(LS_MARKET, "TW");
+    localStorage.setItem(LS_DIFFICULTY, "stable");
   }
 }
 
@@ -1275,7 +1289,9 @@ function tickCooldown() {
   const btnEnter = document.getElementById("btnEnter");
   if (!hint || !btnEnter) return;
   if (nick && isInCooldown(nick)) {
-    hint.textContent = `⚠ 嚴重虧損保護中　${cooldownText(nick)} 後可再進入`;
+    hint.innerHTML =
+      `⚠ 嚴重虧損保護中　${cooldownText(nick)} 後可再進入<br>` +
+      `<span style="font-size:10px;opacity:0.85">解鎖後將回到 100K 重新開始（紀錄已清除）</span>`;
     hint.style.display = "block";
     btnEnter.disabled = true;
     btnEnter.style.opacity = "0.4";
@@ -1330,7 +1346,12 @@ async function enterGame() {
   // 冷卻檢查
   const nick = getNick();
   if (nick && isInCooldown(nick)) {
-    alert(`帳號 ${nick} 嚴重虧損保護中\n冷卻倒數：${cooldownText(nick)}\n（剩餘 ${cooldownText(nick)} 後可再進入）`);
+    alert(
+      `帳號 ${nick} 嚴重虧損保護中\n` +
+      `冷卻倒數：${cooldownText(nick)}\n\n` +
+      `冷卻結束後將從 100,000 起始資金重新開始，\n` +
+      `先前的戰績與解鎖會全部歸零。`
+    );
     return;
   }
   window.SFX && SFX.login();
