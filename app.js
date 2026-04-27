@@ -1089,6 +1089,16 @@ async function enterGame() {
     if (!state.stocks.length) await loadCatalog();
   }
   await newGame();
+  // 行動裝置 layout 完成後再強制 resize 一次，避免初始 0 高度
+  setTimeout(() => {
+    if (chart) {
+      const el = document.getElementById("chart");
+      const ind = document.getElementById("ind-chart");
+      if (el?.clientWidth && el?.clientHeight) chart.resize(el.clientWidth, el.clientHeight);
+      if (indChart && ind?.clientWidth && ind?.clientHeight) indChart.resize(ind.clientWidth, ind.clientHeight);
+      chart.timeScale().fitContent();
+    }
+  }, 200);
 }
 
 function syncMuteBtn() {
