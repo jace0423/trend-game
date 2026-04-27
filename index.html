@@ -10,7 +10,7 @@
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="style.css?v=18" />
+<link rel="stylesheet" href="style.css?v=19" />
 </head>
 <body>
 
@@ -218,7 +218,10 @@
     <div id="resultVerdict" class="verdict">—</div>
 
     <button id="btnAgain" class="cyber-btn big">再來一局</button>
-    <button id="btnPrintResult" class="cyber-btn ghost">存成 PDF</button>
+    <div class="result-actions">
+      <button id="btnPrintResult" class="cyber-btn ghost">存這場 PDF</button>
+      <button id="btnExportAllResult" class="cyber-btn ghost">全部戰績 PDF</button>
+    </div>
     <button id="btnBackLogin" class="cyber-btn ghost">回首頁</button>
   </div>
 
@@ -228,7 +231,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=18"></script>
-<script src="app.js?v=18"></script>
+<script src="sound.js?v=19"></script>
+<script src="app.js?v=19"></script>
 </body>
 </html>

@@ -1409,6 +1409,7 @@ document.getElementById("kPeriodSelect")?.addEventListener("change", (e) => {
 // ----- 存 PDF（直接產生，無對話框）-----
 document.getElementById("btnPrintResult")?.addEventListener("click", printResult);
 document.getElementById("btnExportAll")?.addEventListener("click", exportAllHistory);
+document.getElementById("btnExportAllResult")?.addEventListener("click", exportAllHistory);
 
 // ----- 攔截 Ctrl+P / 瀏覽器原生列印，注入乾淨交易明細報表 -----
 let _printOverlay = null;
