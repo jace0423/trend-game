@@ -36,8 +36,13 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-y: auto;     /* 內容溢出時可捲動 */
+  overflow-x: hidden;
   z-index: 100;
+  padding: 20px 0;       /* 上下留白避免內容貼邊 */
+}
+#result-screen.cyber-screen {
+  align-items: flex-start;  /* 結算頁長內容由上往下排，不要垂直置中導致截斷 */
 }
 
 /* 網格背景 */
@@ -453,12 +458,13 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 main {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   height: calc(100vh - 49px);
+  overflow: hidden;
 }
 
-.chart-wrap { position: relative; display: flex; flex-direction: column; }
-#chart { width: 100%; flex: 1 1 auto; min-height: 220px; }
+.chart-wrap { position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; }
+#chart { width: 100%; flex: 1 1 auto; min-height: 220px; min-width: 0; }
 .ind-toolbar {
   flex: 0 0 auto;
   display: flex;

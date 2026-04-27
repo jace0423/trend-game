@@ -393,7 +393,7 @@ function applyIndicatorUI() {
   if (k) k.value = state.kperiod || "D";
 }
 
-function renderChart() {
+function renderChart(fit = true) {
   const dailySlice = state.prices.slice(0, state.cursor + 1);
   const slice = aggregateBars(dailySlice, state.kperiod);
   candleSeries.setData(slice.map(toCandle));
@@ -405,12 +405,27 @@ function renderChart() {
   bbUpper.setData(bb.up);
   bbLower.setData(bb.lo);
   renderIndChart(slice);
-  chart.timeScale().fitContent();
+  if (fit) chart.timeScale().fitContent();
 }
 
 function appendBar() {
-  // 周/月 K 模式下，最後 bar 可能是部分 bucket，整段重畫最簡單
-  renderChart();
+  if (state.kperiod === "D") {
+    // 日 K 模式：增量更新最後一根 bar，不重畫整圖、不 fitContent，避免跑版閃爍
+    const p = state.prices[state.cursor];
+    candleSeries.update(toCandle(p));
+    volumeSeries.update(toVol(p));
+    const slice = state.prices.slice(0, state.cursor + 1);
+    ma5Line.setData(ma(slice, 5));
+    ma20Line.setData(ma(slice, 20));
+    ma60Line.setData(ma(slice, 60));
+    const bb = bollinger(slice, 20, 2);
+    bbUpper.setData(bb.up);
+    bbLower.setData(bb.lo);
+    renderIndChart(slice);
+  } else {
+    // 周/月 K：最後 bucket 可能會擴展，整段重畫但不 fit（避免縮放跳動）
+    renderChart(false);
+  }
 }
 
 function nowPrice() {
@@ -619,22 +634,30 @@ function finish() {
   state.over = true;
   const price = nowPrice();
 
-  // 結算時若仍有持倉 → 自動補一筆「結算平倉」交易紀錄，
-  // 讓單筆勝率 / 平均盈虧 能反映真實結果
+  // 結算時若仍有持倉 → 自動補一筆「結算平倉」交易紀錄
+  // 讓單筆勝率 / 平均盈虧 / 最終資產 都正確反映扣費後的結果
   if (state.pos !== 0) {
     const qty = Math.abs(state.pos);
+    const gross = price * qty;
+    const fee = tradeFee(gross);
+    const tax = state.pos > 0 ? tradeTax(gross) : 0;  // 賣出才有證交稅
     const pnl = state.pos > 0
-      ? (price - state.avg) * qty       // 多單平倉
-      : (state.avg - price) * qty;      // 空單回補
+      ? (price - state.avg) * qty - fee - tax     // 多單平倉
+      : (state.avg - price) * qty - fee;          // 空單回補
     state.log.push({
       t: nowDate(),
       side: state.pos > 0 ? "sell" : "buy",
       qty,
       p: price,
       pnl,
-      auto: true,  // 標記為遊戲結束自動平倉
+      auto: true,
     });
     state.realized += pnl;
+    if (state.pos > 0) {
+      state.cash += gross - fee - tax;            // 賣出收回 cash
+    } else {
+      state.cash -= gross + fee;                  // 回補付出 cash
+    }
     state.pos = 0;
     state.avg = 0;
   }
