@@ -1253,9 +1253,11 @@ function cooldownText(nick) {
   const until = getCooldownUntil(nick);
   const remain = until - Date.now();
   if (remain <= 0) return "";
-  const m = Math.floor(remain / 60000);
+  const h = Math.floor(remain / 3600000);
+  const m = Math.floor((remain % 3600000) / 60000);
   const s = Math.floor((remain % 60000) / 1000);
-  return `${m}:${String(s).padStart(2, "0")}`;
+  if (h > 0) return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 function saveResult(r) {
   const nick = getNick();
@@ -1289,9 +1291,14 @@ function tickCooldown() {
   const btnEnter = document.getElementById("btnEnter");
   if (!hint || !btnEnter) return;
   if (nick && isInCooldown(nick)) {
+    const total = COOLDOWN_DURATION_MS;
+    const remain = getCooldownUntil(nick) - Date.now();
+    const pct = Math.max(0, Math.min(100, (remain / total) * 100));
     hint.innerHTML =
-      `⚠ 嚴重虧損保護中　${cooldownText(nick)} 後可再進入<br>` +
-      `<span style="font-size:10px;opacity:0.85">解鎖後將回到 100K 重新開始（紀錄已清除）</span>`;
+      `<div class="cd-label">⚠ 嚴重虧損保護中</div>` +
+      `<div class="cd-timer">${cooldownText(nick)}</div>` +
+      `<div class="cd-bar"><div class="cd-bar-fill" style="width:${pct}%"></div></div>` +
+      `<div class="cd-sub">解鎖後將回到 100K 重新開始（紀錄已清除）</div>`;
     hint.style.display = "block";
     btnEnter.disabled = true;
     btnEnter.style.opacity = "0.4";
