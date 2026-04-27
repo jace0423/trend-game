@@ -387,6 +387,21 @@ header h1 {
   text-shadow: 0 0 6px var(--cyber-cyan);
 }
 
+/* 鎖定狀態 */
+.diff-toggle .diff-btn.locked,
+.market-toggle .market-btn.locked {
+  opacity: 0.35;
+  cursor: not-allowed;
+  color: rgba(255, 0, 212, 0.5);
+}
+.cyber-select option:disabled { color: rgba(0, 240, 255, 0.3); }
+.unlock-hint {
+  margin-top: 6px;
+  color: rgba(246, 255, 0, 0.7);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
 .market-toggle {
   display: inline-flex;
   border: 1px solid rgba(0, 240, 255, 0.35);

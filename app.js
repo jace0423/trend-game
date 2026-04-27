@@ -1,4 +1,4 @@
-const DEFAULT_INITIAL_CASH = 500_000;
+const DEFAULT_INITIAL_CASH = 100_000;
 const TOTAL_ROUNDS = 100;
 const PRE_BARS = 60; // MA60 最少需求，讓短歷史股也能從中間開局
 
@@ -19,6 +19,48 @@ const DIFFICULTY = {
   volatile: { label: "高波動",   volMin: 30, volMax: 999, allowShort: false },
   hedge:    { label: "多空切換", volMin: 0,  volMax: 999, allowShort: true  },
 };
+
+// 等級解鎖：依玩家累積戰績逐步開放選項
+// 條件 met = (games 已玩局數 >= minGames) && (勝率 >= minWinRate)
+// 每個解鎖項目對應一個 lock-key，在 setup UI 上會 disable/hint 還沒解鎖的選項
+const UNLOCKS = [
+  { key: "cash:300000",  label: "300K 起始",    minGames: 3,  minWinRate: 0.40 },
+  { key: "cash:500000",  label: "500K 起始",    minGames: 8,  minWinRate: 0.45 },
+  { key: "diff:volatile",label: "高波動難度",   minGames: 10, minWinRate: 0.50 },
+  { key: "cash:1000000", label: "1M 起始",      minGames: 15, minWinRate: 0.50 },
+  { key: "market:US",    label: "美股市場",     minGames: 20, minWinRate: 0.55 },
+  { key: "diff:hedge",   label: "多空切換難度", minGames: 25, minWinRate: 0.55 },
+  { key: "cash:3000000", label: "3M 起始",      minGames: 30, minWinRate: 0.55 },
+  { key: "cash:10000000",label: "10M 起始",     minGames: 50, minWinRate: 0.60 },
+];
+
+function isUnlocked(key, hist) {
+  // 預設已解鎖（永遠可用）的項目
+  const FREE = new Set(["cash:100000", "diff:stable", "market:TW"]);
+  if (FREE.has(key)) return true;
+  const u = UNLOCKS.find((x) => x.key === key);
+  if (!u) return true;
+  if (!hist || !hist.length) return false;
+  const games = hist.length;
+  const wins = hist.filter((h) => h.roi > 0).length;
+  const winRate = wins / games;
+  return games >= u.minGames && winRate >= u.minWinRate;
+}
+
+function nextUnlockHint(hist) {
+  for (const u of UNLOCKS) {
+    if (!isUnlocked(u.key, hist)) {
+      const games = hist?.length || 0;
+      const wins = (hist || []).filter((h) => h.roi > 0).length;
+      const winRate = games ? wins / games : 0;
+      const needGames = Math.max(0, u.minGames - games);
+      const wrPct = (winRate * 100).toFixed(0);
+      const reqPct = (u.minWinRate * 100).toFixed(0);
+      return `下個解鎖：${u.label}（再 ${needGames} 場 + 勝率 ${wrPct}/${reqPct}%）`;
+    }
+  }
+  return "所有選項已全部解鎖 ✦";
+}
 
 function tradeFee(gross) {
   const c = currentCosts();
@@ -622,6 +664,9 @@ function showResult({ equity, roi, bench, alpha }) {
   document.getElementById("result-screen").classList.remove("hidden");
   // 賺錢就放贏的音效；只有真的虧錢才放輸
   window.SFX && (roi > 0 || alpha > 0 ? SFX.win() : SFX.lose());
+  // 局結束可能達成解鎖條件
+  applyUnlocks();
+  refreshPoolHint();
 }
 
 // ========== 戰績輸出 ==========
@@ -716,6 +761,10 @@ function calcStats(hist) {
 }
 
 function renderLogin() {
+  applyUnlocks();
+  applyCashUI();
+  applyDifficultyUI();
+  applyMarketUI();
   const nick = getNick();
   const retBox = document.getElementById("returning-box");
   const newBox = document.getElementById("newuser-box");
@@ -847,6 +896,55 @@ function refreshPoolHint() {
     (s) => (s.market || "TW") === state.market
   ).length;
   el.textContent = `可玩股票池：${n} / ${total} 檔`;
+  const hint = document.getElementById("unlockHint");
+  if (hint) {
+    const hist = getHistory(getNick());
+    hint.textContent = nextUnlockHint(hist);
+  }
+}
+
+function applyUnlocks() {
+  const hist = getHistory(getNick());
+  // 下拉 cash
+  document.querySelectorAll("#cashSelect option[data-lock]").forEach((o) => {
+    const ok = isUnlocked(o.dataset.lock, hist);
+    o.disabled = !ok;
+    if (!ok) {
+      if (!o.textContent.includes("🔒")) o.textContent += " 🔒";
+    } else {
+      o.textContent = o.textContent.replace(" 🔒", "").replace("🔒", "");
+    }
+  });
+  // 難度按鈕
+  document.querySelectorAll(".diff-btn[data-lock]").forEach((b) => {
+    const ok = isUnlocked(b.dataset.lock, hist);
+    b.classList.toggle("locked", !ok);
+    b.disabled = !ok;
+    if (ok) b.textContent = b.textContent.replace(" 🔒", "").replace("🔒", "");
+    else if (!b.textContent.includes("🔒")) b.textContent += " 🔒";
+  });
+  // 市場按鈕（僅 setup-market 有 data-lock，header 的不限）
+  document.querySelectorAll(".market-btn[data-lock]").forEach((b) => {
+    const ok = isUnlocked(b.dataset.lock, hist);
+    b.classList.toggle("locked", !ok);
+    b.disabled = !ok;
+    if (ok) b.textContent = b.textContent.replace(" 🔒", "").replace("🔒", "");
+    else if (!b.textContent.includes("🔒")) b.textContent += " 🔒";
+  });
+
+  // 若目前選擇被鎖（例如歷史 reset 後），降級為已解鎖選項
+  if (!isUnlocked(`market:${state.market}`, hist)) {
+    state.market = "TW";
+    localStorage.setItem(LS_MARKET, "TW");
+  }
+  if (!isUnlocked(`diff:${state.difficulty}`, hist)) {
+    state.difficulty = "stable";
+    localStorage.setItem(LS_DIFFICULTY, "stable");
+  }
+  if (!isUnlocked(`cash:${state.initialCash}`, hist)) {
+    state.initialCash = DEFAULT_INITIAL_CASH;
+    localStorage.setItem(LS_CASH, String(DEFAULT_INITIAL_CASH));
+  }
 }
 
 function applyDifficultyUI() {
@@ -862,6 +960,10 @@ function applyCashUI() {
 
 document.querySelectorAll(".market-btn").forEach((b) => {
   b.addEventListener("click", () => {
+    if (b.disabled || b.classList.contains("locked")) {
+      window.SFX && SFX.error();
+      return;
+    }
     if (state.market === b.dataset.market) return;
     state.market = b.dataset.market;
     localStorage.setItem(LS_MARKET, state.market);
@@ -880,6 +982,10 @@ document.getElementById("cashSelect")?.addEventListener("change", (e) => {
 });
 document.querySelectorAll(".diff-btn").forEach((b) => {
   b.addEventListener("click", () => {
+    if (b.disabled || b.classList.contains("locked")) {
+      window.SFX && SFX.error();
+      return;
+    }
     state.difficulty = b.dataset.diff;
     localStorage.setItem(LS_DIFFICULTY, state.difficulty);
     applyDifficultyUI();
@@ -968,6 +1074,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 (async function init() {
+  applyUnlocks();          // 先依歷史降級被鎖的選擇
   applyCashUI();
   applyDifficultyUI();
   applyIndicatorUI();
