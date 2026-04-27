@@ -8,7 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
-<link rel="stylesheet" href="style.css?v=11" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="style.css?v=13" />
 </head>
 <body>
 
@@ -191,15 +193,25 @@
         <span class="rs-label">交易次數</span>
         <span id="rsTrades" class="rs-val">—</span>
       </div>
+      <div class="rs-row">
+        <span class="rs-label">單筆勝率</span>
+        <span id="rsTradeWin" class="rs-val">—</span>
+      </div>
+      <div class="rs-row">
+        <span class="rs-label">單筆 平均 / 最佳 / 最差</span>
+        <span id="rsTradePnL" class="rs-val">—</span>
+      </div>
+    </div>
+
+    <div class="trade-details">
+      <div class="trade-title">交易明細</div>
+      <ol id="tradeList" class="trade-list"></ol>
     </div>
 
     <div id="resultVerdict" class="verdict">—</div>
 
     <button id="btnAgain" class="cyber-btn big">再來一局</button>
-    <div class="result-actions">
-      <button id="btnCopyResult" class="cyber-btn ghost">複製戰績</button>
-      <button id="btnPrintResult" class="cyber-btn ghost">列印 / PDF</button>
-    </div>
+    <button id="btnPrintResult" class="cyber-btn ghost">存成 PDF</button>
     <button id="btnBackLogin" class="cyber-btn ghost">回首頁</button>
   </div>
 
@@ -209,7 +221,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=11"></script>
-<script src="app.js?v=11"></script>
+<script src="sound.js?v=13"></script>
+<script src="app.js?v=13"></script>
 </body>
 </html>

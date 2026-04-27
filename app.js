@@ -639,6 +639,57 @@ function showResult({ equity, roi, bench, alpha }) {
   set("rsAlpha", `${sign(alpha)}${alpha.toFixed(2)}%`, cls(alpha));
   set("rsTrades", state.trades);
 
+  // 單筆交易盈虧統計（只計入有 pnl 的「平倉」紀錄）
+  const closes = (state.log || []).filter(
+    (l) => typeof l.pnl === "number" && !Number.isNaN(l.pnl)
+  );
+  if (closes.length) {
+    const pnls = closes.map((l) => l.pnl);
+    const wins = pnls.filter((p) => p > 0).length;
+    const winRate = (wins / closes.length) * 100;
+    const avg = pnls.reduce((a, b) => a + b, 0) / closes.length;
+    const best = Math.max(...pnls);
+    const worst = Math.min(...pnls);
+    const baseline = state.initialCash || 1;
+    const pct = (n) => `${(n / baseline) * 100 >= 0 ? "+" : ""}${
+      ((n / baseline) * 100).toFixed(2)
+    }%`;
+    set("rsTradeWin", `${wins}/${closes.length} = ${winRate.toFixed(0)}%`,
+        winRate >= 50 ? "good" : "bad");
+    set("rsTradePnL", `${pct(avg)} / ${pct(best)} / ${pct(worst)}`);
+  } else {
+    set("rsTradeWin", "—");
+    set("rsTradePnL", "—");
+  }
+
+  // 交易明細列表
+  const tradeList = document.getElementById("tradeList");
+  if (tradeList) {
+    tradeList.innerHTML = "";
+    (state.log || []).forEach((l, i) => {
+      const li = document.createElement("li");
+      const sideTxt = l.side === "buy" ? "買" : "賣";
+      const sideCls = l.side === "buy" ? "tr-side-buy" : "tr-side-sell";
+      const left = document.createElement("span");
+      left.textContent = `#${i + 1} ${l.t}`;
+      const mid = document.createElement("span");
+      mid.innerHTML =
+        `<span class="${sideCls}">${sideTxt}</span> ${fmt(l.qty, 0)} @ ${
+          (+l.p).toFixed(2)
+        }`;
+      const right = document.createElement("span");
+      if (typeof l.pnl === "number") {
+        right.textContent =
+          `${l.pnl >= 0 ? "+" : ""}${Math.round(l.pnl).toLocaleString()}`;
+        right.className = l.pnl >= 0 ? "tr-pnl-pos" : "tr-pnl-neg";
+      } else {
+        right.textContent = "—";
+      }
+      li.append(left, mid, right);
+      tradeList.appendChild(li);
+    });
+  }
+
   // 4-象限判定：賺賠（roi）與超額報酬（alpha）獨立評價
   const v = document.getElementById("resultVerdict");
   v.classList.remove("win", "lose", "mixed");
@@ -697,24 +748,118 @@ function buildResultText() {
   ].join("\n");
 }
 
-async function copyResult() {
-  const text = buildResultText();
-  if (!text) return;
-  try {
-    await navigator.clipboard.writeText(text);
-    const btn = document.getElementById("btnCopyResult");
-    const orig = btn.textContent;
-    btn.textContent = "✓ 已複製";
-    setTimeout(() => (btn.textContent = orig), 1500);
-  } catch (e) {
-    // fallback: open prompt
-    window.prompt("Ctrl+C 複製", text);
-  }
+// 建立 PDF 用的條列式交易紀錄報表（黑字白底，乾淨無樣式）
+function buildReportElement() {
+  const r = lastResult;
+  if (!r) return null;
+  const log = state.log || [];
+
+  const items = log.map((l, i) => {
+    const sideTxt = l.side === "buy" ? "買進" : "賣出";
+    const qtyTxt = (+l.qty).toLocaleString();
+    const priceTxt = (+l.p).toFixed(2);
+    const pnlTxt = typeof l.pnl === "number"
+      ? `　損益 <b style="color:${l.pnl >= 0 ? "#0a6e3a" : "#b00020"}">${
+          l.pnl >= 0 ? "+" : ""}${Math.round(l.pnl).toLocaleString()}</b>`
+      : "";
+    return `<li style="padding:4px 0;border-bottom:1px dashed #ccc">
+      <span style="color:#666">[${l.t}]</span>
+      <b>${sideTxt}</b> ${qtyTxt} 股 @ ${priceTxt}${pnlTxt}
+    </li>`;
+  }).join("");
+
+  const div = document.createElement("div");
+  div.style.cssText = [
+    "position:fixed", "left:-9999px", "top:0",
+    "width:720px", "padding:32px",
+    "background:white", "color:#222",
+    "font-family:'Microsoft JhengHei','Segoe UI','Noto Sans TC',sans-serif",
+    "font-size:13px", "line-height:1.7",
+  ].join(";");
+
+  div.innerHTML = `
+    <div style="margin-bottom:14px">
+      <div style="font-size:18px;font-weight:700">${r.stock.id} · ${r.stock.name}　交易紀錄</div>
+      <div style="font-size:12px;color:#666;margin-top:2px">
+        ${r.fromDate} → ${r.toDate}　·　玩家 ${r.nick || "-"}
+      </div>
+    </div>
+    <ol style="margin:0;padding-left:24px;list-style:decimal">${items || '<li style="color:#999">本局無交易</li>'}</ol>
+  `;
+  return div;
 }
 
-function printResult() {
-  // 使用瀏覽器列印對話框 → 可選擇「另存 PDF」
-  window.print();
+async function printResult() {
+  const btn = document.getElementById("btnPrintResult");
+  if (!window.html2canvas || !window.jspdf) {
+    return window.print();
+  }
+  const orig = btn?.textContent;
+  if (btn) { btn.textContent = "產生中..."; btn.disabled = true; }
+  const reportEl = buildReportElement();
+  if (!reportEl) {
+    if (btn) { btn.textContent = orig; btn.disabled = false; }
+    return;
+  }
+  document.body.appendChild(reportEl);
+  try {
+    const canvas = await html2canvas(reportEl, {
+      backgroundColor: "white",
+      scale: 2,
+      useCORS: true,
+      logging: false,
+    });
+    const imgData = canvas.toDataURL("image/png");
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: "p", unit: "mm", format: "a4" });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const margin = 10;
+    const usableW = pageW - margin * 2;
+    const usableH = pageH - margin * 2;
+    const ratio = canvas.height / canvas.width;
+    let imgH = usableW * ratio;
+
+    if (imgH <= usableH) {
+      pdf.addImage(imgData, "PNG", margin, margin, usableW, imgH);
+    } else {
+      // 太長 → 分頁
+      const pageImgH = usableH;
+      const pageCanvasH = canvas.width * (pageImgH / usableW);
+      let y = 0;
+      let pageNum = 0;
+      while (y < canvas.height) {
+        const sliceH = Math.min(pageCanvasH, canvas.height - y);
+        const slice = document.createElement("canvas");
+        slice.width = canvas.width;
+        slice.height = sliceH;
+        slice.getContext("2d").drawImage(
+          canvas, 0, y, canvas.width, sliceH, 0, 0, canvas.width, sliceH
+        );
+        const sliceData = slice.toDataURL("image/png");
+        if (pageNum > 0) pdf.addPage();
+        pdf.addImage(sliceData, "PNG", margin, margin, usableW, sliceH * usableW / canvas.width);
+        y += sliceH;
+        pageNum++;
+      }
+    }
+    const r = lastResult;
+    const fname = r
+      ? `trend-replay_${r.stock?.id || "x"}_${r.toDate || Date.now()}.pdf`
+      : `trend-replay_${Date.now()}.pdf`;
+    pdf.save(fname);
+    if (btn) btn.textContent = "✓ 已下載";
+  } catch (e) {
+    console.error("PDF 產生失敗", e);
+    alert("PDF 產生失敗，改用瀏覽器列印");
+    window.print();
+  } finally {
+    reportEl.remove();
+    if (btn) {
+      btn.disabled = false;
+      setTimeout(() => { if (orig) btn.textContent = orig; }, 1500);
+    }
+  }
 }
 
 function endGameEarly() {
@@ -1002,8 +1147,7 @@ document.getElementById("indicatorSelect")?.addEventListener("change", (e) => {
   }
 });
 
-// ----- 戰績複製 / 列印 -----
-document.getElementById("btnCopyResult")?.addEventListener("click", copyResult);
+// ----- 存 PDF（直接產生，無對話框）-----
 document.getElementById("btnPrintResult")?.addEventListener("click", printResult);
 document.getElementById("btnEnd").addEventListener("click", endGameEarly);
 document.getElementById("btnMute").addEventListener("click", () => {

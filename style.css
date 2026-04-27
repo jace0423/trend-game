@@ -817,6 +817,43 @@ main {
 }
 .result-actions .cyber-btn { flex: 1; }
 
+/* 交易明細 */
+.trade-details {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: 4px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: rgba(230, 237, 243, 0.85);
+}
+.trade-details summary {
+  cursor: pointer;
+  color: var(--cyber-cyan);
+  letter-spacing: 1px;
+  user-select: none;
+}
+.trade-details summary:hover { text-shadow: 0 0 4px var(--cyber-cyan); }
+.trade-list {
+  margin: 10px 0 0;
+  padding-left: 22px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.trade-list li {
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.trade-list li:last-child { border: 0; }
+.trade-list .tr-side-buy { color: #ff6b6b; }
+.trade-list .tr-side-sell { color: #3fb950; }
+.trade-list .tr-pnl-pos { color: var(--cyber-cyan); }
+.trade-list .tr-pnl-neg { color: var(--cyber-magenta); }
+
 /* 超小螢幕 (< 420px) */
 @media (max-width: 420px) {
   .cyber-glitch { font-size: 22px; }
