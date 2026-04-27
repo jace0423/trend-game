@@ -589,12 +589,20 @@ function finish() {
 
   saveResult({
     date: new Date().toISOString(),
-    stock: `${state.stock.id} ${state.stock.name}`,
+    stockId: state.stock.id,
+    stockName: state.stock.name,
+    stock: `${state.stock.id} ${state.stock.name}`,  // legacy 相容
+    market: state.market,
+    difficulty: state.difficulty,
+    initialCash: state.initialCash,
     from: state.prices[state.startIdx].t,
     to: nowDate(),
     equity: Math.round(equity),
     roi: +roi.toFixed(2),
     bench: +bench.toFixed(2),
+    alpha: +(roi - bench).toFixed(2),
+    trades: state.trades,
+    log: (state.log || []).slice(),  // 完整逐筆紀錄
   });
 
   showResult({ equity, roi, bench, alpha });
@@ -787,6 +795,142 @@ function buildReportElement() {
     <ol style="margin:0;padding-left:24px;list-style:decimal">${items || '<li style="color:#999">本局無交易</li>'}</ol>
   `;
   return div;
+}
+
+// 建立「全部戰績」報表 DOM — 按個股分組、條列式
+function buildAllHistoryReportElement() {
+  const nick = getNick();
+  if (!nick) return null;
+  const hist = getHistory(nick);
+  if (!hist.length) return null;
+
+  // group by stockId（fallback 用 stock 字串）
+  const groups = new Map();
+  for (const h of hist) {
+    const key = h.stockId || h.stock || "未知";
+    if (!groups.has(key)) groups.set(key, { name: h.stockName || "", games: [] });
+    groups.get(key).games.push(h);
+  }
+
+  const sign = (n) => (n >= 0 ? "+" : "");
+  const groupBlocks = [];
+  for (const [stockId, info] of groups) {
+    const games = info.games;
+    const wins = games.filter((g) => g.roi > 0).length;
+    const winRate = (wins / games.length) * 100;
+    const avgRoi = games.reduce((a, b) => a + b.roi, 0) / games.length;
+    const bestRoi = Math.max(...games.map((g) => g.roi));
+
+    const items = games
+      .slice()
+      .sort((a, b) => (a.date || a.from).localeCompare(b.date || b.from))
+      .map((g, i) => {
+        const tradesTxt = g.trades != null ? `（${g.trades} 筆）` : "";
+        return `<li style="padding:3px 0;border-bottom:1px dashed #ddd">
+          <span style="color:#666">[${g.from}→${g.to}]</span>
+          ROI <b style="color:${g.roi >= 0 ? "#0a6e3a" : "#b00020"}">${
+            sign(g.roi)}${g.roi.toFixed(2)}%</b>
+          / 大盤 ${sign(g.bench || 0)}${(g.bench || 0).toFixed(2)}%
+          ${tradesTxt}
+        </li>`;
+      })
+      .join("");
+
+    groupBlocks.push(`
+      <div style="margin-bottom:18px;page-break-inside:avoid">
+        <div style="font-size:15px;font-weight:700;border-left:4px solid #222;padding:2px 8px;margin-bottom:6px">
+          ${stockId} ${info.name ? "· " + info.name : ""}
+        </div>
+        <div style="font-size:11px;color:#666;margin-bottom:6px;padding-left:8px">
+          ${games.length} 局　·　勝率 ${wins}/${games.length} = ${winRate.toFixed(0)}%　·
+          平均 ${sign(avgRoi)}${avgRoi.toFixed(2)}%　·　最佳 ${sign(bestRoi)}${bestRoi.toFixed(2)}%
+        </div>
+        <ol style="margin:0;padding-left:24px;list-style:decimal">${items}</ol>
+      </div>
+    `);
+  }
+
+  const totalGames = hist.length;
+  const totalWins = hist.filter((h) => h.roi > 0).length;
+
+  const div = document.createElement("div");
+  div.style.cssText = [
+    "position:fixed", "left:-9999px", "top:0",
+    "width:720px", "padding:32px",
+    "background:white", "color:#222",
+    "font-family:'Microsoft JhengHei','Segoe UI','Noto Sans TC',sans-serif",
+    "font-size:13px", "line-height:1.7",
+  ].join(";");
+  div.innerHTML = `
+    <div style="border-bottom:2px solid #222;padding-bottom:8px;margin-bottom:14px">
+      <div style="font-size:18px;font-weight:700">${nick} · 全部戰績</div>
+      <div style="font-size:11px;color:#666;margin-top:2px">
+        共 ${totalGames} 局　·　勝率 ${totalWins}/${totalGames} = ${
+          ((totalWins / totalGames) * 100).toFixed(0)}%　·
+        ${groups.size} 檔個股　·　Generated ${new Date().toLocaleString("zh-TW")}
+      </div>
+    </div>
+    ${groupBlocks.join("")}
+  `;
+  return div;
+}
+
+async function exportAllHistory() {
+  const btn = document.getElementById("btnExportAll");
+  if (!window.html2canvas || !window.jspdf) return;
+  const reportEl = buildAllHistoryReportElement();
+  if (!reportEl) {
+    alert("尚無戰績可匯出");
+    return;
+  }
+  const orig = btn?.textContent;
+  if (btn) { btn.textContent = "產生中..."; btn.disabled = true; }
+  document.body.appendChild(reportEl);
+  try {
+    const canvas = await html2canvas(reportEl, {
+      backgroundColor: "white", scale: 2, useCORS: true, logging: false,
+    });
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: "p", unit: "mm", format: "a4" });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const margin = 10;
+    const usableW = pageW - margin * 2;
+    const usableH = pageH - margin * 2;
+    const imgRatio = canvas.height / canvas.width;
+    const imgH = usableW * imgRatio;
+    if (imgH <= usableH) {
+      pdf.addImage(canvas.toDataURL("image/png"), "PNG", margin, margin, usableW, imgH);
+    } else {
+      const pageCanvasH = canvas.width * (usableH / usableW);
+      let y = 0, pageNum = 0;
+      while (y < canvas.height) {
+        const sliceH = Math.min(pageCanvasH, canvas.height - y);
+        const slice = document.createElement("canvas");
+        slice.width = canvas.width;
+        slice.height = sliceH;
+        slice.getContext("2d").drawImage(
+          canvas, 0, y, canvas.width, sliceH, 0, 0, canvas.width, sliceH
+        );
+        if (pageNum > 0) pdf.addPage();
+        pdf.addImage(slice.toDataURL("image/png"), "PNG", margin, margin,
+          usableW, sliceH * usableW / canvas.width);
+        y += sliceH;
+        pageNum++;
+      }
+    }
+    pdf.save(`trend-replay_history_${getNick()}_${Date.now()}.pdf`);
+    if (btn) btn.textContent = "✓ 已下載";
+  } catch (e) {
+    console.error("PDF 產生失敗", e);
+    alert("PDF 產生失敗");
+  } finally {
+    reportEl.remove();
+    if (btn) {
+      btn.disabled = false;
+      setTimeout(() => { if (orig) btn.textContent = orig; }, 1500);
+    }
+  }
 }
 
 async function printResult() {
@@ -1149,6 +1293,7 @@ document.getElementById("indicatorSelect")?.addEventListener("change", (e) => {
 
 // ----- 存 PDF（直接產生，無對話框）-----
 document.getElementById("btnPrintResult")?.addEventListener("click", printResult);
+document.getElementById("btnExportAll")?.addEventListener("click", exportAllHistory);
 document.getElementById("btnEnd").addEventListener("click", endGameEarly);
 document.getElementById("btnMute").addEventListener("click", () => {
   const m = !window.soundMute.isMuted();
