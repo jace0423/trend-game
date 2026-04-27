@@ -1718,7 +1718,54 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// 內建瀏覽器偵測 + 引導
+function detectInAppBrowser() {
+  const ua = navigator.userAgent || "";
+  return {
+    isLine: /Line\//i.test(ua),
+    isFB: /FBAN|FBAV|FB_IAB/i.test(ua),
+    isIG: /Instagram/i.test(ua),
+    isWeChat: /MicroMessenger/i.test(ua),
+    any: /Line\/|FBAN|FBAV|FB_IAB|Instagram|MicroMessenger/i.test(ua),
+  };
+}
+
+function setupInAppWarn() {
+  const det = detectInAppBrowser();
+  if (!det.any) return;
+  // 已選擇仍然繼續的不再顯示
+  if (sessionStorage.getItem("inapp_dismissed") === "1") return;
+  const warn = document.getElementById("inapp-warn");
+  if (!warn) return;
+  warn.classList.remove("hidden");
+
+  document.getElementById("btnDismissInapp")?.addEventListener("click", () => {
+    sessionStorage.setItem("inapp_dismissed", "1");
+    warn.classList.add("hidden");
+  });
+
+  document.getElementById("btnOpenExternal")?.addEventListener("click", () => {
+    const url = location.href;
+    if (det.isLine) {
+      // LINE 接受這個 magic param 強制改用外部瀏覽器
+      const sep = url.includes("?") ? "&" : "?";
+      location.href = url + sep + "openExternalBrowser=1";
+    } else if (det.isFB) {
+      // FB 內建沒辦法直接開外部，提示複製連結
+      navigator.clipboard?.writeText(url).catch(() => {});
+      alert("已複製網址，請手動貼到 Chrome / Safari 打開");
+    } else if (det.isIG) {
+      navigator.clipboard?.writeText(url).catch(() => {});
+      alert("Instagram 內建瀏覽器無法直接開外部，已複製網址");
+    } else {
+      navigator.clipboard?.writeText(url).catch(() => {});
+      alert("已複製網址，請手動貼到外部瀏覽器");
+    }
+  });
+}
+
 (async function init() {
+  setupInAppWarn();
   applyUnlocks();          // 先依歷史降級被鎖的選擇
   applyCashUI();
   applyDifficultyUI();

@@ -407,6 +407,48 @@ header h1 {
   font-size: 11px;
   letter-spacing: 0.5px;
 }
+/* 內建瀏覽器警告 */
+.inapp-warn {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 20px;
+}
+.inapp-card {
+  max-width: 460px;
+  width: 100%;
+  background: linear-gradient(180deg, #1a0028, #0a0014);
+  border: 1px solid var(--cyber-magenta);
+  border-radius: 8px;
+  padding: 28px 22px;
+  box-shadow: 0 0 30px rgba(255, 0, 212, 0.4);
+  text-align: center;
+}
+.inapp-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--cyber-yellow);
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 8px var(--cyber-yellow);
+}
+.inapp-desc {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.inapp-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .cooldown-hint {
   margin-top: 14px;
   padding: 18px 14px 14px;
