@@ -13,6 +13,11 @@ const LS_CASH = "trend_initial_cash";
 const LS_DIFFICULTY = "trend_difficulty";
 const LS_INDICATOR = "trend_indicator";
 const LS_KPERIOD = "trend_kperiod";  // D / W / M
+const LS_COOLDOWN = "trend_cooldown";  // {nick: timestamp_ms_until_unlocked}
+
+// 帳號輸完冷卻設定
+const COOLDOWN_ROI_THRESHOLD = -90;   // ROI ≤ -90% 觸發
+const COOLDOWN_DURATION_MS = 60 * 60 * 1000;  // 1 小時
 
 // 難度：依據年化波動度（vol，% 單位）與是否允許多空切換
 const DIFFICULTY = {
@@ -809,6 +814,11 @@ function showResult({ equity, roi, bench, alpha }) {
   // 局結束可能達成解鎖條件
   applyUnlocks();
   refreshPoolHint();
+  // 嚴重虧損 → 觸發冷卻
+  if (roi <= COOLDOWN_ROI_THRESHOLD) {
+    const until = Date.now() + COOLDOWN_DURATION_MS;
+    setCooldownUntil(getNick(), until);
+  }
 }
 
 // ========== 戰績輸出 ==========
@@ -929,6 +939,7 @@ function buildAllHistoryReportElement() {
     const avgRoi = games.reduce((a, b) => a + b.roi, 0) / games.length;
     const bestRoi = Math.max(...games.map((g) => g.roi));
 
+    const fmtN = (n) => Math.round(n).toLocaleString();
     const items = games
       .slice()
       .sort((a, b) => (a.date || a.from).localeCompare(b.date || b.from))
@@ -936,6 +947,11 @@ function buildAllHistoryReportElement() {
         const tradesTxt = g.trades != null ? `（${g.trades} 筆）` : "";
         const log = g.log || [];
         let entryExit = "";
+        let pnlSum = 0;
+        let pnlCount = 0;
+        for (const l of log) {
+          if (typeof l.pnl === "number") { pnlSum += l.pnl; pnlCount++; }
+        }
         if (log.length > 0) {
           const entry = log[0];
           const exit = log[log.length - 1];
@@ -950,13 +966,50 @@ function buildAllHistoryReportElement() {
               ` ${entryLabel} ${(+entry.p).toFixed(2)} → ${exitLabel} ${(+exit.p).toFixed(2)}`;
           }
         }
-        return `<li style="padding:3px 0;border-bottom:1px dashed #ddd">
-          <span style="color:#666">[${g.from}→${g.to}]</span>
-          <span style="color:#444">${entryExit}</span>
-          ROI <b style="color:${g.roi >= 0 ? "#0a6e3a" : "#b00020"}">${
-            sign(g.roi)}${g.roi.toFixed(2)}%</b>
-          / 大盤 ${sign(g.bench || 0)}${(g.bench || 0).toFixed(2)}%
-          ${tradesTxt}
+        const pnlTxt = pnlCount > 0
+          ? `　單筆損益 <b style="color:${pnlSum >= 0 ? "#0a6e3a" : "#b00020"}">${
+              pnlSum >= 0 ? "+" : ""}${fmtN(pnlSum)}</b>`
+          : "";
+        const equityTxt = g.equity != null
+          ? `　剩餘 <b>${fmtN(g.equity)}</b>`
+          : "";
+        // 逐筆交易明細（仿結算頁 #N 格式）
+        const tradeRows = log.map((l, idx) => {
+          const sideTxt = l.auto
+            ? (l.side === "buy" ? "結算回補" : "結算平倉")
+            : (l.side === "buy" ? "買" : "賣");
+          const sideColor = l.side === "buy" ? "#b00020" : "#0a6e3a";
+          const pnlInner = typeof l.pnl === "number"
+            ? `<span style="color:${l.pnl >= 0 ? "#0a6e3a" : "#b00020"};font-weight:600">${l.pnl >= 0 ? "+" : ""}${fmtN(l.pnl)}</span>`
+            : `<span style="color:#999">—</span>`;
+          return `<tr>
+            <td style="padding:2px 8px;color:#888;width:32px">#${idx + 1}</td>
+            <td style="padding:2px 8px;color:#666;white-space:nowrap">${l.t}</td>
+            <td style="padding:2px 8px;color:${sideColor};font-weight:600">${sideTxt}</td>
+            <td style="padding:2px 8px;text-align:right">${(+l.qty).toLocaleString()}</td>
+            <td style="padding:2px 8px;text-align:right">@ ${(+l.p).toFixed(2)}</td>
+            <td style="padding:2px 8px;text-align:right">${pnlInner}</td>
+          </tr>`;
+        }).join("");
+        return `<li style="padding:8px 0;border-bottom:1px solid #eee;list-style:none;page-break-inside:avoid">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4px">
+            <div>
+              <span style="color:#666;font-size:12px">[${g.from} → ${g.to}]</span>
+              <span style="color:#444;margin-left:4px">${entryExit}</span>
+              <span style="color:#888;font-size:11px;margin-left:4px">${tradesTxt}</span>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:11px;color:#666">最終總資產</div>
+              <div style="font-size:14px;font-weight:700">${fmtN(g.equity || 0)}</div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:#555;margin-bottom:4px">
+            報酬率 <b style="color:${g.roi >= 0 ? "#0a6e3a" : "#b00020"}">${
+              sign(g.roi)}${g.roi.toFixed(2)}%</b>
+            / 大盤 ${sign(g.bench || 0)}${(g.bench || 0).toFixed(2)}%
+            ${pnlTxt}
+          </div>
+          ${tradeRows ? `<table style="width:100%;border-collapse:collapse;font-size:11px;background:#fafafa;border:1px solid #eee;margin-top:2px">${tradeRows}</table>` : ""}
         </li>`;
       })
       .join("");
@@ -1167,6 +1220,29 @@ function getHistory(nick) {
   const all = JSON.parse(localStorage.getItem(LS_HIST) || "{}");
   return all[nick] || [];
 }
+
+// ===== 冷卻機制 =====
+function getCooldownUntil(nick) {
+  const all = JSON.parse(localStorage.getItem(LS_COOLDOWN) || "{}");
+  return all[nick] || 0;
+}
+function setCooldownUntil(nick, ts) {
+  const all = JSON.parse(localStorage.getItem(LS_COOLDOWN) || "{}");
+  if (ts <= Date.now()) delete all[nick];
+  else all[nick] = ts;
+  localStorage.setItem(LS_COOLDOWN, JSON.stringify(all));
+}
+function isInCooldown(nick) {
+  return getCooldownUntil(nick) > Date.now();
+}
+function cooldownText(nick) {
+  const until = getCooldownUntil(nick);
+  const remain = until - Date.now();
+  if (remain <= 0) return "";
+  const m = Math.floor(remain / 60000);
+  const s = Math.floor((remain % 60000) / 1000);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
 function saveResult(r) {
   const nick = getNick();
   if (!nick) return;
@@ -1192,12 +1268,42 @@ function calcStats(hist) {
   };
 }
 
+let _cooldownTimer = null;
+function tickCooldown() {
+  const nick = getNick();
+  const hint = document.getElementById("cooldownHint");
+  const btnEnter = document.getElementById("btnEnter");
+  if (!hint || !btnEnter) return;
+  if (nick && isInCooldown(nick)) {
+    hint.textContent = `⚠ 嚴重虧損保護中　${cooldownText(nick)} 後可再進入`;
+    hint.style.display = "block";
+    btnEnter.disabled = true;
+    btnEnter.style.opacity = "0.4";
+    btnEnter.style.cursor = "not-allowed";
+  } else {
+    hint.style.display = "none";
+    btnEnter.disabled = false;
+    btnEnter.style.opacity = "";
+    btnEnter.style.cursor = "";
+    if (_cooldownTimer) {
+      clearInterval(_cooldownTimer);
+      _cooldownTimer = null;
+    }
+  }
+}
+
 function renderLogin() {
   applyUnlocks();
   applyCashUI();
   applyDifficultyUI();
   applyMarketUI();
   const nick = getNick();
+  // 啟動冷卻倒數計時
+  if (_cooldownTimer) { clearInterval(_cooldownTimer); _cooldownTimer = null; }
+  if (nick && isInCooldown(nick)) {
+    tickCooldown();
+    _cooldownTimer = setInterval(tickCooldown, 1000);
+  }
   const retBox = document.getElementById("returning-box");
   const newBox = document.getElementById("newuser-box");
   if (nick) {
@@ -1221,6 +1327,12 @@ function renderLogin() {
 }
 
 async function enterGame() {
+  // 冷卻檢查
+  const nick = getNick();
+  if (nick && isInCooldown(nick)) {
+    alert(`帳號 ${nick} 嚴重虧損保護中\n冷卻倒數：${cooldownText(nick)}\n（剩餘 ${cooldownText(nick)} 後可再進入）`);
+    return;
+  }
   window.SFX && SFX.login();
   document.getElementById("login-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.add("hidden");

@@ -407,6 +407,18 @@ header h1 {
   font-size: 11px;
   letter-spacing: 0.5px;
 }
+.cooldown-hint {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 0, 80, 0.08);
+  border: 1px solid rgba(255, 0, 80, 0.4);
+  border-radius: 4px;
+  color: #ff6b6b;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
 
 .market-toggle {
   display: inline-flex;

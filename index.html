@@ -10,7 +10,7 @@
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="style.css?v=21" />
+<link rel="stylesheet" href="style.css?v=23" />
 </head>
 <body>
 
@@ -32,6 +32,7 @@
         <div><span class="stat-label">勝率</span><span id="statWin" class="stat-val">—</span></div>
       </div>
       <button id="btnEnter" class="cyber-btn big">進入系統</button>
+      <div id="cooldownHint" class="cooldown-hint" style="display:none">—</div>
       <div class="result-actions">
         <button id="btnLogout" class="cyber-btn ghost">切換帳號</button>
         <button id="btnReset" class="cyber-btn ghost">清除紀錄</button>
@@ -231,7 +232,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=21"></script>
-<script src="app.js?v=21"></script>
+<script src="sound.js?v=23"></script>
+<script src="app.js?v=23"></script>
 </body>
 </html>
