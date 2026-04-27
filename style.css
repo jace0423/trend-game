@@ -39,11 +39,12 @@ html, body {
   overflow-y: auto;     /* 內容溢出時可捲動 */
   overflow-x: hidden;
   z-index: 100;
-  padding: 20px 0;       /* 上下留白避免內容貼邊 */
+  padding: 50px 0;       /* 上下留白避免霓虹 text-shadow 被切 */
 }
 #result-screen.cyber-screen {
   align-items: flex-start;  /* 結算頁長內容由上往下排，不要垂直置中導致截斷 */
 }
+#result-screen .cyber-card { margin: 0 auto; }
 
 /* 網格背景 */
 .grid-bg {

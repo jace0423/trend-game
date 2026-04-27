@@ -845,17 +845,31 @@ function buildReportElement() {
   if (!r) return null;
   const log = state.log || [];
 
+  // 計算累計買進/賣出金額（含 auto-close）
+  let totalBuy = 0, totalSell = 0;
+  for (const l of log) {
+    const amt = (+l.qty) * (+l.p);
+    if (l.side === "buy") totalBuy += amt;
+    else totalSell += amt;
+  }
+  const sign = (n) => (n >= 0 ? "+" : "");
+  const fmtN = (n) => Math.round(n).toLocaleString();
+
   const items = log.map((l, i) => {
-    const sideTxt = l.side === "buy" ? "買進" : "賣出";
+    const sideTxt = l.auto
+      ? (l.side === "buy" ? "結算回補" : "結算平倉")
+      : (l.side === "buy" ? "買進" : "賣出");
     const qtyTxt = (+l.qty).toLocaleString();
     const priceTxt = (+l.p).toFixed(2);
+    const amtTxt = fmtN((+l.qty) * (+l.p));
     const pnlTxt = typeof l.pnl === "number"
       ? `　損益 <b style="color:${l.pnl >= 0 ? "#0a6e3a" : "#b00020"}">${
-          l.pnl >= 0 ? "+" : ""}${Math.round(l.pnl).toLocaleString()}</b>`
+          l.pnl >= 0 ? "+" : ""}${fmtN(l.pnl)}</b>`
       : "";
     return `<li style="padding:4px 0;border-bottom:1px dashed #ccc">
       <span style="color:#666">[${l.t}]</span>
-      <b>${sideTxt}</b> ${qtyTxt} 股 @ ${priceTxt}${pnlTxt}
+      <b>${sideTxt}</b> ${qtyTxt} 股 @ ${priceTxt}
+      <span style="color:#888">($${amtTxt})</span>${pnlTxt}
     </li>`;
   }).join("");
 
@@ -869,12 +883,23 @@ function buildReportElement() {
   ].join(";");
 
   div.innerHTML = `
-    <div style="margin-bottom:14px">
+    <div style="margin-bottom:10px">
       <div style="font-size:18px;font-weight:700">${r.stock.id} · ${r.stock.name}　交易紀錄</div>
       <div style="font-size:12px;color:#666;margin-top:2px">
-        ${r.fromDate} → ${r.toDate}　·　玩家 ${r.nick || "-"}
+        ${r.fromDate} → ${r.toDate}　·　玩家 ${r.nick || "-"}　·　${r.market === "TW" ? "台股" : "美股"}
       </div>
     </div>
+
+    <table style="width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px;background:#fafafa;border:1px solid #ddd">
+      <tr>
+        <td style="padding:6px 10px;border-right:1px solid #eee">起始資金<br><b style="font-size:14px">${fmtN(r.initialCash)}</b></td>
+        <td style="padding:6px 10px;border-right:1px solid #eee">累計買進<br><b style="font-size:14px;color:#b00020">${fmtN(totalBuy)}</b></td>
+        <td style="padding:6px 10px;border-right:1px solid #eee">累計賣出<br><b style="font-size:14px;color:#0a6e3a">${fmtN(totalSell)}</b></td>
+        <td style="padding:6px 10px">最終結算<br><b style="font-size:14px;color:${r.roi >= 0 ? "#0a6e3a" : "#b00020"}">${fmtN(r.equity)} (${sign(r.roi)}${r.roi.toFixed(2)}%)</b></td>
+      </tr>
+    </table>
+
+    <div style="font-size:13px;font-weight:600;margin-bottom:6px;border-left:3px solid #222;padding-left:8px">逐筆交易</div>
     <ol style="margin:0;padding-left:24px;list-style:decimal">${items || '<li style="color:#999">本局無交易</li>'}</ol>
   `;
   return div;
@@ -909,8 +934,25 @@ function buildAllHistoryReportElement() {
       .sort((a, b) => (a.date || a.from).localeCompare(b.date || b.from))
       .map((g, i) => {
         const tradesTxt = g.trades != null ? `（${g.trades} 筆）` : "";
+        const log = g.log || [];
+        let entryExit = "";
+        if (log.length > 0) {
+          const entry = log[0];
+          const exit = log[log.length - 1];
+          const entryLabel = entry.side === "buy" ? "進" : "空";
+          const exitLabel = exit.side === "buy"
+            ? (exit.auto ? "回補" : "回")
+            : (exit.auto ? "平倉" : "出");
+          if (entry === exit) {
+            entryExit = ` ${entryLabel} ${(+entry.p).toFixed(2)}`;
+          } else {
+            entryExit =
+              ` ${entryLabel} ${(+entry.p).toFixed(2)} → ${exitLabel} ${(+exit.p).toFixed(2)}`;
+          }
+        }
         return `<li style="padding:3px 0;border-bottom:1px dashed #ddd">
           <span style="color:#666">[${g.from}→${g.to}]</span>
+          <span style="color:#444">${entryExit}</span>
           ROI <b style="color:${g.roi >= 0 ? "#0a6e3a" : "#b00020"}">${
             sign(g.roi)}${g.roi.toFixed(2)}%</b>
           / 大盤 ${sign(g.bench || 0)}${(g.bench || 0).toFixed(2)}%
