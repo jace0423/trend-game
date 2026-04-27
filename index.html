@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
-<link rel="stylesheet" href="style.css?v=9" />
+<link rel="stylesheet" href="style.css?v=10" />
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 
   <div class="cyber-card">
     <div class="cyber-glitch" data-text="TREND REPLAY">TREND REPLAY</div>
-    <div class="cyber-sub">// 趨勢回放 · 歷史股價沙盒</div>
+    <div class="cyber-sub">趨勢回放 · 歷史股價沙盒</div>
 
     <div id="returning-box" class="hidden">
       <div class="welcome-back">歡迎回來,<br><span id="welcomeName" class="neon-cyan"></span></div>
@@ -37,20 +37,20 @@
     </div>
 
     <div id="newuser-box">
-      <label class="field-label">// 輸入識別碼</label>
+      <label class="field-label">輸入識別碼</label>
       <input id="nickInput" maxlength="12" placeholder="YOUR NAME" autocomplete="off" />
       <button id="btnLogin" class="cyber-btn big">連線</button>
       <div class="hint">資料僅存本機 · 無伺服器</div>
     </div>
 
     <div id="setup-box" class="setup-box">
-      <label class="field-label">// 市場</label>
+      <label class="field-label">市場</label>
       <div class="market-toggle setup-market">
         <button class="market-btn active" data-market="TW">台股 NTD</button>
         <button class="market-btn" data-market="US" data-lock="market:US">美股 USD 🔒</button>
       </div>
 
-      <label class="field-label">// 起始資金</label>
+      <label class="field-label">起始資金</label>
       <select id="cashSelect" class="cyber-select">
         <option value="100000" selected>100,000</option>
         <option value="300000" data-lock="cash:300000">300,000 🔒</option>
@@ -60,7 +60,7 @@
         <option value="10000000" data-lock="cash:10000000">10,000,000 🔒</option>
       </select>
 
-      <label class="field-label">// 難度</label>
+      <label class="field-label">難度</label>
       <div class="diff-toggle">
         <button class="diff-btn active" data-diff="stable">穩定</button>
         <button class="diff-btn" data-diff="volatile" data-lock="diff:volatile">高波動 🔒</button>
@@ -162,7 +162,7 @@
 
   <div class="cyber-card result-card">
     <div id="resultTitle" class="cyber-glitch" data-text="MISSION COMPLETE">MISSION COMPLETE</div>
-    <div id="resultSub" class="cyber-sub">// 結算回報</div>
+    <div id="resultSub" class="cyber-sub">結算回報</div>
 
     <div class="reveal-block">
       <div class="reveal-label">個股代號</div>
@@ -209,7 +209,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=9"></script>
-<script src="app.js?v=9"></script>
+<script src="sound.js?v=10"></script>
+<script src="app.js?v=10"></script>
 </body>
 </html>
