@@ -10,7 +10,7 @@
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="style.css?v=17" />
+<link rel="stylesheet" href="style.css?v=18" />
 </head>
 <body>
 
@@ -108,7 +108,13 @@
   <section class="chart-wrap">
     <div id="chart"></div>
     <div class="ind-toolbar">
-      <label class="ind-label">副圖</label>
+      <label class="ind-label">K線</label>
+      <select id="kPeriodSelect" class="ind-select">
+        <option value="D">日</option>
+        <option value="W">周</option>
+        <option value="M">月</option>
+      </select>
+      <label class="ind-label" style="margin-left:12px">副圖</label>
       <select id="indicatorSelect" class="ind-select">
         <option value="kd">KD (9,3,3)</option>
         <option value="rsi">RSI (14)</option>
@@ -222,7 +228,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=17"></script>
-<script src="app.js?v=17"></script>
+<script src="sound.js?v=18"></script>
+<script src="app.js?v=18"></script>
 </body>
 </html>

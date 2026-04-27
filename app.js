@@ -12,6 +12,7 @@ const LS_MARKET = "trend_market";
 const LS_CASH = "trend_initial_cash";
 const LS_DIFFICULTY = "trend_difficulty";
 const LS_INDICATOR = "trend_indicator";
+const LS_KPERIOD = "trend_kperiod";  // D / W / M
 
 // 難度：依據年化波動度（vol，% 單位）與是否允許多空切換
 const DIFFICULTY = {
@@ -77,6 +78,7 @@ const state = {
   initialCash: +localStorage.getItem(LS_CASH) || DEFAULT_INITIAL_CASH,
   difficulty: localStorage.getItem(LS_DIFFICULTY) || "stable",
   indicator: localStorage.getItem(LS_INDICATOR) || "kd",
+  kperiod: localStorage.getItem(LS_KPERIOD) || "D",
   prices: [],
   startIdx: 0,
   cursor: 0,
@@ -107,6 +109,48 @@ async function loadCatalog() {
 async function loadPrices(id) {
   const r = await fetch(`data/prices/${id}.json`);
   return await r.json();
+}
+
+// 把日 K bars 聚合成 周/月 K（OHLCV）
+function bucketKey(dateStr, tf) {
+  if (tf === "D") return dateStr;
+  const d = new Date(dateStr);
+  if (tf === "W") {
+    // ISO 週：以週一為起點
+    const day = d.getUTCDay() || 7;
+    const monday = new Date(d);
+    monday.setUTCDate(d.getUTCDate() - (day - 1));
+    return monday.toISOString().slice(0, 10);
+  }
+  if (tf === "M") {
+    return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
+  }
+  return dateStr;
+}
+
+function aggregateBars(bars, tf) {
+  if (tf === "D" || !bars || bars.length === 0) return bars;
+  const out = [];
+  let bucket = null;
+  for (const p of bars) {
+    const key = bucketKey(p.t, tf);
+    if (!bucket || bucket.key !== key) {
+      if (bucket) out.push(bucket.bar);
+      bucket = {
+        key,
+        bar: { t: p.t, o: p.o, h: p.h, l: p.l, c: p.c, v: p.v || 0 },
+      };
+    } else {
+      bucket.bar.h = Math.max(bucket.bar.h, p.h);
+      bucket.bar.l = Math.min(bucket.bar.l, p.l);
+      bucket.bar.c = p.c;
+      bucket.bar.v += (p.v || 0);
+      // 保留最後一天日期作為 bucket 的時間軸座標（避免重複 time）
+      bucket.bar.t = p.t;
+    }
+  }
+  if (bucket) out.push(bucket.bar);
+  return out;
 }
 
 function ma(arr, n, key = "c") {
@@ -345,10 +389,13 @@ function renderIndChart(slice) {
 function applyIndicatorUI() {
   const sel = document.getElementById("indicatorSelect");
   if (sel) sel.value = state.indicator;
+  const k = document.getElementById("kPeriodSelect");
+  if (k) k.value = state.kperiod || "D";
 }
 
 function renderChart() {
-  const slice = state.prices.slice(0, state.cursor + 1);
+  const dailySlice = state.prices.slice(0, state.cursor + 1);
+  const slice = aggregateBars(dailySlice, state.kperiod);
   candleSeries.setData(slice.map(toCandle));
   volumeSeries.setData(slice.map(toVol));
   ma5Line.setData(ma(slice, 5));
@@ -362,18 +409,8 @@ function renderChart() {
 }
 
 function appendBar() {
-  const p = state.prices[state.cursor];
-  candleSeries.update(toCandle(p));
-  volumeSeries.update(toVol(p));
-  // refresh MAs + BB + KD/RSI (cheap for our sizes)
-  const slice = state.prices.slice(0, state.cursor + 1);
-  ma5Line.setData(ma(slice, 5));
-  ma20Line.setData(ma(slice, 20));
-  ma60Line.setData(ma(slice, 60));
-  const bb = bollinger(slice, 20, 2);
-  bbUpper.setData(bb.up);
-  bbLower.setData(bb.lo);
-  renderIndChart(slice);
+  // 周/月 K 模式下，最後 bar 可能是部分 bucket，整段重畫最簡單
+  renderChart();
 }
 
 function nowPrice() {
@@ -581,6 +618,27 @@ function finish() {
   if (state.over) return;
   state.over = true;
   const price = nowPrice();
+
+  // 結算時若仍有持倉 → 自動補一筆「結算平倉」交易紀錄，
+  // 讓單筆勝率 / 平均盈虧 能反映真實結果
+  if (state.pos !== 0) {
+    const qty = Math.abs(state.pos);
+    const pnl = state.pos > 0
+      ? (price - state.avg) * qty       // 多單平倉
+      : (state.avg - price) * qty;      // 空單回補
+    state.log.push({
+      t: nowDate(),
+      side: state.pos > 0 ? "sell" : "buy",
+      qty,
+      p: price,
+      pnl,
+      auto: true,  // 標記為遊戲結束自動平倉
+    });
+    state.realized += pnl;
+    state.pos = 0;
+    state.avg = 0;
+  }
+
   const equity = state.cash + state.pos * price;
   const roi = ((equity - state.initialCash) / state.initialCash) * 100;
   const startPrice = state.prices[state.startIdx].c;
@@ -676,7 +734,9 @@ function showResult({ equity, roi, bench, alpha }) {
     tradeList.innerHTML = "";
     (state.log || []).forEach((l, i) => {
       const li = document.createElement("li");
-      const sideTxt = l.side === "buy" ? "買" : "賣";
+      const sideTxt = l.auto
+        ? (l.side === "buy" ? "結算回補" : "結算平倉")
+        : (l.side === "buy" ? "買" : "賣");
       const sideCls = l.side === "buy" ? "tr-side-buy" : "tr-side-sell";
       const left = document.createElement("span");
       left.textContent = `#${i + 1} ${l.t}`;
@@ -1008,7 +1068,25 @@ async function printResult() {
 
 function endGameEarly() {
   if (state.over) return;
-  if (!confirm("確定要提早結束本局?")) return;
+  // 防呆：未平倉提醒
+  if (state.pos !== 0) {
+    const dir = state.pos > 0 ? "多單" : "空單";
+    const qty = Math.abs(state.pos);
+    const price = nowPrice();
+    const unreal = state.pos > 0
+      ? (price - state.avg) * qty
+      : (state.avg - price) * qty;
+    const sign = unreal >= 0 ? "+" : "";
+    const msg =
+      `你還有 ${dir} ${qty.toLocaleString()} 股未平倉\n` +
+      `平均成本 ${state.avg.toFixed(2)} / 現價 ${price.toFixed(2)}\n` +
+      `未實現損益：${sign}${Math.round(unreal).toLocaleString()}\n\n` +
+      `按「確定」→ 以現價自動平倉並結算\n` +
+      `按「取消」→ 回去手動平倉`;
+    if (!confirm(msg)) return;
+  } else {
+    if (!confirm("確定要提早結束本局?")) return;
+  }
   finish();
 }
 
@@ -1316,8 +1394,16 @@ document.getElementById("indicatorSelect")?.addEventListener("change", (e) => {
   state.indicator = e.target.value;
   localStorage.setItem(LS_INDICATOR, state.indicator);
   if (state.prices?.length && state.cursor != null) {
-    renderIndChart(state.prices.slice(0, state.cursor + 1));
+    const dailySlice = state.prices.slice(0, state.cursor + 1);
+    renderIndChart(aggregateBars(dailySlice, state.kperiod));
   }
+});
+
+// ----- K 線週期切換 -----
+document.getElementById("kPeriodSelect")?.addEventListener("change", (e) => {
+  state.kperiod = e.target.value;
+  localStorage.setItem(LS_KPERIOD, state.kperiod);
+  if (state.prices?.length && state.cursor != null) renderChart();
 });
 
 // ----- 存 PDF（直接產生，無對話框）-----
