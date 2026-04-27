@@ -1,16 +1,44 @@
-const INITIAL_CASH = 1_000_000;
+const DEFAULT_INITIAL_CASH = 500_000;
 const TOTAL_ROUNDS = 100;
 const PRE_BARS = 60; // MA60 最少需求，讓短歷史股也能從中間開局
-const FEE_RATE = 0.001425;
-const TAX_RATE = 0.003;
+
+// 市場交易成本：TW 1.425‰ 手續費（最低 NT$20）+ 0.3% 證交稅；US 零佣金、零稅
+// lot=1 — 零股交易，可買任意股數（最小單位 1 股）
+const MARKET_COSTS = {
+  TW: { fee: 0.001425, tax: 0.003, minFee: 20, lot: 1, currency: "NT$" },
+  US: { fee: 0,        tax: 0,     minFee: 0,  lot: 1, currency: "$"   },
+};
+const LS_MARKET = "trend_market";
+const LS_CASH = "trend_initial_cash";
+const LS_DIFFICULTY = "trend_difficulty";
+const LS_INDICATOR = "trend_indicator";
+
+// 難度：依據年化波動度（vol，% 單位）與是否允許多空切換
+const DIFFICULTY = {
+  stable:   { label: "穩定",     volMin: 0,  volMax: 30, allowShort: false },
+  volatile: { label: "高波動",   volMin: 30, volMax: 999, allowShort: false },
+  hedge:    { label: "多空切換", volMin: 0,  volMax: 999, allowShort: true  },
+};
+
+function tradeFee(gross) {
+  const c = currentCosts();
+  return Math.max(c.minFee, Math.floor(gross * c.fee));
+}
+function tradeTax(gross) {
+  return Math.floor(gross * currentCosts().tax);
+}
 
 const state = {
   stocks: [],
   stock: null,
+  market: localStorage.getItem(LS_MARKET) || "TW",
+  initialCash: +localStorage.getItem(LS_CASH) || DEFAULT_INITIAL_CASH,
+  difficulty: localStorage.getItem(LS_DIFFICULTY) || "stable",
+  indicator: localStorage.getItem(LS_INDICATOR) || "kd",
   prices: [],
   startIdx: 0,
   cursor: 0,
-  cash: INITIAL_CASH,
+  cash: 0,
   pos: 0,
   avg: 0,
   realized: 0,
@@ -19,7 +47,15 @@ const state = {
   over: false,
 };
 
+function currentCosts() {
+  return MARKET_COSTS[state.market] || MARKET_COSTS.TW;
+}
+// Backwards-compatible aliases used by existing code paths
+Object.defineProperty(window, "FEE_RATE", { get: () => currentCosts().fee });
+Object.defineProperty(window, "TAX_RATE", { get: () => currentCosts().tax });
+
 let chart, candleSeries, volumeSeries, ma5Line, ma20Line, ma60Line, bbUpper, bbLower;
+let indChart, kLine, dLine, rsiLine, rsi70, rsi30;
 
 async function loadCatalog() {
   const r = await fetch("data/stocks.json");
@@ -40,6 +76,86 @@ function ma(arr, n, key = "c") {
     if (i >= n - 1) out.push({ time: arr[i].t, value: +(sum / n).toFixed(2) });
   }
   return out;
+}
+
+// KD 全序列（用於副圖）
+function kdSeries(arr, n = 9) {
+  const kArr = [], dArr = [];
+  let k = 50, d = 50;
+  for (let i = n - 1; i < arr.length; i++) {
+    let hi = -Infinity, lo = Infinity;
+    for (let j = i - n + 1; j <= i; j++) {
+      if (arr[j].h > hi) hi = arr[j].h;
+      if (arr[j].l < lo) lo = arr[j].l;
+    }
+    const rsv = hi === lo ? 50 : ((arr[i].c - lo) / (hi - lo)) * 100;
+    k = (k * 2 + rsv) / 3;
+    d = (d * 2 + k) / 3;
+    kArr.push({ time: arr[i].t, value: +k.toFixed(2) });
+    dArr.push({ time: arr[i].t, value: +d.toFixed(2) });
+  }
+  return { k: kArr, d: dArr };
+}
+
+// RSI 全序列
+function rsiSeries(arr, n = 14) {
+  const out = [];
+  if (arr.length <= n) return out;
+  let avgG = 0, avgL = 0;
+  for (let i = 1; i <= n; i++) {
+    const ch = arr[i].c - arr[i - 1].c;
+    if (ch > 0) avgG += ch; else avgL -= ch;
+  }
+  avgG /= n; avgL /= n;
+  const rsiOf = (g, l) => l === 0 ? 100 : 100 - 100 / (1 + g / l);
+  out.push({ time: arr[n].t, value: +rsiOf(avgG, avgL).toFixed(2) });
+  for (let i = n + 1; i < arr.length; i++) {
+    const ch = arr[i].c - arr[i - 1].c;
+    const g = ch > 0 ? ch : 0;
+    const l = ch < 0 ? -ch : 0;
+    avgG = (avgG * (n - 1) + g) / n;
+    avgL = (avgL * (n - 1) + l) / n;
+    out.push({ time: arr[i].t, value: +rsiOf(avgG, avgL).toFixed(2) });
+  }
+  return out;
+}
+
+// KD 隨機指標：9 期 RSV，K = 1/3 RSV + 2/3 prevK，D = 1/3 K + 2/3 prevD（台股慣例）
+function kdValue(arr, idx, n = 9) {
+  if (idx < n - 1) return null;
+  let k = 50, d = 50;
+  for (let i = n - 1; i <= idx; i++) {
+    let hi = -Infinity, lo = Infinity;
+    for (let j = i - n + 1; j <= i; j++) {
+      if (arr[j].h > hi) hi = arr[j].h;
+      if (arr[j].l < lo) lo = arr[j].l;
+    }
+    const rsv = hi === lo ? 50 : ((arr[i].c - lo) / (hi - lo)) * 100;
+    k = (k * 2 + rsv) / 3;
+    d = (d * 2 + k) / 3;
+  }
+  return { k, d };
+}
+
+// RSI 14：相對強弱指標（Wilder 平滑法）
+function rsiValue(arr, idx, n = 14) {
+  if (idx < n) return null;
+  let avgGain = 0, avgLoss = 0;
+  for (let i = 1; i <= n; i++) {
+    const ch = arr[i].c - arr[i - 1].c;
+    if (ch > 0) avgGain += ch; else avgLoss -= ch;
+  }
+  avgGain /= n; avgLoss /= n;
+  for (let i = n + 1; i <= idx; i++) {
+    const ch = arr[i].c - arr[i - 1].c;
+    const g = ch > 0 ? ch : 0;
+    const l = ch < 0 ? -ch : 0;
+    avgGain = (avgGain * (n - 1) + g) / n;
+    avgLoss = (avgLoss * (n - 1) + l) / n;
+  }
+  if (avgLoss === 0) return 100;
+  const rs = avgGain / avgLoss;
+  return 100 - 100 / (1 + rs);
 }
 
 function bollinger(arr, n = 20, k = 2) {
@@ -104,17 +220,89 @@ function setupChart() {
   bbUpper = chart.addLineSeries({ color: "rgba(180,180,180,0.5)", lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
   bbLower = chart.addLineSeries({ color: "rgba(180,180,180,0.5)", lineWidth: 1, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
 
-  const resizeChart = () => {
-    const rect = el.getBoundingClientRect();
-    if (rect.width > 0 && rect.height > 0) {
-      chart.resize(rect.width, rect.height);
-    }
+  // KD / RSI 副圖
+  const indEl = document.getElementById("ind-chart");
+  indEl.innerHTML = "";
+  indChart = LightweightCharts.createChart(indEl, {
+    layout: { background: { color: "#0e1116" }, textColor: "#7a8290" },
+    grid: {
+      vertLines: { color: "#1c222b" },
+      horzLines: { color: "#1c222b" },
+    },
+    rightPriceScale: { borderColor: "#2a313c" },
+    timeScale: { borderColor: "#2a313c", visible: false },
+    crosshair: { mode: 0 },
+    handleScroll: false,
+    handleScale: false,
+  });
+  kLine = indChart.addLineSeries({
+    color: "#00f0ff", lineWidth: 1, title: "K",
+    priceLineVisible: false, lastValueVisible: true,
+  });
+  dLine = indChart.addLineSeries({
+    color: "#ff00d4", lineWidth: 1, title: "D",
+    priceLineVisible: false, lastValueVisible: true,
+  });
+  rsiLine = indChart.addLineSeries({
+    color: "#f6ff00", lineWidth: 1, title: "RSI",
+    priceLineVisible: false, lastValueVisible: true,
+  });
+  // 30 / 70 參考線
+  rsi70 = indChart.addLineSeries({
+    color: "rgba(246,255,0,0.18)", lineWidth: 1, lineStyle: 2,
+    priceLineVisible: false, lastValueVisible: false,
+  });
+  rsi30 = indChart.addLineSeries({
+    color: "rgba(246,255,0,0.18)", lineWidth: 1, lineStyle: 2,
+    priceLineVisible: false, lastValueVisible: false,
+  });
+
+  // 主圖 → 副圖 單向同步（避免雙向訂閱造成迴圈）
+  let _syncing = false;
+  chart.timeScale().subscribeVisibleLogicalRangeChange((r) => {
+    if (!r || _syncing) return;
+    _syncing = true;
+    indChart.timeScale().setVisibleLogicalRange(r);
+    _syncing = false;
+  });
+
+  const resizeCharts = () => {
+    const r1 = el.getBoundingClientRect();
+    if (r1.width > 0 && r1.height > 0) chart.resize(r1.width, r1.height);
+    const r2 = indEl.getBoundingClientRect();
+    if (r2.width > 0 && r2.height > 0) indChart.resize(r2.width, r2.height);
   };
-  window.addEventListener("resize", resizeChart);
+  window.addEventListener("resize", resizeCharts);
   if (window.ResizeObserver) {
-    new ResizeObserver(resizeChart).observe(el);
+    new ResizeObserver(resizeCharts).observe(el);
+    new ResizeObserver(resizeCharts).observe(indEl);
   }
-  setTimeout(resizeChart, 50);
+  setTimeout(resizeCharts, 50);
+}
+
+function renderIndChart(slice) {
+  if (slice.length === 0) return;
+  const t0 = slice[0].t, t1 = slice[slice.length - 1].t;
+  if (state.indicator === "rsi") {
+    kLine.setData([]);
+    dLine.setData([]);
+    rsiLine.setData(rsiSeries(slice));
+    rsi70.setData([{ time: t0, value: 70 }, { time: t1, value: 70 }]);
+    rsi30.setData([{ time: t0, value: 30 }, { time: t1, value: 30 }]);
+  } else {
+    // KD
+    const kd = kdSeries(slice);
+    kLine.setData(kd.k);
+    dLine.setData(kd.d);
+    rsiLine.setData([]);
+    rsi70.setData([{ time: t0, value: 80 }, { time: t1, value: 80 }]);
+    rsi30.setData([{ time: t0, value: 20 }, { time: t1, value: 20 }]);
+  }
+}
+
+function applyIndicatorUI() {
+  const sel = document.getElementById("indicatorSelect");
+  if (sel) sel.value = state.indicator;
 }
 
 function renderChart() {
@@ -127,6 +315,7 @@ function renderChart() {
   const bb = bollinger(slice, 20, 2);
   bbUpper.setData(bb.up);
   bbLower.setData(bb.lo);
+  renderIndChart(slice);
   chart.timeScale().fitContent();
 }
 
@@ -134,7 +323,7 @@ function appendBar() {
   const p = state.prices[state.cursor];
   candleSeries.update(toCandle(p));
   volumeSeries.update(toVol(p));
-  // refresh MAs + BB (cheap for our sizes)
+  // refresh MAs + BB + KD/RSI (cheap for our sizes)
   const slice = state.prices.slice(0, state.cursor + 1);
   ma5Line.setData(ma(slice, 5));
   ma20Line.setData(ma(slice, 20));
@@ -142,6 +331,7 @@ function appendBar() {
   const bb = bollinger(slice, 20, 2);
   bbUpper.setData(bb.up);
   bbLower.setData(bb.lo);
+  renderIndChart(slice);
 }
 
 function nowPrice() {
@@ -197,7 +387,7 @@ function updatePanel() {
   const realEl = document.getElementById("realized");
   realEl.textContent = fmt(state.realized, 0);
   realEl.className = state.realized > 0 ? "pos-pnl" : state.realized < 0 ? "neg-pnl" : "";
-  const roi = ((equity - INITIAL_CASH) / INITIAL_CASH) * 100;
+  const roi = ((equity - state.initialCash) / state.initialCash) * 100;
   const roiEl = document.getElementById("roi");
   roiEl.textContent = `${roi >= 0 ? "+" : ""}${roi.toFixed(2)}%`;
   roiEl.className = roi > 0 ? "pos-pnl" : roi < 0 ? "neg-pnl" : "";
@@ -228,7 +418,7 @@ function buy() {
   if (state.pos < 0) {
     const qtyCover = Math.min(qty, -state.pos);
     const gross = price * qtyCover;
-    const fee = Math.max(20, Math.floor(gross * FEE_RATE));
+    const fee = tradeFee(gross);
     if (state.cash < gross + fee) {
       alert("現金不足");
       window.SFX && SFX.error();
@@ -247,7 +437,7 @@ function buy() {
   // Phase 2: open/add long
   if (qty > 0) {
     const gross = price * qty;
-    const fee = Math.max(20, Math.floor(gross * FEE_RATE));
+    const fee = tradeFee(gross);
     if (state.cash < gross + fee) {
       alert(state.pos > 0 ? "現金不足加碼" : "現金不足");
       window.SFX && SFX.error();
@@ -283,8 +473,8 @@ function sell() {
   if (state.pos > 0) {
     const qtyClose = Math.min(qty, state.pos);
     const gross = price * qtyClose;
-    const fee = Math.max(20, Math.floor(gross * FEE_RATE));
-    const tax = Math.floor(gross * TAX_RATE);
+    const fee = tradeFee(gross);
+    const tax = tradeTax(gross);
     const pnl = (price - state.avg) * qtyClose - fee - tax;
     state.cash += gross - fee - tax;
     state.pos -= qtyClose;
@@ -298,8 +488,8 @@ function sell() {
   // Phase 2: open/add short (gets proceeds, acts as collateral)
   if (qty > 0) {
     const gross = price * qty;
-    const fee = Math.max(20, Math.floor(gross * FEE_RATE));
-    const tax = Math.floor(gross * TAX_RATE);
+    const fee = tradeFee(gross);
+    const tax = tradeTax(gross);
     // soft margin check: total short exposure <= current equity × 2
     const newShortAbs = -state.pos + qty;
     const equity = state.cash + state.pos * price;
@@ -350,7 +540,7 @@ function finish() {
   state.over = true;
   const price = nowPrice();
   const equity = state.cash + state.pos * price;
-  const roi = ((equity - INITIAL_CASH) / INITIAL_CASH) * 100;
+  const roi = ((equity - state.initialCash) / state.initialCash) * 100;
   const startPrice = state.prices[state.startIdx].c;
   const bench = ((price - startPrice) / startPrice) * 100;
   const alpha = roi - bench;
@@ -368,7 +558,22 @@ function finish() {
   showResult({ equity, roi, bench, alpha });
 }
 
+// 保留最近一場結算資料（給複製/列印用）
+let lastResult = null;
+
 function showResult({ equity, roi, bench, alpha }) {
+  lastResult = {
+    nick: getNick(),
+    stock: state.stock,
+    market: state.market,
+    difficulty: state.difficulty,
+    initialCash: state.initialCash,
+    fromDate: state.prices[state.startIdx].t,
+    toDate: nowDate(),
+    equity, roi, bench, alpha,
+    trades: state.trades,
+    rounds: state.cursor - state.startIdx,
+  };
   const set = (id, text, cls) => {
     const el = document.getElementById(id);
     el.textContent = text;
@@ -392,13 +597,22 @@ function showResult({ equity, roi, bench, alpha }) {
   set("rsAlpha", `${sign(alpha)}${alpha.toFixed(2)}%`, cls(alpha));
   set("rsTrades", state.trades);
 
+  // 4-象限判定：賺賠（roi）與超額報酬（alpha）獨立評價
   const v = document.getElementById("resultVerdict");
-  v.classList.remove("win", "lose");
-  if (alpha > 0) {
-    v.textContent = "✦ 你擊敗了市場 ✦";
+  v.classList.remove("win", "lose", "mixed");
+  const profit = roi > 0;
+  const beatMkt = alpha > 0;
+  if (profit && beatMkt) {
+    v.textContent = "✦ 完美擊敗市場 ✦";
     v.classList.add("win");
-  } else if (alpha < 0) {
-    v.textContent = "× 輸給買進持有 ×";
+  } else if (profit && !beatMkt && alpha < 0) {
+    v.textContent = "✓ 賺錢但跑輸大盤";
+    v.classList.add("mixed");
+  } else if (!profit && beatMkt) {
+    v.textContent = "△ 虧損但贏過大盤";
+    v.classList.add("mixed");
+  } else if (!profit && alpha < 0) {
+    v.textContent = "× 雙雙落敗 ×";
     v.classList.add("lose");
   } else {
     v.textContent = "━ 與市場打平 ━";
@@ -406,7 +620,56 @@ function showResult({ equity, roi, bench, alpha }) {
 
   document.getElementById("game-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.remove("hidden");
-  window.SFX && (alpha > 0 ? SFX.win() : SFX.lose());
+  // 賺錢就放贏的音效；只有真的虧錢才放輸
+  window.SFX && (roi > 0 || alpha > 0 ? SFX.win() : SFX.lose());
+}
+
+// ========== 戰績輸出 ==========
+function buildResultText() {
+  if (!lastResult) return "";
+  const r = lastResult;
+  const sign = (n) => (n >= 0 ? "+" : "");
+  const diffLabel = (DIFFICULTY[r.difficulty] || {}).label || r.difficulty;
+  const verdict = document.getElementById("resultVerdict")?.textContent || "";
+  return [
+    "═══════════════════════════════",
+    " 趨勢回放 · TREND REPLAY 戰績",
+    "═══════════════════════════════",
+    ` 玩家   ${r.nick}`,
+    ` 個股   ${r.stock.id} · ${r.stock.name}`,
+    ` 市場   ${r.market === "TW" ? "台股" : "美股"} / 難度 ${diffLabel}`,
+    ` 期間   ${r.fromDate}  →  ${r.toDate}  (${r.rounds} 天)`,
+    "───────────────────────────────",
+    ` 起始資金   ${fmt(r.initialCash, 0)}`,
+    ` 最終總資產 ${fmt(Math.round(r.equity), 0)}`,
+    ` 報酬率     ${sign(r.roi)}${r.roi.toFixed(2)}%`,
+    ` 大盤基準   ${sign(r.bench)}${r.bench.toFixed(2)}%`,
+    ` 超額報酬   ${sign(r.alpha)}${r.alpha.toFixed(2)}%`,
+    ` 交易次數   ${r.trades}`,
+    "───────────────────────────────",
+    ` ${verdict}`,
+    "═══════════════════════════════",
+  ].join("\n");
+}
+
+async function copyResult() {
+  const text = buildResultText();
+  if (!text) return;
+  try {
+    await navigator.clipboard.writeText(text);
+    const btn = document.getElementById("btnCopyResult");
+    const orig = btn.textContent;
+    btn.textContent = "✓ 已複製";
+    setTimeout(() => (btn.textContent = orig), 1500);
+  } catch (e) {
+    // fallback: open prompt
+    window.prompt("Ctrl+C 複製", text);
+  }
+}
+
+function printResult() {
+  // 使用瀏覽器列印對話框 → 可選擇「另存 PDF」
+  window.print();
 }
 
 function endGameEarly() {
@@ -442,7 +705,8 @@ function calcStats(hist) {
   const rois = hist.map((h) => h.roi);
   const best = Math.max(...rois);
   const avg = rois.reduce((a, b) => a + b, 0) / rois.length;
-  const wins = hist.filter((h) => h.roi > h.bench).length;
+  // 勝率 = 賺錢的局數（roi > 0），不再以「擊敗大盤」為唯一判準
+  const wins = hist.filter((h) => h.roi > 0).length;
   return {
     games: hist.length,
     best,
@@ -484,7 +748,7 @@ async function enterGame() {
   syncMuteBtn();
   if (!chart) {
     setupChart();
-    await loadCatalog();
+    if (!state.stocks.length) await loadCatalog();
   }
   await newGame();
 }
@@ -506,14 +770,24 @@ function logout() {
 
 async function newGame() {
   state.over = false;
-  state.cash = INITIAL_CASH;
+  state.cash = state.initialCash;
   state.pos = 0;
   state.avg = 0;
   state.realized = 0;
   state.log = [];
   state.trades = 0;
 
-  const stock = state.stocks[Math.floor(Math.random() * state.stocks.length)];
+  const pool = filteredPool();
+  if (!pool.length) {
+    alert(
+      `目前無符合條件的 ${state.market === "TW" ? "台股" : "美股"}：` +
+      `初始 ${fmt(state.initialCash, 0)} / ${
+        (DIFFICULTY[state.difficulty] || {}).label || state.difficulty
+      }。請放寬設定。`
+    );
+    return;
+  }
+  const stock = pool[Math.floor(Math.random() * pool.length)];
   state.stock = stock;
   state.prices = await loadPrices(stock.id);
 
@@ -536,6 +810,95 @@ document.getElementById("btnBuy").addEventListener("click", buy);
 document.getElementById("btnSell").addEventListener("click", sell);
 document.getElementById("btnNext").addEventListener("click", nextDay);
 document.getElementById("btnNew").addEventListener("click", () => newGame());
+
+function applyMarketUI() {
+  document.querySelectorAll(".market-btn").forEach((b) => {
+    b.classList.toggle("active", b.dataset.market === state.market);
+  });
+  const qty = document.getElementById("qty");
+  const lot = currentCosts().lot;
+  qty.min = lot;
+  qty.step = lot;
+  if (+qty.value < lot) qty.value = lot;
+  refreshPoolHint();
+}
+
+// 依據市場 + 難度 + 起始資金過濾
+function filteredPool() {
+  const diff = DIFFICULTY[state.difficulty] || DIFFICULTY.stable;
+  const lot = currentCosts().lot;
+  return state.stocks.filter((s) => {
+    if ((s.market || "TW") !== state.market) return false;
+    // 至少有最低歷史價可買 1 股
+    if (s.minP && s.minP * lot > state.initialCash) return false;
+    // 難度（波動度）— 若 catalog 沒有 vol 欄位則不過濾
+    if (typeof s.vol === "number") {
+      if (s.vol < diff.volMin || s.vol > diff.volMax) return false;
+    }
+    return true;
+  });
+}
+
+function refreshPoolHint() {
+  const el = document.getElementById("poolHint");
+  if (!el) return;
+  const n = filteredPool().length;
+  const total = state.stocks.filter(
+    (s) => (s.market || "TW") === state.market
+  ).length;
+  el.textContent = `可玩股票池：${n} / ${total} 檔`;
+}
+
+function applyDifficultyUI() {
+  document.querySelectorAll(".diff-btn").forEach((b) => {
+    b.classList.toggle("active", b.dataset.diff === state.difficulty);
+  });
+}
+
+function applyCashUI() {
+  const sel = document.getElementById("cashSelect");
+  if (sel) sel.value = String(state.initialCash);
+}
+
+document.querySelectorAll(".market-btn").forEach((b) => {
+  b.addEventListener("click", () => {
+    if (state.market === b.dataset.market) return;
+    state.market = b.dataset.market;
+    localStorage.setItem(LS_MARKET, state.market);
+    applyMarketUI();
+    if (!document.getElementById("game-screen").classList.contains("hidden")) {
+      newGame();
+    }
+  });
+});
+
+// ----- 設定（起始資金 / 難度）handlers -----
+document.getElementById("cashSelect")?.addEventListener("change", (e) => {
+  state.initialCash = +e.target.value || DEFAULT_INITIAL_CASH;
+  localStorage.setItem(LS_CASH, String(state.initialCash));
+  refreshPoolHint();
+});
+document.querySelectorAll(".diff-btn").forEach((b) => {
+  b.addEventListener("click", () => {
+    state.difficulty = b.dataset.diff;
+    localStorage.setItem(LS_DIFFICULTY, state.difficulty);
+    applyDifficultyUI();
+    refreshPoolHint();
+  });
+});
+
+// ----- 副圖指標切換 -----
+document.getElementById("indicatorSelect")?.addEventListener("change", (e) => {
+  state.indicator = e.target.value;
+  localStorage.setItem(LS_INDICATOR, state.indicator);
+  if (state.prices?.length && state.cursor != null) {
+    renderIndChart(state.prices.slice(0, state.cursor + 1));
+  }
+});
+
+// ----- 戰績複製 / 列印 -----
+document.getElementById("btnCopyResult")?.addEventListener("click", copyResult);
+document.getElementById("btnPrintResult")?.addEventListener("click", printResult);
 document.getElementById("btnEnd").addEventListener("click", endGameEarly);
 document.getElementById("btnMute").addEventListener("click", () => {
   const m = !window.soundMute.isMuted();
@@ -580,6 +943,16 @@ document.getElementById("btnLogout").addEventListener("click", () => {
   renderLogin();
 });
 
+document.getElementById("btnReset")?.addEventListener("click", () => {
+  if (!confirm("確定要清除這個帳號的所有歷史戰績與統計？此操作無法復原。")) return;
+  const nick = getNick();
+  if (!nick) return;
+  const all = JSON.parse(localStorage.getItem(LS_HIST) || "{}");
+  delete all[nick];
+  localStorage.setItem(LS_HIST, JSON.stringify(all));
+  renderLogin();
+});
+
 document.addEventListener("keydown", (e) => {
   if (e.target.tagName === "INPUT") return;
   if (document.getElementById("game-screen").classList.contains("hidden")) return;
@@ -594,6 +967,13 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-(function init() {
+(async function init() {
+  applyCashUI();
+  applyDifficultyUI();
+  applyIndicatorUI();
+  applyMarketUI();
   renderLogin();
+  // 提前載入 catalog 讓設定畫面能顯示池大小
+  try { await loadCatalog(); } catch (e) { console.warn("catalog load failed", e); }
+  refreshPoolHint();
 })();

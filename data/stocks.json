@@ -1,252 +1,8832 @@
 [
   {
-    "id": "1316",
+    "id": "1101.TW",
+    "name": "台泥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.38,
+    "maxP": 50.64,
+    "lastP": 24.4,
+    "vol": 21.8
+  },
+  {
+    "id": "1102.TW",
+    "name": "亞泥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.8,
+    "maxP": 53.1,
+    "lastP": 35.45,
+    "vol": 22.0
+  },
+  {
+    "id": "1103.TW",
+    "name": "嘉泥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.05,
+    "maxP": 26.72,
+    "lastP": 13.4,
+    "vol": 23.1
+  },
+  {
+    "id": "1104.TW",
+    "name": "環泥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.28,
+    "maxP": 36.18,
+    "lastP": 28.35,
+    "vol": 19.7
+  },
+  {
+    "id": "1108.TW",
+    "name": "幸福",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.45,
+    "maxP": 18.75,
+    "lastP": 14.5,
+    "vol": 23.3
+  },
+  {
+    "id": "1109.TW",
+    "name": "信大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.41,
+    "maxP": 29.9,
+    "lastP": 15.35,
+    "vol": 21.6
+  },
+  {
+    "id": "1110.TW",
+    "name": "東泥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.6,
+    "maxP": 24.8,
+    "lastP": 14.95,
+    "vol": 24.0
+  },
+  {
+    "id": "1201.TW",
+    "name": "味全",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.65,
+    "maxP": 35.9,
+    "lastP": 12.65,
+    "vol": 20.9
+  },
+  {
+    "id": "1203.TW",
+    "name": "味王",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.3,
+    "maxP": 58.3,
+    "lastP": 43.0,
+    "vol": 17.1
+  },
+  {
+    "id": "1210.TW",
+    "name": "大成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.91,
+    "maxP": 66.2,
+    "lastP": 53.4,
+    "vol": 21.0
+  },
+  {
+    "id": "1213.TW",
+    "name": "大飲",
+    "days": 2447,
+    "market": "TW",
+    "minP": 5.07,
+    "maxP": 19.27,
+    "lastP": 9.03,
+    "vol": 36.2
+  },
+  {
+    "id": "1215.TW",
+    "name": "卜蜂",
+    "days": 2448,
+    "market": "TW",
+    "minP": 22.36,
+    "maxP": 163.5,
+    "lastP": 140.0,
+    "vol": 23.2
+  },
+  {
+    "id": "1216.TW",
+    "name": "統一",
+    "days": 2448,
+    "market": "TW",
+    "minP": 52.2,
+    "maxP": 90.2,
+    "lastP": 71.2,
+    "vol": 19.2
+  },
+  {
+    "id": "1217.TW",
+    "name": "愛之味",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.91,
+    "maxP": 14.75,
+    "lastP": 9.98,
+    "vol": 22.9
+  },
+  {
+    "id": "1218.TW",
+    "name": "泰山",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.66,
+    "maxP": 47.0,
+    "lastP": 18.85,
+    "vol": 27.5
+  },
+  {
+    "id": "1219.TW",
+    "name": "福壽",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.85,
+    "maxP": 27.29,
+    "lastP": 13.4,
+    "vol": 20.8
+  },
+  {
+    "id": "1220.TW",
+    "name": "台榮",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.16,
+    "maxP": 24.5,
+    "lastP": 12.4,
+    "vol": 22.4
+  },
+  {
+    "id": "1225.TW",
+    "name": "福懋油",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.36,
+    "maxP": 170.14,
+    "lastP": 31.05,
+    "vol": 31.8
+  },
+  {
+    "id": "1227.TW",
+    "name": "佳格",
+    "days": 2448,
+    "market": "TW",
+    "minP": 28.7,
+    "maxP": 79.33,
+    "lastP": 28.95,
+    "vol": 18.2
+  },
+  {
+    "id": "1229.TW",
+    "name": "聯華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.87,
+    "maxP": 63.14,
+    "lastP": 41.85,
+    "vol": 20.3
+  },
+  {
+    "id": "1231.TW",
+    "name": "聯華食",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.19,
+    "maxP": 161.82,
+    "lastP": 85.6,
+    "vol": 21.9
+  },
+  {
+    "id": "1232.TW",
+    "name": "大統益",
+    "days": 2448,
+    "market": "TW",
+    "minP": 77.0,
+    "maxP": 177.5,
+    "lastP": 148.0,
+    "vol": 14.8
+  },
+  {
+    "id": "1233.TW",
+    "name": "天仁",
+    "days": 2448,
+    "market": "TW",
+    "minP": 28.4,
+    "maxP": 40.05,
+    "lastP": 28.65,
+    "vol": 13.7
+  },
+  {
+    "id": "1234.TW",
+    "name": "黑松",
+    "days": 2448,
+    "market": "TW",
+    "minP": 27.5,
+    "maxP": 45.2,
+    "lastP": 35.2,
+    "vol": 11.7
+  },
+  {
+    "id": "1235.TW",
+    "name": "興泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.21,
+    "maxP": 135.83,
+    "lastP": 44.0,
+    "vol": 30.8
+  },
+  {
+    "id": "1236.TW",
+    "name": "宏亞",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.47,
+    "maxP": 40.56,
+    "lastP": 25.55,
+    "vol": 26.4
+  },
+  {
+    "id": "1240.TWO",
+    "name": "茂生農經",
+    "days": 2127,
+    "market": "TW",
+    "minP": 23.8,
+    "maxP": 62.5,
+    "lastP": 58.9,
+    "vol": 28.2
+  },
+  {
+    "id": "1256.TW",
+    "name": "鮮活果汁-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 90.15,
+    "maxP": 505.0,
+    "lastP": 157.0,
+    "vol": 33.9
+  },
+  {
+    "id": "1259.TWO",
+    "name": "安心",
+    "days": 2447,
+    "market": "TW",
+    "minP": 54.1,
+    "maxP": 100.5,
+    "lastP": 59.3,
+    "vol": 18.1
+  },
+  {
+    "id": "1264.TWO",
+    "name": "德麥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 148.76,
+    "maxP": 337.5,
+    "lastP": 272.0,
+    "vol": 14.7
+  },
+  {
+    "id": "1268.TWO",
+    "name": "漢來美食",
+    "days": 2447,
+    "market": "TW",
+    "minP": 97.53,
+    "maxP": 186.0,
+    "lastP": 155.0,
+    "vol": 21.8
+  },
+  {
+    "id": "1294.TWO",
+    "name": "漢田生技",
+    "days": 860,
+    "market": "TW",
+    "minP": 25.58,
+    "maxP": 199.5,
+    "lastP": 79.8,
+    "vol": 48.6
+  },
+  {
+    "id": "1295.TWO",
+    "name": "生合",
+    "days": 569,
+    "market": "TW",
+    "minP": 57.0,
+    "maxP": 156.0,
+    "lastP": 57.0,
+    "vol": 44.1
+  },
+  {
+    "id": "1301.TW",
+    "name": "台塑",
+    "days": 2448,
+    "market": "TW",
+    "minP": 31.45,
+    "maxP": 118.0,
+    "lastP": 50.6,
+    "vol": 26.1
+  },
+  {
+    "id": "1303.TW",
+    "name": "南亞",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.65,
+    "maxP": 94.9,
+    "lastP": 87.9,
+    "vol": 29.6
+  },
+  {
+    "id": "1304.TW",
+    "name": "台聚",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.25,
+    "maxP": 41.35,
+    "lastP": 13.75,
+    "vol": 33.5
+  },
+  {
+    "id": "1305.TW",
+    "name": "華夏",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.41,
+    "maxP": 46.3,
+    "lastP": 14.15,
+    "vol": 37.7
+  },
+  {
+    "id": "1307.TW",
+    "name": "三芳",
+    "days": 2448,
+    "market": "TW",
+    "minP": 15.45,
+    "maxP": 53.8,
+    "lastP": 31.25,
+    "vol": 27.6
+  },
+  {
+    "id": "1308.TW",
+    "name": "亞聚",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.85,
+    "maxP": 50.0,
+    "lastP": 14.85,
+    "vol": 32.7
+  },
+  {
+    "id": "1309.TW",
+    "name": "台達化",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.77,
+    "maxP": 45.37,
+    "lastP": 19.2,
+    "vol": 38.7
+  },
+  {
+    "id": "1310.TW",
+    "name": "台苯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.42,
+    "maxP": 27.05,
+    "lastP": 9.51,
+    "vol": 29.5
+  },
+  {
+    "id": "1312.TW",
+    "name": "國喬",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.37,
+    "maxP": 33.29,
+    "lastP": 12.7,
+    "vol": 34.0
+  },
+  {
+    "id": "1313.TW",
+    "name": "聯成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.21,
+    "maxP": 30.35,
+    "lastP": 11.3,
+    "vol": 32.9
+  },
+  {
+    "id": "1314.TW",
+    "name": "中石化",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.07,
+    "maxP": 16.25,
+    "lastP": 7.38,
+    "vol": 30.5
+  },
+  {
+    "id": "1315.TW",
+    "name": "達新",
+    "days": 2448,
+    "market": "TW",
+    "minP": 46.25,
+    "maxP": 125.27,
+    "lastP": 62.5,
+    "vol": 18.4
+  },
+  {
+    "id": "1316.TW",
     "name": "上曜",
-    "days": 495
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.97,
+    "maxP": 28.7,
+    "lastP": 11.0,
+    "vol": 39.3
+  },
+  {
+    "id": "1319.TW",
+    "name": "東陽",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.7,
+    "maxP": 141.0,
+    "lastP": 73.5,
+    "vol": 32.8
+  },
+  {
+    "id": "1321.TW",
+    "name": "大洋",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.15,
+    "maxP": 44.15,
+    "lastP": 30.9,
+    "vol": 22.6
+  },
+  {
+    "id": "1323.TW",
+    "name": "永裕",
+    "days": 2448,
+    "market": "TW",
+    "minP": 18.15,
+    "maxP": 40.5,
+    "lastP": 21.2,
+    "vol": 19.4
+  },
+  {
+    "id": "1324.TW",
+    "name": "地球",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.26,
+    "maxP": 20.6,
+    "lastP": 10.55,
+    "vol": 25.8
+  },
+  {
+    "id": "1325.TW",
+    "name": "恆大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 15.45,
+    "maxP": 206.0,
+    "lastP": 25.55,
+    "vol": 43.1
+  },
+  {
+    "id": "1326.TW",
+    "name": "台化",
+    "days": 2448,
+    "market": "TW",
+    "minP": 22.15,
+    "maxP": 128.5,
+    "lastP": 51.0,
+    "vol": 27.6
+  },
+  {
+    "id": "1336.TWO",
+    "name": "台翰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.66,
+    "maxP": 31.2,
+    "lastP": 13.8,
+    "vol": 32.9
+  },
+  {
+    "id": "1337.TW",
+    "name": "再生-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 3.29,
+    "maxP": 19.77,
+    "lastP": 5.1,
+    "vol": 33.7
+  },
+  {
+    "id": "1338.TW",
+    "name": "廣華-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.2,
+    "maxP": 132.0,
+    "lastP": 16.5,
+    "vol": 29.6
+  },
+  {
+    "id": "1339.TW",
+    "name": "昭輝",
+    "days": 2448,
+    "market": "TW",
+    "minP": 29.5,
+    "maxP": 82.3,
+    "lastP": 41.45,
+    "vol": 29.8
+  },
+  {
+    "id": "1340.TW",
+    "name": "勝悅-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.49,
+    "maxP": 59.43,
+    "lastP": 5.76,
+    "vol": 30.8
+  },
+  {
+    "id": "1341.TW",
+    "name": "富林-KY",
+    "days": 1775,
+    "market": "TW",
+    "minP": 46.37,
+    "maxP": 85.88,
+    "lastP": 60.9,
+    "vol": 20.7
+  },
+  {
+    "id": "1342.TW",
+    "name": "八貫",
+    "days": 1589,
+    "market": "TW",
+    "minP": 40.91,
+    "maxP": 149.55,
+    "lastP": 92.2,
+    "vol": 37.7
+  },
+  {
+    "id": "1402.TW",
+    "name": "遠東新",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.5,
+    "maxP": 39.0,
+    "lastP": 26.15,
+    "vol": 22.7
+  },
+  {
+    "id": "1409.TW",
+    "name": "新纖",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.1,
+    "maxP": 24.4,
+    "lastP": 16.55,
+    "vol": 27.1
+  },
+  {
+    "id": "1410.TW",
+    "name": "南染",
+    "days": 2448,
+    "market": "TW",
+    "minP": 25.77,
+    "maxP": 47.05,
+    "lastP": 30.1,
+    "vol": 18.6
+  },
+  {
+    "id": "1413.TW",
+    "name": "宏洲",
+    "days": 2447,
+    "market": "TW",
+    "minP": 5.45,
+    "maxP": 17.0,
+    "lastP": 9.75,
+    "vol": 32.8
+  },
+  {
+    "id": "1414.TW",
+    "name": "東和",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.47,
+    "maxP": 28.78,
+    "lastP": 16.25,
+    "vol": 31.7
+  },
+  {
+    "id": "1416.TW",
+    "name": "廣豐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.4,
+    "maxP": 30.45,
+    "lastP": 11.4,
+    "vol": 24.9
+  },
+  {
+    "id": "1417.TW",
+    "name": "嘉裕",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.92,
+    "maxP": 17.25,
+    "lastP": 8.85,
+    "vol": 31.2
+  },
+  {
+    "id": "1418.TW",
+    "name": "東華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.0,
+    "maxP": 43.05,
+    "lastP": 18.3,
+    "vol": 57.8
+  },
+  {
+    "id": "1419.TW",
+    "name": "新紡",
+    "days": 2448,
+    "market": "TW",
+    "minP": 35.55,
+    "maxP": 81.7,
+    "lastP": 62.0,
+    "vol": 25.5
+  },
+  {
+    "id": "1423.TW",
+    "name": "利華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.76,
+    "maxP": 45.5,
+    "lastP": 41.7,
+    "vol": 23.7
+  },
+  {
+    "id": "1432.TW",
+    "name": "大魯閣",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.52,
+    "maxP": 53.43,
+    "lastP": 16.55,
+    "vol": 38.5
+  },
+  {
+    "id": "1434.TW",
+    "name": "福懋",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.6,
+    "maxP": 40.25,
+    "lastP": 15.7,
+    "vol": 19.3
+  },
+  {
+    "id": "1435.TW",
+    "name": "中福",
+    "days": 2447,
+    "market": "TW",
+    "minP": 4.1,
+    "maxP": 67.0,
+    "lastP": 14.2,
+    "vol": 45.2
+  },
+  {
+    "id": "1436.TW",
+    "name": "華友聯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.07,
+    "maxP": 141.91,
+    "lastP": 49.8,
+    "vol": 23.8
+  },
+  {
+    "id": "1437.TW",
+    "name": "勤益控",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.62,
+    "maxP": 39.5,
+    "lastP": 29.75,
+    "vol": 19.9
+  },
+  {
+    "id": "1438.TW",
+    "name": "三地開發",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.08,
+    "maxP": 95.0,
+    "lastP": 24.55,
+    "vol": 38.6
+  },
+  {
+    "id": "1439.TW",
+    "name": "雋揚",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.85,
+    "maxP": 52.2,
+    "lastP": 26.4,
+    "vol": 35.3
+  },
+  {
+    "id": "1440.TW",
+    "name": "南紡",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.21,
+    "maxP": 33.6,
+    "lastP": 12.65,
+    "vol": 31.4
+  },
+  {
+    "id": "1441.TW",
+    "name": "大東",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.33,
+    "maxP": 28.25,
+    "lastP": 11.35,
+    "vol": 35.0
+  },
+  {
+    "id": "1442.TW",
+    "name": "名軒",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.0,
+    "maxP": 86.7,
+    "lastP": 28.0,
+    "vol": 26.9
+  },
+  {
+    "id": "1443.TW",
+    "name": "立益物流",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.39,
+    "maxP": 35.5,
+    "lastP": 21.8,
+    "vol": 32.2
+  },
+  {
+    "id": "1444.TW",
+    "name": "力麗",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.67,
+    "maxP": 14.81,
+    "lastP": 6.14,
+    "vol": 30.5
+  },
+  {
+    "id": "1445.TW",
+    "name": "大宇",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.65,
+    "maxP": 27.15,
+    "lastP": 12.8,
+    "vol": 25.4
+  },
+  {
+    "id": "1446.TW",
+    "name": "宏和",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.85,
+    "maxP": 60.4,
+    "lastP": 15.85,
+    "vol": 31.5
+  },
+  {
+    "id": "1447.TW",
+    "name": "力鵬",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.51,
+    "maxP": 14.8,
+    "lastP": 5.05,
+    "vol": 29.3
+  },
+  {
+    "id": "1449.TW",
+    "name": "佳和",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.49,
+    "maxP": 56.53,
+    "lastP": 13.3,
+    "vol": 46.9
+  },
+  {
+    "id": "1451.TW",
+    "name": "年興",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.0,
+    "maxP": 55.76,
+    "lastP": 16.75,
+    "vol": 24.9
+  },
+  {
+    "id": "1452.TW",
+    "name": "宏益",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.05,
+    "maxP": 27.95,
+    "lastP": 11.5,
+    "vol": 24.2
+  },
+  {
+    "id": "1453.TW",
+    "name": "大將",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.14,
+    "maxP": 32.07,
+    "lastP": 11.85,
+    "vol": 38.1
+  },
+  {
+    "id": "1454.TW",
+    "name": "台富",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.7,
+    "maxP": 20.6,
+    "lastP": 14.0,
+    "vol": 25.3
+  },
+  {
+    "id": "1455.TW",
+    "name": "集盛",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.44,
+    "maxP": 28.3,
+    "lastP": 8.37,
+    "vol": 33.1
+  },
+  {
+    "id": "1456.TW",
+    "name": "怡華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.63,
+    "maxP": 30.75,
+    "lastP": 13.35,
+    "vol": 44.2
+  },
+  {
+    "id": "1457.TW",
+    "name": "宜進",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.88,
+    "maxP": 24.29,
+    "lastP": 14.5,
+    "vol": 23.5
+  },
+  {
+    "id": "1459.TW",
+    "name": "聯發",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.28,
+    "maxP": 18.35,
+    "lastP": 11.65,
+    "vol": 29.8
+  },
+  {
+    "id": "1460.TW",
+    "name": "宏遠",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.51,
+    "maxP": 19.89,
+    "lastP": 6.92,
+    "vol": 29.8
+  },
+  {
+    "id": "1463.TW",
+    "name": "強盛新",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.24,
+    "maxP": 31.1,
+    "lastP": 17.95,
+    "vol": 26.9
+  },
+  {
+    "id": "1464.TW",
+    "name": "得力",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.05,
+    "maxP": 31.03,
+    "lastP": 10.05,
+    "vol": 24.8
+  },
+  {
+    "id": "1465.TW",
+    "name": "偉全",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.75,
+    "maxP": 18.95,
+    "lastP": 12.2,
+    "vol": 19.9
+  },
+  {
+    "id": "1466.TW",
+    "name": "聚隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.99,
+    "maxP": 28.75,
+    "lastP": 16.3,
+    "vol": 37.8
+  },
+  {
+    "id": "1467.TW",
+    "name": "南緯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.03,
+    "maxP": 35.85,
+    "lastP": 7.36,
+    "vol": 33.2
+  },
+  {
+    "id": "1468.TW",
+    "name": "昶和",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.6,
+    "maxP": 18.0,
+    "lastP": 12.2,
+    "vol": 31.0
+  },
+  {
+    "id": "1470.TW",
+    "name": "大統新創",
+    "days": 2448,
+    "market": "TW",
+    "minP": 15.5,
+    "maxP": 30.4,
+    "lastP": 21.95,
+    "vol": 35.8
+  },
+  {
+    "id": "1471.TW",
+    "name": "首利",
+    "days": 2448,
+    "market": "TW",
+    "minP": 1.46,
+    "maxP": 23.65,
+    "lastP": 11.55,
+    "vol": 54.4
+  },
+  {
+    "id": "1472.TW",
+    "name": "三洋實業",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.0,
+    "maxP": 154.98,
+    "lastP": 93.6,
+    "vol": 50.3
+  },
+  {
+    "id": "1473.TW",
+    "name": "台南",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.8,
+    "maxP": 55.0,
+    "lastP": 22.25,
+    "vol": 26.9
+  },
+  {
+    "id": "1474.TW",
+    "name": "弘裕",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.48,
+    "maxP": 21.0,
+    "lastP": 9.99,
+    "vol": 31.0
+  },
+  {
+    "id": "1475.TW",
+    "name": "業旺",
+    "days": 2448,
+    "market": "TW",
+    "minP": 3.72,
+    "maxP": 142.36,
+    "lastP": 27.7,
+    "vol": 68.2
+  },
+  {
+    "id": "1476.TW",
+    "name": "儒鴻",
+    "days": 2448,
+    "market": "TW",
+    "minP": 201.0,
+    "maxP": 668.0,
+    "lastP": 328.5,
+    "vol": 36.0
+  },
+  {
+    "id": "1477.TW",
+    "name": "聚陽",
+    "days": 2448,
+    "market": "TW",
+    "minP": 94.11,
+    "maxP": 456.86,
+    "lastP": 214.5,
+    "vol": 33.8
+  },
+  {
+    "id": "1503.TW",
+    "name": "士電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 38.8,
+    "maxP": 344.5,
+    "lastP": 191.0,
+    "vol": 32.5
+  },
+  {
+    "id": "1504.TW",
+    "name": "東元",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.8,
+    "maxP": 119.5,
+    "lastP": 60.5,
+    "vol": 29.4
+  },
+  {
+    "id": "1506.TW",
+    "name": "正道",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.1,
+    "maxP": 25.38,
+    "lastP": 10.95,
+    "vol": 33.4
+  },
+  {
+    "id": "1512.TW",
+    "name": "瑞利",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.66,
+    "maxP": 43.71,
+    "lastP": 7.23,
+    "vol": 46.7
+  },
+  {
+    "id": "1513.TW",
+    "name": "中興電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.35,
+    "maxP": 235.5,
+    "lastP": 149.5,
+    "vol": 34.1
+  },
+  {
+    "id": "1514.TW",
+    "name": "亞力",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.08,
+    "maxP": 174.49,
+    "lastP": 110.5,
+    "vol": 39.1
+  },
+  {
+    "id": "1515.TW",
+    "name": "力山",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.05,
+    "maxP": 106.5,
+    "lastP": 21.7,
+    "vol": 43.7
+  },
+  {
+    "id": "1516.TW",
+    "name": "川飛",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.75,
+    "maxP": 28.32,
+    "lastP": 20.0,
+    "vol": 37.3
+  },
+  {
+    "id": "1517.TW",
+    "name": "利奇",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.78,
+    "maxP": 32.7,
+    "lastP": 10.45,
+    "vol": 32.6
+  },
+  {
+    "id": "1519.TW",
+    "name": "華城",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.11,
+    "maxP": 1080.0,
+    "lastP": 881.0,
+    "vol": 46.0
+  },
+  {
+    "id": "1521.TW",
+    "name": "大億",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.4,
+    "maxP": 87.4,
+    "lastP": 24.6,
+    "vol": 23.2
+  },
+  {
+    "id": "1522.TW",
+    "name": "堤維西",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.3,
+    "maxP": 72.9,
+    "lastP": 31.4,
+    "vol": 34.1
+  },
+  {
+    "id": "1524.TW",
+    "name": "耿鼎",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.04,
+    "maxP": 44.8,
+    "lastP": 27.45,
+    "vol": 35.1
+  },
+  {
+    "id": "1525.TW",
+    "name": "江申",
+    "days": 2448,
+    "market": "TW",
+    "minP": 39.55,
+    "maxP": 142.45,
+    "lastP": 60.1,
+    "vol": 30.8
+  },
+  {
+    "id": "1526.TW",
+    "name": "日馳",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.2,
+    "maxP": 93.56,
+    "lastP": 16.4,
+    "vol": 44.5
+  },
+  {
+    "id": "1527.TW",
+    "name": "鑽全",
+    "days": 2448,
+    "market": "TW",
+    "minP": 31.25,
+    "maxP": 115.0,
+    "lastP": 32.5,
+    "vol": 28.8
+  },
+  {
+    "id": "1528.TW",
+    "name": "恩德",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.98,
+    "maxP": 31.7,
+    "lastP": 24.45,
+    "vol": 39.7
+  },
+  {
+    "id": "1529.TW",
+    "name": "樂事綠能",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.93,
+    "maxP": 46.24,
+    "lastP": 22.15,
+    "vol": 53.4
+  },
+  {
+    "id": "1530.TW",
+    "name": "亞崴",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.9,
+    "maxP": 41.5,
+    "lastP": 26.55,
+    "vol": 21.8
+  },
+  {
+    "id": "1531.TW",
+    "name": "高林股",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.69,
+    "maxP": 28.0,
+    "lastP": 12.8,
+    "vol": 25.2
+  },
+  {
+    "id": "1532.TW",
+    "name": "勤美",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.7,
+    "maxP": 55.5,
+    "lastP": 20.85,
+    "vol": 25.8
+  },
+  {
+    "id": "1533.TW",
+    "name": "車王電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.3,
+    "maxP": 74.8,
+    "lastP": 30.35,
+    "vol": 37.5
+  },
+  {
+    "id": "1535.TW",
+    "name": "中宇",
+    "days": 2448,
+    "market": "TW",
+    "minP": 24.95,
+    "maxP": 91.3,
+    "lastP": 50.7,
+    "vol": 23.0
+  },
+  {
+    "id": "1536.TW",
+    "name": "和大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 47.2,
+    "maxP": 163.44,
+    "lastP": 49.1,
+    "vol": 35.8
+  },
+  {
+    "id": "1537.TW",
+    "name": "廣隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 115.5,
+    "maxP": 168.5,
+    "lastP": 122.5,
+    "vol": 15.8
+  },
+  {
+    "id": "1538.TW",
+    "name": "正峰",
+    "days": 2447,
+    "market": "TW",
+    "minP": 12.25,
+    "maxP": 86.43,
+    "lastP": 13.3,
+    "vol": 50.7
+  },
+  {
+    "id": "1539.TW",
+    "name": "巨庭",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.25,
+    "maxP": 49.0,
+    "lastP": 16.15,
+    "vol": 37.4
+  },
+  {
+    "id": "1540.TW",
+    "name": "喬福",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.65,
+    "maxP": 49.95,
+    "lastP": 20.2,
+    "vol": 29.2
+  },
+  {
+    "id": "1541.TW",
+    "name": "錩泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.25,
+    "maxP": 69.8,
+    "lastP": 24.3,
+    "vol": 36.4
+  },
+  {
+    "id": "1558.TW",
+    "name": "伸興",
+    "days": 2448,
+    "market": "TW",
+    "minP": 89.0,
+    "maxP": 178.32,
+    "lastP": 90.2,
+    "vol": 17.3
+  },
+  {
+    "id": "1560.TW",
+    "name": "中砂",
+    "days": 2448,
+    "market": "TW",
+    "minP": 47.0,
+    "maxP": 544.0,
+    "lastP": 519.0,
+    "vol": 37.6
+  },
+  {
+    "id": "1563.TW",
+    "name": "巧新",
+    "days": 479,
+    "market": "TW",
+    "minP": 40.0,
+    "maxP": 88.9,
+    "lastP": 40.8,
+    "vol": 32.2
+  },
+  {
+    "id": "1565.TWO",
+    "name": "精華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 102.5,
+    "maxP": 995.0,
+    "lastP": 104.0,
+    "vol": 30.8
+  },
+  {
+    "id": "1568.TW",
+    "name": "倉佑",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.95,
+    "maxP": 48.0,
+    "lastP": 27.95,
+    "vol": 40.0
+  },
+  {
+    "id": "1569.TWO",
+    "name": "濱川",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.94,
+    "maxP": 84.0,
+    "lastP": 60.4,
+    "vol": 46.8
+  },
+  {
+    "id": "1570.TWO",
+    "name": "力肯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.05,
+    "maxP": 44.65,
+    "lastP": 37.7,
+    "vol": 33.0
+  },
+  {
+    "id": "1580.TWO",
+    "name": "新麥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 73.1,
+    "maxP": 174.4,
+    "lastP": 121.0,
+    "vol": 21.8
+  },
+  {
+    "id": "1582.TW",
+    "name": "信錦",
+    "days": 2448,
+    "market": "TW",
+    "minP": 56.9,
+    "maxP": 119.0,
+    "lastP": 90.2,
+    "vol": 26.7
+  },
+  {
+    "id": "1583.TW",
+    "name": "程泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 41.8,
+    "maxP": 80.2,
+    "lastP": 47.05,
+    "vol": 23.9
+  },
+  {
+    "id": "1584.TWO",
+    "name": "精剛",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.24,
+    "maxP": 43.15,
+    "lastP": 19.5,
+    "vol": 41.1
+  },
+  {
+    "id": "1586.TWO",
+    "name": "和勤",
+    "days": 2448,
+    "market": "TW",
+    "minP": 18.1,
+    "maxP": 49.6,
+    "lastP": 21.9,
+    "vol": 26.3
+  },
+  {
+    "id": "1587.TW",
+    "name": "吉茂",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.62,
+    "maxP": 75.7,
+    "lastP": 32.5,
+    "vol": 38.8
+  },
+  {
+    "id": "1589.TW",
+    "name": "永冠-KY",
+    "days": 2447,
+    "market": "TW",
+    "minP": 5.54,
+    "maxP": 230.59,
+    "lastP": 5.54,
+    "vol": 40.3
+  },
+  {
+    "id": "1590.TW",
+    "name": "亞德客-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 184.79,
+    "maxP": 1410.0,
+    "lastP": 1410.0,
+    "vol": 46.1
+  },
+  {
+    "id": "1591.TWO",
+    "name": "駿吉-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.33,
+    "maxP": 80.6,
+    "lastP": 61.4,
+    "vol": 43.4
+  },
+  {
+    "id": "1593.TWO",
+    "name": "祺驊",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.85,
+    "maxP": 136.37,
+    "lastP": 32.2,
+    "vol": 31.5
+  },
+  {
+    "id": "1595.TWO",
+    "name": "川寶",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.0,
+    "maxP": 78.9,
+    "lastP": 68.1,
+    "vol": 35.4
+  },
+  {
+    "id": "1597.TW",
+    "name": "直得",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.43,
+    "maxP": 135.21,
+    "lastP": 108.5,
+    "vol": 46.7
+  },
+  {
+    "id": "1598.TW",
+    "name": "岱宇",
+    "days": 2447,
+    "market": "TW",
+    "minP": 18.8,
+    "maxP": 148.0,
+    "lastP": 19.3,
+    "vol": 33.9
+  },
+  {
+    "id": "1599.TWO",
+    "name": "宏佳騰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.96,
+    "maxP": 60.0,
+    "lastP": 25.0,
+    "vol": 25.7
+  },
+  {
+    "id": "1603.TW",
+    "name": "華電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.36,
+    "maxP": 53.1,
+    "lastP": 31.5,
+    "vol": 33.4
+  },
+  {
+    "id": "1604.TW",
+    "name": "聲寶",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.2,
+    "maxP": 33.0,
+    "lastP": 22.95,
+    "vol": 20.8
+  },
+  {
+    "id": "1605.TW",
+    "name": "華新",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.11,
+    "maxP": 58.6,
+    "lastP": 30.1,
+    "vol": 39.6
+  },
+  {
+    "id": "1608.TW",
+    "name": "華榮",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.21,
+    "maxP": 44.45,
+    "lastP": 32.35,
+    "vol": 40.0
+  },
+  {
+    "id": "1609.TW",
+    "name": "大亞",
+    "days": 2448,
+    "market": "TW",
+    "minP": 3.35,
+    "maxP": 60.71,
+    "lastP": 31.95,
+    "vol": 39.5
+  },
+  {
+    "id": "1611.TW",
+    "name": "中電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.79,
+    "maxP": 22.1,
+    "lastP": 11.8,
+    "vol": 34.0
+  },
+  {
+    "id": "1612.TW",
+    "name": "宏泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.84,
+    "maxP": 44.65,
+    "lastP": 34.75,
+    "vol": 33.2
+  },
+  {
+    "id": "1614.TW",
+    "name": "三洋電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.55,
+    "maxP": 50.6,
+    "lastP": 31.85,
+    "vol": 18.7
+  },
+  {
+    "id": "1615.TW",
+    "name": "大山",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.82,
+    "maxP": 62.86,
+    "lastP": 46.1,
+    "vol": 31.1
+  },
+  {
+    "id": "1616.TW",
+    "name": "億泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 3.36,
+    "maxP": 43.55,
+    "lastP": 22.05,
+    "vol": 40.2
+  },
+  {
+    "id": "1617.TW",
+    "name": "榮星",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.26,
+    "maxP": 29.95,
+    "lastP": 15.05,
+    "vol": 33.6
+  },
+  {
+    "id": "1618.TW",
+    "name": "合機",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.29,
+    "maxP": 64.2,
+    "lastP": 38.75,
+    "vol": 37.4
+  },
+  {
+    "id": "1623.TW",
+    "name": "大東電",
+    "days": 66,
+    "market": "TW",
+    "minP": 176.5,
+    "maxP": 340.0,
+    "lastP": 230.5,
+    "vol": 72.6
+  },
+  {
+    "id": "1626.TW",
+    "name": "艾美特-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.96,
+    "maxP": 30.9,
+    "lastP": 10.85,
+    "vol": 30.3
+  },
+  {
+    "id": "1702.TW",
+    "name": "南僑",
+    "days": 2448,
+    "market": "TW",
+    "minP": 34.9,
+    "maxP": 72.0,
+    "lastP": 35.6,
+    "vol": 19.3
+  },
+  {
+    "id": "1707.TW",
+    "name": "葡萄王",
+    "days": 2448,
+    "market": "TW",
+    "minP": 113.0,
+    "maxP": 276.0,
+    "lastP": 113.0,
+    "vol": 22.5
+  },
+  {
+    "id": "1708.TW",
+    "name": "東鹼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.9,
+    "maxP": 71.7,
+    "lastP": 42.95,
+    "vol": 30.6
+  },
+  {
+    "id": "1709.TW",
+    "name": "和益",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.0,
+    "maxP": 32.15,
+    "lastP": 18.8,
+    "vol": 25.6
+  },
+  {
+    "id": "1710.TW",
+    "name": "東聯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.15,
+    "maxP": 35.2,
+    "lastP": 13.1,
+    "vol": 30.2
+  },
+  {
+    "id": "1711.TW",
+    "name": "永光",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.5,
+    "maxP": 59.6,
+    "lastP": 49.95,
+    "vol": 35.7
+  },
+  {
+    "id": "1712.TW",
+    "name": "興農",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.75,
+    "maxP": 48.0,
+    "lastP": 41.65,
+    "vol": 21.0
+  },
+  {
+    "id": "1713.TW",
+    "name": "國化",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.35,
+    "maxP": 61.0,
+    "lastP": 46.3,
+    "vol": 23.1
+  },
+  {
+    "id": "1714.TW",
+    "name": "和桐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.15,
+    "maxP": 13.5,
+    "lastP": 9.63,
+    "vol": 26.7
+  },
+  {
+    "id": "1717.TW",
+    "name": "長興",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.58,
+    "maxP": 82.7,
+    "lastP": 75.7,
+    "vol": 28.2
+  },
+  {
+    "id": "1718.TW",
+    "name": "中纖",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.53,
+    "maxP": 13.27,
+    "lastP": 6.59,
+    "vol": 27.6
+  },
+  {
+    "id": "1720.TW",
+    "name": "生達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 27.85,
+    "maxP": 78.7,
+    "lastP": 61.0,
+    "vol": 24.5
+  },
+  {
+    "id": "1721.TW",
+    "name": "三晃",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.98,
+    "maxP": 30.45,
+    "lastP": 25.3,
+    "vol": 39.2
+  },
+  {
+    "id": "1722.TW",
+    "name": "台肥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 37.5,
+    "maxP": 82.8,
+    "lastP": 44.2,
+    "vol": 19.8
+  },
+  {
+    "id": "1723.TW",
+    "name": "中碳",
+    "days": 2448,
+    "market": "TW",
+    "minP": 66.4,
+    "maxP": 163.5,
+    "lastP": 78.7,
+    "vol": 21.2
+  },
+  {
+    "id": "1725.TW",
+    "name": "元禎",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.35,
+    "maxP": 54.9,
+    "lastP": 30.7,
+    "vol": 38.4
+  },
+  {
+    "id": "1726.TW",
+    "name": "永記",
+    "days": 2448,
+    "market": "TW",
+    "minP": 60.0,
+    "maxP": 85.4,
+    "lastP": 75.6,
+    "vol": 11.1
+  },
+  {
+    "id": "1727.TW",
+    "name": "中華化",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.53,
+    "maxP": 72.9,
+    "lastP": 72.9,
+    "vol": 40.7
+  },
+  {
+    "id": "1730.TW",
+    "name": "花仙子",
+    "days": 2448,
+    "market": "TW",
+    "minP": 35.9,
+    "maxP": 97.3,
+    "lastP": 52.5,
+    "vol": 18.4
+  },
+  {
+    "id": "1731.TW",
+    "name": "美吾華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.8,
+    "maxP": 27.7,
+    "lastP": 21.65,
+    "vol": 23.3
+  },
+  {
+    "id": "1732.TW",
+    "name": "毛寶",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.25,
+    "maxP": 50.9,
+    "lastP": 25.4,
+    "vol": 42.8
+  },
+  {
+    "id": "1733.TW",
+    "name": "五鼎",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.3,
+    "maxP": 54.4,
+    "lastP": 28.5,
+    "vol": 25.6
+  },
+  {
+    "id": "1734.TW",
+    "name": "杏輝",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.43,
+    "maxP": 58.64,
+    "lastP": 31.9,
+    "vol": 31.7
+  },
+  {
+    "id": "1735.TW",
+    "name": "日勝化",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.85,
+    "maxP": 31.7,
+    "lastP": 26.4,
+    "vol": 31.2
+  },
+  {
+    "id": "1736.TW",
+    "name": "喬山",
+    "days": 2448,
+    "market": "TW",
+    "minP": 27.3,
+    "maxP": 217.0,
+    "lastP": 122.0,
+    "vol": 40.0
+  },
+  {
+    "id": "1737.TW",
+    "name": "臺鹽",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.35,
+    "maxP": 37.55,
+    "lastP": 31.55,
+    "vol": 13.3
+  },
+  {
+    "id": "1742.TWO",
+    "name": "台蠟",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.28,
+    "maxP": 22.8,
+    "lastP": 16.1,
+    "vol": 40.1
+  },
+  {
+    "id": "1752.TW",
+    "name": "南光",
+    "days": 1028,
+    "market": "TW",
+    "minP": 30.6,
+    "maxP": 4215.0,
+    "lastP": 34.0,
+    "vol": 325.0
+  },
+  {
+    "id": "1760.TW",
+    "name": "寶齡富錦",
+    "days": 2448,
+    "market": "TW",
+    "minP": 49.47,
+    "maxP": 255.09,
+    "lastP": 63.0,
+    "vol": 60.7
+  },
+  {
+    "id": "1762.TW",
+    "name": "中化生",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.15,
+    "maxP": 102.5,
+    "lastP": 27.65,
+    "vol": 36.0
+  },
+  {
+    "id": "1773.TW",
+    "name": "勝一",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.0,
+    "maxP": 178.5,
+    "lastP": 178.5,
+    "vol": 31.4
+  },
+  {
+    "id": "1776.TW",
+    "name": "展宇",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.6,
+    "maxP": 39.53,
+    "lastP": 16.2,
+    "vol": 29.7
+  },
+  {
+    "id": "1777.TWO",
+    "name": "生泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 60.79,
+    "maxP": 114.04,
+    "lastP": 71.0,
+    "vol": 21.6
+  },
+  {
+    "id": "1781.TWO",
+    "name": "合世",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.48,
+    "maxP": 52.6,
+    "lastP": 11.2,
+    "vol": 47.6
+  },
+  {
+    "id": "1783.TW",
+    "name": "和康生",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.08,
+    "maxP": 68.1,
+    "lastP": 38.0,
+    "vol": 40.4
+  },
+  {
+    "id": "1784.TWO",
+    "name": "訊聯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.31,
+    "maxP": 150.8,
+    "lastP": 74.5,
+    "vol": 39.8
+  },
+  {
+    "id": "1785.TWO",
+    "name": "光洋科",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.52,
+    "maxP": 156.5,
+    "lastP": 147.5,
+    "vol": 42.8
+  },
+  {
+    "id": "1786.TW",
+    "name": "科妍",
+    "days": 2448,
+    "market": "TW",
+    "minP": 30.02,
+    "maxP": 136.5,
+    "lastP": 61.1,
+    "vol": 38.3
+  },
+  {
+    "id": "1788.TWO",
+    "name": "杏昌",
+    "days": 2448,
+    "market": "TW",
+    "minP": 85.25,
+    "maxP": 172.24,
+    "lastP": 135.5,
+    "vol": 12.4
+  },
+  {
+    "id": "1789.TW",
+    "name": "神隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.35,
+    "maxP": 45.86,
+    "lastP": 20.3,
+    "vol": 29.8
+  },
+  {
+    "id": "1795.TW",
+    "name": "美時",
+    "days": 2448,
+    "market": "TW",
+    "minP": 41.5,
+    "maxP": 363.0,
+    "lastP": 221.5,
+    "vol": 45.9
+  },
+  {
+    "id": "1796.TWO",
+    "name": "金穎生技",
+    "days": 2369,
+    "market": "TW",
+    "minP": 18.6,
+    "maxP": 152.0,
+    "lastP": 38.3,
+    "vol": 43.2
+  },
+  {
+    "id": "1799.TW",
+    "name": "易威",
+    "days": 253,
+    "market": "TW",
+    "minP": 28.25,
+    "maxP": 67.3,
+    "lastP": 40.3,
+    "vol": 49.1
+  },
+  {
+    "id": "1799.TWO",
+    "name": "易威",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.02,
+    "maxP": 229.0,
+    "lastP": 39.25,
+    "vol": 50.8
+  },
+  {
+    "id": "1802.TW",
+    "name": "台玻",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.53,
+    "maxP": 74.2,
+    "lastP": 64.1,
+    "vol": 42.7
+  },
+  {
+    "id": "1805.TW",
+    "name": "寶徠",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.38,
+    "maxP": 24.3,
+    "lastP": 10.5,
+    "vol": 37.6
+  },
+  {
+    "id": "1806.TW",
+    "name": "冠軍",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.43,
+    "maxP": 17.83,
+    "lastP": 8.04,
+    "vol": 30.8
+  },
+  {
+    "id": "1808.TW",
+    "name": "潤隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.35,
+    "maxP": 67.68,
+    "lastP": 29.75,
+    "vol": 28.6
+  },
+  {
+    "id": "1809.TW",
+    "name": "中釉",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.33,
+    "maxP": 35.7,
+    "lastP": 25.05,
+    "vol": 41.0
+  },
+  {
+    "id": "1810.TW",
+    "name": "和成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.6,
+    "maxP": 28.3,
+    "lastP": 17.2,
+    "vol": 34.1
+  },
+  {
+    "id": "1813.TWO",
+    "name": "寶利徠",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.1,
+    "maxP": 30.55,
+    "lastP": 12.1,
+    "vol": 22.2
+  },
+  {
+    "id": "1815.TWO",
+    "name": "富喬",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.94,
+    "maxP": 127.0,
+    "lastP": 108.0,
+    "vol": 45.1
+  },
+  {
+    "id": "1817.TW",
+    "name": "凱撒衛",
+    "days": 2448,
+    "market": "TW",
+    "minP": 24.0,
+    "maxP": 50.0,
+    "lastP": 38.7,
+    "vol": 17.2
+  },
+  {
+    "id": "1903.TW",
+    "name": "士紙",
+    "days": 2448,
+    "market": "TW",
+    "minP": 25.8,
+    "maxP": 88.3,
+    "lastP": 49.25,
+    "vol": 33.4
+  },
+  {
+    "id": "1904.TW",
+    "name": "正隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.05,
+    "maxP": 49.0,
+    "lastP": 17.8,
+    "vol": 26.2
+  },
+  {
+    "id": "1905.TW",
+    "name": "華紙",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.05,
+    "maxP": 32.65,
+    "lastP": 13.25,
+    "vol": 34.8
+  },
+  {
+    "id": "1906.TW",
+    "name": "寶隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.8,
+    "maxP": 38.5,
+    "lastP": 11.3,
+    "vol": 33.4
+  },
+  {
+    "id": "1907.TW",
+    "name": "永豐餘",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.91,
+    "maxP": 50.6,
+    "lastP": 23.95,
+    "vol": 29.1
+  },
+  {
+    "id": "1909.TW",
+    "name": "榮成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.28,
+    "maxP": 51.07,
+    "lastP": 9.03,
+    "vol": 35.5
+  },
+  {
+    "id": "2002.TW",
+    "name": "中鋼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.65,
+    "maxP": 45.0,
+    "lastP": 18.8,
+    "vol": 23.1
+  },
+  {
+    "id": "2006.TW",
+    "name": "東和鋼鐵",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.79,
+    "maxP": 92.54,
+    "lastP": 67.4,
+    "vol": 26.3
+  },
+  {
+    "id": "2007.TW",
+    "name": "燁興",
+    "days": 2448,
+    "market": "TW",
+    "minP": 3.39,
+    "maxP": 34.8,
+    "lastP": 7.45,
+    "vol": 41.0
+  },
+  {
+    "id": "2008.TW",
+    "name": "高興昌",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.73,
+    "maxP": 39.45,
+    "lastP": 27.7,
+    "vol": 30.8
+  },
+  {
+    "id": "2009.TW",
+    "name": "第一銅",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.37,
+    "maxP": 71.2,
+    "lastP": 37.5,
+    "vol": 44.7
+  },
+  {
+    "id": "2010.TW",
+    "name": "春源",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.18,
+    "maxP": 34.15,
+    "lastP": 24.15,
+    "vol": 28.3
+  },
+  {
+    "id": "2012.TW",
+    "name": "春雨",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.29,
+    "maxP": 37.52,
+    "lastP": 14.8,
+    "vol": 27.5
+  },
+  {
+    "id": "2013.TW",
+    "name": "中鋼構",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.6,
+    "maxP": 77.4,
+    "lastP": 42.6,
+    "vol": 32.1
+  },
+  {
+    "id": "2014.TW",
+    "name": "中鴻",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.08,
+    "maxP": 61.3,
+    "lastP": 16.9,
+    "vol": 41.3
+  },
+  {
+    "id": "2015.TW",
+    "name": "豐興",
+    "days": 2448,
+    "market": "TW",
+    "minP": 40.2,
+    "maxP": 98.0,
+    "lastP": 60.3,
+    "vol": 22.1
+  },
+  {
+    "id": "2017.TW",
+    "name": "官田鋼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.89,
+    "maxP": 31.53,
+    "lastP": 8.66,
+    "vol": 35.9
+  },
+  {
+    "id": "2020.TW",
+    "name": "美亞",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.92,
+    "maxP": 34.75,
+    "lastP": 21.9,
+    "vol": 27.3
+  },
+  {
+    "id": "2022.TW",
+    "name": "聚亨",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.68,
+    "maxP": 37.92,
+    "lastP": 7.95,
+    "vol": 36.9
+  },
+  {
+    "id": "2023.TW",
+    "name": "燁輝",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.4,
+    "maxP": 38.0,
+    "lastP": 14.15,
+    "vol": 31.8
+  },
+  {
+    "id": "2024.TW",
+    "name": "志聯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.58,
+    "maxP": 32.9,
+    "lastP": 13.95,
+    "vol": 34.4
+  },
+  {
+    "id": "2025.TW",
+    "name": "千興",
+    "days": 2238,
+    "market": "TW",
+    "minP": 1.99,
+    "maxP": 22.31,
+    "lastP": 11.3,
+    "vol": 54.3
+  },
+  {
+    "id": "2027.TW",
+    "name": "大成鋼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.94,
+    "maxP": 53.0,
+    "lastP": 36.2,
+    "vol": 35.5
+  },
+  {
+    "id": "2028.TW",
+    "name": "威致",
+    "days": 2448,
+    "market": "TW",
+    "minP": 2.68,
+    "maxP": 62.2,
+    "lastP": 17.9,
+    "vol": 41.6
+  },
+  {
+    "id": "2029.TW",
+    "name": "盛餘",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.05,
+    "maxP": 56.3,
+    "lastP": 20.0,
+    "vol": 30.2
+  },
+  {
+    "id": "2030.TW",
+    "name": "彰源",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.09,
+    "maxP": 49.0,
+    "lastP": 15.4,
+    "vol": 33.6
+  },
+  {
+    "id": "2031.TW",
+    "name": "新光鋼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.65,
+    "maxP": 87.8,
+    "lastP": 38.6,
+    "vol": 36.7
+  },
+  {
+    "id": "2032.TW",
+    "name": "新鋼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.61,
+    "maxP": 42.3,
+    "lastP": 15.6,
+    "vol": 37.3
+  },
+  {
+    "id": "2033.TW",
+    "name": "佳大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.4,
+    "maxP": 28.6,
+    "lastP": 15.9,
+    "vol": 40.4
+  },
+  {
+    "id": "2034.TW",
+    "name": "允強",
+    "days": 2448,
+    "market": "TW",
+    "minP": 18.45,
+    "maxP": 44.95,
+    "lastP": 20.05,
+    "vol": 26.9
+  },
+  {
+    "id": "2035.TWO",
+    "name": "唐榮公司",
+    "days": 2448,
+    "market": "TW",
+    "minP": 27.25,
+    "maxP": 51.2,
+    "lastP": 27.5,
+    "vol": 22.0
+  },
+  {
+    "id": "2038.TW",
+    "name": "海光",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.34,
+    "maxP": 59.57,
+    "lastP": 13.95,
+    "vol": 41.8
+  },
+  {
+    "id": "2049.TW",
+    "name": "上銀",
+    "days": 2448,
+    "market": "TW",
+    "minP": 106.38,
+    "maxP": 457.48,
+    "lastP": 293.5,
+    "vol": 40.2
+  },
+  {
+    "id": "2059.TW",
+    "name": "川湖",
+    "days": 2448,
+    "market": "TW",
+    "minP": 276.0,
+    "maxP": 4310.0,
+    "lastP": 3970.0,
+    "vol": 37.4
+  },
+  {
+    "id": "2061.TWO",
+    "name": "風青",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.36,
+    "maxP": 34.95,
+    "lastP": 18.6,
+    "vol": 41.5
+  },
+  {
+    "id": "2062.TW",
+    "name": "橋椿",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.22,
+    "maxP": 45.87,
+    "lastP": 21.3,
+    "vol": 33.1
+  },
+  {
+    "id": "2063.TWO",
+    "name": "世鎧精密",
+    "days": 2448,
+    "market": "TW",
+    "minP": 24.0,
+    "maxP": 60.0,
+    "lastP": 25.6,
+    "vol": 21.3
+  },
+  {
+    "id": "2064.TWO",
+    "name": "晉椿",
+    "days": 2447,
+    "market": "TW",
+    "minP": 9.45,
+    "maxP": 31.1,
+    "lastP": 11.3,
+    "vol": 29.8
+  },
+  {
+    "id": "2065.TWO",
+    "name": "世豐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 19.51,
+    "maxP": 66.6,
+    "lastP": 28.95,
+    "vol": 27.2
+  },
+  {
+    "id": "2066.TWO",
+    "name": "世德",
+    "days": 2448,
+    "market": "TW",
+    "minP": 40.55,
+    "maxP": 148.0,
+    "lastP": 46.6,
+    "vol": 31.6
+  },
+  {
+    "id": "2067.TWO",
+    "name": "嘉鋼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.93,
+    "maxP": 20.0,
+    "lastP": 6.7,
+    "vol": 41.3
+  },
+  {
+    "id": "2069.TW",
+    "name": "運錩",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.24,
+    "maxP": 44.6,
+    "lastP": 18.8,
+    "vol": 34.6
+  },
+  {
+    "id": "2070.TWO",
+    "name": "精湛",
+    "days": 2444,
+    "market": "TW",
+    "minP": 22.35,
+    "maxP": 116.0,
+    "lastP": 53.8,
+    "vol": 39.9
+  },
+  {
+    "id": "2073.TWO",
+    "name": "雄順",
+    "days": 1110,
+    "market": "TW",
+    "minP": 25.15,
+    "maxP": 49.3,
+    "lastP": 26.35,
+    "vol": 26.1
+  },
+  {
+    "id": "2101.TW",
+    "name": "南港",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.1,
+    "maxP": 64.5,
+    "lastP": 33.1,
+    "vol": 26.6
+  },
+  {
+    "id": "2102.TW",
+    "name": "泰豐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.22,
+    "maxP": 32.6,
+    "lastP": 19.0,
+    "vol": 31.4
+  },
+  {
+    "id": "2103.TW",
+    "name": "台橡",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.9,
+    "maxP": 42.95,
+    "lastP": 20.4,
+    "vol": 29.7
+  },
+  {
+    "id": "2104.TW",
+    "name": "國際中橡",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.39,
+    "maxP": 40.21,
+    "lastP": 10.85,
+    "vol": 27.6
+  },
+  {
+    "id": "2105.TW",
+    "name": "正新",
+    "days": 2448,
+    "market": "TW",
+    "minP": 28.2,
+    "maxP": 72.9,
+    "lastP": 31.85,
+    "vol": 24.9
+  },
+  {
+    "id": "2106.TW",
+    "name": "建大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.45,
+    "maxP": 51.53,
+    "lastP": 17.45,
+    "vol": 21.4
+  },
+  {
+    "id": "2107.TW",
+    "name": "厚生",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.78,
+    "maxP": 31.28,
+    "lastP": 25.9,
+    "vol": 18.8
+  },
+  {
+    "id": "2108.TW",
+    "name": "南帝",
+    "days": 2448,
+    "market": "TW",
+    "minP": 18.96,
+    "maxP": 166.0,
+    "lastP": 28.2,
+    "vol": 33.0
+  },
+  {
+    "id": "2109.TW",
+    "name": "華豐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.96,
+    "maxP": 25.7,
+    "lastP": 14.4,
+    "vol": 28.0
+  },
+  {
+    "id": "2114.TW",
+    "name": "鑫永銓",
+    "days": 2448,
+    "market": "TW",
+    "minP": 58.18,
+    "maxP": 145.5,
+    "lastP": 88.8,
+    "vol": 19.3
+  },
+  {
+    "id": "2115.TW",
+    "name": "六暉-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.15,
+    "maxP": 46.98,
+    "lastP": 21.35,
+    "vol": 20.5
+  },
+  {
+    "id": "2201.TW",
+    "name": "裕隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 22.43,
+    "maxP": 89.7,
+    "lastP": 27.0,
+    "vol": 32.5
+  },
+  {
+    "id": "2204.TW",
+    "name": "中華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 24.6,
+    "maxP": 147.5,
+    "lastP": 53.3,
+    "vol": 31.1
+  },
+  {
+    "id": "2206.TW",
+    "name": "三陽工業",
+    "days": 2448,
+    "market": "TW",
+    "minP": 19.2,
+    "maxP": 97.8,
+    "lastP": 56.7,
+    "vol": 24.7
+  },
+  {
+    "id": "2207.TW",
+    "name": "和泰車",
+    "days": 2448,
+    "market": "TW",
+    "minP": 197.55,
+    "maxP": 848.04,
+    "lastP": 487.0,
+    "vol": 29.7
+  },
+  {
+    "id": "2208.TW",
+    "name": "台船",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.84,
+    "maxP": 50.69,
+    "lastP": 20.2,
+    "vol": 36.4
+  },
+  {
+    "id": "2211.TW",
+    "name": "長榮鋼",
+    "days": 1522,
+    "market": "TW",
+    "minP": 30.41,
+    "maxP": 156.0,
+    "lastP": 97.1,
+    "vol": 35.0
+  },
+  {
+    "id": "2221.TWO",
+    "name": "大甲",
+    "days": 2448,
+    "market": "TW",
+    "minP": 16.3,
+    "maxP": 46.2,
+    "lastP": 37.4,
+    "vol": 34.9
+  },
+  {
+    "id": "2227.TW",
+    "name": "裕日車",
+    "days": 2448,
+    "market": "TW",
+    "minP": 49.45,
+    "maxP": 319.5,
+    "lastP": 53.1,
+    "vol": 24.8
+  },
+  {
+    "id": "2228.TW",
+    "name": "劍麟",
+    "days": 2448,
+    "market": "TW",
+    "minP": 59.5,
+    "maxP": 251.5,
+    "lastP": 88.6,
+    "vol": 35.2
+  },
+  {
+    "id": "2230.TWO",
+    "name": "泰茂",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.16,
+    "maxP": 159.17,
+    "lastP": 26.9,
+    "vol": 44.7
+  },
+  {
+    "id": "2231.TW",
+    "name": "為升",
+    "days": 2448,
+    "market": "TW",
+    "minP": 67.4,
+    "maxP": 328.58,
+    "lastP": 126.0,
+    "vol": 42.5
+  },
+  {
+    "id": "2233.TW",
+    "name": "宇隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 42.65,
+    "maxP": 289.5,
+    "lastP": 245.0,
+    "vol": 37.6
+  },
+  {
+    "id": "2235.TWO",
+    "name": "謚源",
+    "days": 2447,
+    "market": "TW",
+    "minP": 32.1,
+    "maxP": 139.06,
+    "lastP": 32.8,
+    "vol": 28.1
+  },
+  {
+    "id": "2236.TW",
+    "name": "百達-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.69,
+    "maxP": 136.5,
+    "lastP": 136.5,
+    "vol": 39.7
+  },
+  {
+    "id": "2239.TW",
+    "name": "英利-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.9,
+    "maxP": 221.47,
+    "lastP": 21.9,
+    "vol": 36.1
+  },
+  {
+    "id": "2241.TW",
+    "name": "艾姆勒",
+    "days": 2447,
+    "market": "TW",
+    "minP": 21.15,
+    "maxP": 98.37,
+    "lastP": 31.7,
+    "vol": 41.4
+  },
+  {
+    "id": "2243.TW",
+    "name": "宏旭-KY",
+    "days": 2079,
+    "market": "TW",
+    "minP": 8.19,
+    "maxP": 64.06,
+    "lastP": 24.25,
+    "vol": 55.5
+  },
+  {
+    "id": "2247.TW",
+    "name": "汎德永業",
+    "days": 2059,
+    "market": "TW",
+    "minP": 175.0,
+    "maxP": 413.5,
+    "lastP": 210.5,
+    "vol": 28.7
+  },
+  {
+    "id": "2248.TW",
+    "name": "華勝-KY",
+    "days": 278,
+    "market": "TW",
+    "minP": 41.7,
+    "maxP": 70.7,
+    "lastP": 60.0,
+    "vol": 39.7
+  },
+  {
+    "id": "2250.TW",
+    "name": "IKKA-KY",
+    "days": 1191,
+    "market": "TW",
+    "minP": 60.0,
+    "maxP": 202.36,
+    "lastP": 61.1,
+    "vol": 45.2
+  },
+  {
+    "id": "2254.TW",
+    "name": "巨鎧精密-創",
+    "days": 608,
+    "market": "TW",
+    "minP": 56.2,
+    "maxP": 124.5,
+    "lastP": 74.3,
+    "vol": 47.1
+  },
+  {
+    "id": "2258.TW",
+    "name": "鴻華先進-創",
+    "days": 585,
+    "market": "TW",
+    "minP": 26.6,
+    "maxP": 51.2,
+    "lastP": 28.55,
+    "vol": 36.7
+  },
+  {
+    "id": "2301.TW",
+    "name": "光寶科",
+    "days": 2448,
+    "market": "TW",
+    "minP": 33.05,
+    "maxP": 195.0,
+    "lastP": 172.5,
+    "vol": 32.1
+  },
+  {
+    "id": "2302.TW",
+    "name": "麗正",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.49,
+    "maxP": 27.8,
+    "lastP": 17.9,
+    "vol": 42.5
+  },
+  {
+    "id": "2303.TW",
+    "name": "聯電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.45,
+    "maxP": 78.6,
+    "lastP": 71.7,
+    "vol": 33.5
+  },
+  {
+    "id": "2305.TW",
+    "name": "全友",
+    "days": 2448,
+    "market": "TW",
+    "minP": 3.49,
+    "maxP": 35.55,
+    "lastP": 16.0,
+    "vol": 43.6
+  },
+  {
+    "id": "2308.TW",
+    "name": "台達電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 98.9,
+    "maxP": 2075.0,
+    "lastP": 2035.0,
+    "vol": 32.0
+  },
+  {
+    "id": "2312.TW",
+    "name": "金寶",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.73,
+    "maxP": 35.4,
+    "lastP": 26.1,
+    "vol": 35.6
+  },
+  {
+    "id": "2313.TW",
+    "name": "華通",
+    "days": 2448,
+    "market": "TW",
+    "minP": 15.2,
+    "maxP": 286.0,
+    "lastP": 232.5,
+    "vol": 42.4
+  },
+  {
+    "id": "2314.TW",
+    "name": "台揚",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.45,
+    "maxP": 221.48,
+    "lastP": 14.95,
+    "vol": 51.1
+  },
+  {
+    "id": "2316.TW",
+    "name": "楠梓電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.47,
+    "maxP": 121.0,
+    "lastP": 117.5,
+    "vol": 41.5
+  },
+  {
+    "id": "2317.TW",
+    "name": "鴻海",
+    "days": 2448,
+    "market": "TW",
+    "minP": 66.3,
+    "maxP": 262.0,
+    "lastP": 224.0,
+    "vol": 28.5
+  },
+  {
+    "id": "2321.TW",
+    "name": "東訊",
+    "days": 2447,
+    "market": "TW",
+    "minP": 10.73,
+    "maxP": 86.46,
+    "lastP": 12.95,
+    "vol": 58.6
+  },
+  {
+    "id": "2323.TW",
+    "name": "中環",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.79,
+    "maxP": 21.23,
+    "lastP": 10.15,
+    "vol": 39.1
+  },
+  {
+    "id": "2324.TW",
+    "name": "仁寶",
+    "days": 2448,
+    "market": "TW",
+    "minP": 15.5,
+    "maxP": 40.3,
+    "lastP": 29.6,
+    "vol": 25.4
+  },
+  {
+    "id": "2327.TW",
+    "name": "國巨*",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.71,
+    "maxP": 325.0,
+    "lastP": 305.5,
+    "vol": 46.4
+  },
+  {
+    "id": "2328.TW",
+    "name": "廣宇",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.8,
+    "maxP": 62.0,
+    "lastP": 43.85,
+    "vol": 38.3
+  },
+  {
+    "id": "2329.TW",
+    "name": "華泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.01,
+    "maxP": 82.8,
+    "lastP": 54.7,
+    "vol": 43.8
+  },
+  {
+    "id": "2330.TW",
+    "name": "台積電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 144.0,
+    "maxP": 2300.0,
+    "lastP": 2300.0,
+    "vol": 27.2
+  },
+  {
+    "id": "2331.TW",
+    "name": "精英",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.47,
+    "maxP": 40.25,
+    "lastP": 20.05,
+    "vol": 40.1
+  },
+  {
+    "id": "2332.TW",
+    "name": "友訊",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.78,
+    "maxP": 32.07,
+    "lastP": 13.75,
+    "vol": 36.8
+  },
+  {
+    "id": "2337.TW",
+    "name": "旺宏",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.46,
+    "maxP": 160.0,
+    "lastP": 145.0,
+    "vol": 48.4
+  },
+  {
+    "id": "2338.TW",
+    "name": "光罩",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.95,
+    "maxP": 112.0,
+    "lastP": 46.5,
+    "vol": 47.2
+  },
+  {
+    "id": "2340.TW",
+    "name": "台亞",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.18,
+    "maxP": 79.4,
+    "lastP": 34.75,
+    "vol": 41.9
+  },
+  {
+    "id": "2342.TW",
+    "name": "茂矽",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.47,
+    "maxP": 55.5,
+    "lastP": 31.2,
+    "vol": 49.9
+  },
+  {
+    "id": "2344.TW",
+    "name": "華邦電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.96,
+    "maxP": 130.0,
+    "lastP": 93.4,
+    "vol": 44.8
+  },
+  {
+    "id": "2345.TW",
+    "name": "智邦",
+    "days": 2448,
+    "market": "TW",
+    "minP": 29.0,
+    "maxP": 2200.0,
+    "lastP": 2170.0,
+    "vol": 46.1
+  },
+  {
+    "id": "2347.TW",
+    "name": "聯強",
+    "days": 2448,
+    "market": "TW",
+    "minP": 28.67,
+    "maxP": 88.7,
+    "lastP": 79.8,
+    "vol": 23.7
+  },
+  {
+    "id": "2348.TW",
+    "name": "海悅",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.35,
+    "maxP": 312.5,
+    "lastP": 71.9,
+    "vol": 44.1
+  },
+  {
+    "id": "2349.TW",
+    "name": "錸德",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.37,
+    "maxP": 49.54,
+    "lastP": 12.5,
+    "vol": 46.8
+  },
+  {
+    "id": "2351.TW",
+    "name": "順德",
+    "days": 2448,
+    "market": "TW",
+    "minP": 31.65,
+    "maxP": 182.5,
+    "lastP": 145.5,
+    "vol": 45.6
+  },
+  {
+    "id": "2352.TW",
+    "name": "佳世達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.72,
+    "maxP": 72.8,
+    "lastP": 23.95,
+    "vol": 29.6
+  },
+  {
+    "id": "2353.TW",
+    "name": "宏碁",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.45,
+    "maxP": 58.5,
+    "lastP": 27.25,
+    "vol": 32.9
+  },
+  {
+    "id": "2354.TW",
+    "name": "鴻準",
+    "days": 2448,
+    "market": "TW",
+    "minP": 45.1,
+    "maxP": 98.5,
+    "lastP": 50.6,
+    "vol": 28.8
+  },
+  {
+    "id": "2355.TW",
+    "name": "敬鵬",
+    "days": 2448,
+    "market": "TW",
+    "minP": 19.0,
+    "maxP": 76.3,
+    "lastP": 52.9,
+    "vol": 35.1
+  },
+  {
+    "id": "2356.TW",
+    "name": "英業達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 18.75,
+    "maxP": 72.0,
+    "lastP": 46.85,
+    "vol": 30.5
+  },
+  {
+    "id": "2357.TW",
+    "name": "華碩",
+    "days": 2448,
+    "market": "TW",
+    "minP": 170.5,
+    "maxP": 745.0,
+    "lastP": 590.0,
+    "vol": 28.8
+  },
+  {
+    "id": "2359.TW",
+    "name": "所羅門",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.2,
+    "maxP": 180.0,
+    "lastP": 107.5,
+    "vol": 42.1
+  },
+  {
+    "id": "2360.TW",
+    "name": "致茂",
+    "days": 2448,
+    "market": "TW",
+    "minP": 67.5,
+    "maxP": 2255.0,
+    "lastP": 1895.0,
+    "vol": 44.0
+  },
+  {
+    "id": "2362.TW",
+    "name": "藍天",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.6,
+    "maxP": 66.6,
+    "lastP": 38.3,
+    "vol": 28.6
+  },
+  {
+    "id": "2363.TW",
+    "name": "矽統",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.37,
+    "maxP": 111.69,
+    "lastP": 53.4,
+    "vol": 44.2
+  },
+  {
+    "id": "2364.TW",
+    "name": "倫飛",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.24,
+    "maxP": 90.77,
+    "lastP": 63.4,
+    "vol": 55.7
+  },
+  {
+    "id": "2365.TW",
+    "name": "昆盈",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.45,
+    "maxP": 66.9,
+    "lastP": 33.75,
+    "vol": 37.5
+  },
+  {
+    "id": "2367.TW",
+    "name": "燿華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.62,
+    "maxP": 78.2,
+    "lastP": 58.9,
+    "vol": 42.5
+  },
+  {
+    "id": "2368.TW",
+    "name": "金像電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.13,
+    "maxP": 1415.0,
+    "lastP": 1415.0,
+    "vol": 48.8
+  },
+  {
+    "id": "2371.TW",
+    "name": "大同",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.83,
+    "maxP": 72.74,
+    "lastP": 30.55,
+    "vol": 44.8
+  },
+  {
+    "id": "2376.TW",
+    "name": "技嘉",
+    "days": 2448,
+    "market": "TW",
+    "minP": 33.8,
+    "maxP": 381.0,
+    "lastP": 283.0,
+    "vol": 41.5
+  },
+  {
+    "id": "2379.TW",
+    "name": "瑞昱",
+    "days": 2448,
+    "market": "TW",
+    "minP": 85.5,
+    "maxP": 613.0,
+    "lastP": 552.0,
+    "vol": 35.5
+  },
+  {
+    "id": "2382.TW",
+    "name": "廣達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 47.5,
+    "maxP": 341.0,
+    "lastP": 326.0,
+    "vol": 32.0
+  },
+  {
+    "id": "2383.TW",
+    "name": "台光電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 56.2,
+    "maxP": 4740.0,
+    "lastP": 4740.0,
+    "vol": 46.6
+  },
+  {
+    "id": "2385.TW",
+    "name": "群光",
+    "days": 2448,
+    "market": "TW",
+    "minP": 54.5,
+    "maxP": 258.5,
+    "lastP": 123.0,
+    "vol": 25.7
+  },
+  {
+    "id": "2392.TW",
+    "name": "正崴",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.15,
+    "maxP": 90.0,
+    "lastP": 36.9,
+    "vol": 33.7
+  },
+  {
+    "id": "2395.TW",
+    "name": "研華",
+    "days": 2448,
+    "market": "TW",
+    "minP": 157.06,
+    "maxP": 418.0,
+    "lastP": 361.5,
+    "vol": 27.0
+  },
+  {
+    "id": "2408.TW",
+    "name": "南亞科",
+    "days": 2448,
+    "market": "TW",
+    "minP": 25.4,
+    "maxP": 326.5,
+    "lastP": 226.5,
+    "vol": 44.4
+  },
+  {
+    "id": "2409.TW",
+    "name": "友達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.62,
+    "maxP": 41.69,
+    "lastP": 17.25,
+    "vol": 38.9
+  },
+  {
+    "id": "2412.TW",
+    "name": "中華電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 100.0,
+    "maxP": 138.0,
+    "lastP": 137.5,
+    "vol": 11.7
+  },
+  {
+    "id": "2436.TW",
+    "name": "偉詮電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 19.75,
+    "maxP": 110.0,
+    "lastP": 73.3,
+    "vol": 42.5
+  },
+  {
+    "id": "2441.TW",
+    "name": "超豐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 34.8,
+    "maxP": 107.5,
+    "lastP": 88.2,
+    "vol": 26.2
+  },
+  {
+    "id": "2449.TW",
+    "name": "京元電子",
+    "days": 2448,
+    "market": "TW",
+    "minP": 17.75,
+    "maxP": 327.0,
+    "lastP": 281.5,
+    "vol": 36.9
+  },
+  {
+    "id": "2451.TW",
+    "name": "創見",
+    "days": 2448,
+    "market": "TW",
+    "minP": 57.9,
+    "maxP": 313.5,
+    "lastP": 265.5,
+    "vol": 28.6
+  },
+  {
+    "id": "2454.TW",
+    "name": "聯發科",
+    "days": 2448,
+    "market": "TW",
+    "minP": 192.0,
+    "maxP": 2460.0,
+    "lastP": 2460.0,
+    "vol": 37.8
+  },
+  {
+    "id": "2458.TW",
+    "name": "義隆",
+    "days": 2448,
+    "market": "TW",
+    "minP": 44.86,
+    "maxP": 224.5,
+    "lastP": 135.0,
+    "vol": 34.2
+  },
+  {
+    "id": "2467.TW",
+    "name": "志聖",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.04,
+    "maxP": 597.0,
+    "lastP": 496.5,
+    "vol": 40.3
+  },
+  {
+    "id": "2474.TW",
+    "name": "可成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 142.0,
+    "maxP": 392.0,
+    "lastP": 229.0,
+    "vol": 30.8
+  },
+  {
+    "id": "2492.TW",
+    "name": "華新科",
+    "days": 2448,
+    "market": "TW",
+    "minP": 27.32,
+    "maxP": 458.5,
+    "lastP": 127.0,
+    "vol": 49.9
+  },
+  {
+    "id": "2498.TW",
+    "name": "宏達電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.95,
+    "maxP": 108.0,
+    "lastP": 39.7,
+    "vol": 44.3
+  },
+  {
+    "id": "2603.TW",
+    "name": "長榮",
+    "days": 2448,
+    "market": "TW",
+    "minP": 22.75,
+    "maxP": 560.0,
+    "lastP": 199.5,
+    "vol": 47.4
+  },
+  {
+    "id": "2606.TW",
+    "name": "裕民",
+    "days": 2448,
+    "market": "TW",
+    "minP": 21.3,
+    "maxP": 89.1,
+    "lastP": 60.2,
+    "vol": 38.1
+  },
+  {
+    "id": "2609.TW",
+    "name": "陽明",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.73,
+    "maxP": 216.5,
+    "lastP": 49.4,
+    "vol": 47.1
+  },
+  {
+    "id": "2615.TW",
+    "name": "萬海",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.41,
+    "maxP": 265.61,
+    "lastP": 75.1,
+    "vol": 45.2
+  },
+  {
+    "id": "2618.TW",
+    "name": "長榮航",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.7,
+    "maxP": 47.7,
+    "lastP": 33.2,
+    "vol": 33.0
+  },
+  {
+    "id": "2633.TW",
+    "name": "台灣高鐵",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.7,
+    "maxP": 46.95,
+    "lastP": 26.4,
+    "vol": 40.2
+  },
+  {
+    "id": "2634.TW",
+    "name": "漢翔",
+    "days": 2448,
+    "market": "TW",
+    "minP": 25.6,
+    "maxP": 67.2,
+    "lastP": 48.1,
+    "vol": 26.9
+  },
+  {
+    "id": "2727.TW",
+    "name": "王品",
+    "days": 2448,
+    "market": "TW",
+    "minP": 45.2,
+    "maxP": 337.42,
+    "lastP": 227.5,
+    "vol": 34.1
+  },
+  {
+    "id": "2731.TW",
+    "name": "雄獅",
+    "days": 2448,
+    "market": "TW",
+    "minP": 45.33,
+    "maxP": 193.5,
+    "lastP": 158.0,
+    "vol": 32.2
+  },
+  {
+    "id": "2801.TW",
+    "name": "彰銀",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.39,
+    "maxP": 21.9,
+    "lastP": 21.05,
+    "vol": 14.5
+  },
+  {
+    "id": "2812.TW",
+    "name": "台中銀",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.84,
+    "maxP": 23.15,
+    "lastP": 19.8,
+    "vol": 14.6
+  },
+  {
+    "id": "2820.TW",
+    "name": "華票",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.05,
+    "maxP": 17.9,
+    "lastP": 16.75,
+    "vol": 11.5
+  },
+  {
+    "id": "2880.TW",
+    "name": "華南金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.0,
+    "maxP": 38.1,
+    "lastP": 35.3,
+    "vol": 16.1
+  },
+  {
+    "id": "2881.TW",
+    "name": "富邦金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.7,
+    "maxP": 98.2,
+    "lastP": 88.2,
+    "vol": 21.8
+  },
+  {
+    "id": "2882.TW",
+    "name": "國泰金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 33.42,
+    "maxP": 79.7,
+    "lastP": 74.6,
+    "vol": 22.4
+  },
+  {
+    "id": "2883.TW",
+    "name": "凱基金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.83,
+    "maxP": 21.95,
+    "lastP": 20.6,
+    "vol": 22.4
+  },
+  {
+    "id": "2884.TW",
+    "name": "玉山金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.35,
+    "maxP": 35.1,
+    "lastP": 32.6,
+    "vol": 17.2
+  },
+  {
+    "id": "2885.TW",
+    "name": "元大金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 8.89,
+    "maxP": 51.2,
+    "lastP": 50.9,
+    "vol": 21.8
+  },
+  {
+    "id": "2886.TW",
+    "name": "兆豐金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 19.91,
+    "maxP": 43.0,
+    "lastP": 39.95,
+    "vol": 16.9
+  },
+  {
+    "id": "2887.TW",
+    "name": "台新新光金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.65,
+    "maxP": 25.6,
+    "lastP": 24.0,
+    "vol": 18.8
+  },
+  {
+    "id": "2890.TW",
+    "name": "永豐金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.45,
+    "maxP": 33.3,
+    "lastP": 31.95,
+    "vol": 19.0
+  },
+  {
+    "id": "2891.TW",
+    "name": "中信金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.86,
+    "maxP": 56.5,
+    "lastP": 53.1,
+    "vol": 20.4
+  },
+  {
+    "id": "2892.TW",
+    "name": "第一金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.39,
+    "maxP": 30.1,
+    "lastP": 28.5,
+    "vol": 15.3
+  },
+  {
+    "id": "2912.TW",
+    "name": "統一超",
+    "days": 2448,
+    "market": "TW",
+    "minP": 208.5,
+    "maxP": 372.0,
+    "lastP": 228.0,
+    "vol": 19.1
+  },
+  {
+    "id": "3008.TW",
+    "name": "大立光",
+    "days": 2448,
+    "market": "TW",
+    "minP": 1565.0,
+    "maxP": 6000.0,
+    "lastP": 2625.0,
+    "vol": 39.1
+  },
+  {
+    "id": "3017.TW",
+    "name": "奇鋐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 19.77,
+    "maxP": 2945.0,
+    "lastP": 2885.0,
+    "vol": 47.0
+  },
+  {
+    "id": "3019.TW",
+    "name": "亞光",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.3,
+    "maxP": 209.5,
+    "lastP": 144.0,
+    "vol": 43.4
+  },
+  {
+    "id": "3023.TW",
+    "name": "信邦",
+    "days": 2448,
+    "market": "TW",
+    "minP": 62.33,
+    "maxP": 377.0,
+    "lastP": 276.0,
+    "vol": 31.9
+  },
+  {
+    "id": "3034.TW",
+    "name": "聯詠",
+    "days": 2448,
+    "market": "TW",
+    "minP": 102.5,
+    "maxP": 640.0,
+    "lastP": 416.0,
+    "vol": 35.6
+  },
+  {
+    "id": "3035.TW",
+    "name": "智原",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.5,
+    "maxP": 455.0,
+    "lastP": 192.0,
+    "vol": 50.5
+  },
+  {
+    "id": "3037.TW",
+    "name": "欣興",
+    "days": 2448,
+    "market": "TW",
+    "minP": 11.45,
+    "maxP": 809.0,
+    "lastP": 809.0,
+    "vol": 49.9
+  },
+  {
+    "id": "3044.TW",
+    "name": "健鼎",
+    "days": 2448,
+    "market": "TW",
+    "minP": 55.8,
+    "maxP": 489.0,
+    "lastP": 489.0,
+    "vol": 33.7
+  },
+  {
+    "id": "3045.TW",
+    "name": "台灣大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 91.0,
+    "maxP": 122.5,
+    "lastP": 112.5,
+    "vol": 14.0
+  },
+  {
+    "id": "3052.TW",
+    "name": "夆典",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.5,
+    "maxP": 14.32,
+    "lastP": 10.65,
+    "vol": 23.5
+  },
+  {
+    "id": "3094.TW",
+    "name": "聯傑",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.25,
+    "maxP": 46.9,
+    "lastP": 25.8,
+    "vol": 40.0
+  },
+  {
+    "id": "3149.TW",
+    "name": "正達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.86,
+    "maxP": 81.07,
+    "lastP": 43.05,
+    "vol": 52.8
+  },
+  {
+    "id": "3189.TW",
+    "name": "景碩",
+    "days": 2448,
+    "market": "TW",
+    "minP": 31.05,
+    "maxP": 526.0,
+    "lastP": 524.0,
+    "vol": 47.3
+  },
+  {
+    "id": "3217.TWO",
+    "name": "優群",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.87,
+    "maxP": 205.0,
+    "lastP": 170.0,
+    "vol": 41.9
+  },
+  {
+    "id": "3231.TW",
+    "name": "緯創",
+    "days": 2448,
+    "market": "TW",
+    "minP": 15.62,
+    "maxP": 158.5,
+    "lastP": 142.5,
+    "vol": 35.0
+  },
+  {
+    "id": "3313.TW",
+    "name": "斐成",
+    "days": 253,
+    "market": "TW",
+    "minP": 11.8,
+    "maxP": 19.65,
+    "lastP": 12.1,
+    "vol": 44.6
+  },
+  {
+    "id": "3313.TWO",
+    "name": "斐成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 4.9,
+    "maxP": 50.5,
+    "lastP": 11.95,
+    "vol": 47.5
+  },
+  {
+    "id": "3380.TW",
+    "name": "明泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 13.15,
+    "maxP": 48.1,
+    "lastP": 35.15,
+    "vol": 38.7
+  },
+  {
+    "id": "3406.TW",
+    "name": "玉晶光",
+    "days": 2448,
+    "market": "TW",
+    "minP": 41.46,
+    "maxP": 818.0,
+    "lastP": 497.0,
+    "vol": 51.7
+  },
+  {
+    "id": "3413.TW",
+    "name": "京鼎",
+    "days": 2448,
+    "market": "TW",
+    "minP": 61.32,
+    "maxP": 397.5,
+    "lastP": 308.0,
+    "vol": 42.2
+  },
+  {
+    "id": "3416.TW",
+    "name": "融程電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 45.25,
+    "maxP": 203.0,
+    "lastP": 152.5,
+    "vol": 23.9
+  },
+  {
+    "id": "3443.TW",
+    "name": "創意",
+    "days": 2448,
+    "market": "TW",
+    "minP": 67.9,
+    "maxP": 4035.0,
+    "lastP": 3780.0,
+    "vol": 53.6
+  },
+  {
+    "id": "3450.TW",
+    "name": "聯鈞",
+    "days": 2448,
+    "market": "TW",
+    "minP": 34.45,
+    "maxP": 383.0,
+    "lastP": 299.5,
+    "vol": 44.6
+  },
+  {
+    "id": "3481.TW",
+    "name": "群創",
+    "days": 2448,
+    "market": "TW",
+    "minP": 6.41,
+    "maxP": 41.17,
+    "lastP": 24.3,
+    "vol": 40.4
+  },
+  {
+    "id": "3529.TW",
+    "name": "力旺",
+    "days": 253,
+    "market": "TW",
+    "minP": 1490.0,
+    "maxP": 4400.0,
+    "lastP": 3900.0,
+    "vol": 62.7
+  },
+  {
+    "id": "3529.TWO",
+    "name": "力旺",
+    "days": 2448,
+    "market": "TW",
+    "minP": 159.5,
+    "maxP": 4400.0,
+    "lastP": 4000.0,
+    "vol": 53.3
+  },
+  {
+    "id": "3530.TW",
+    "name": "晶相光",
+    "days": 2448,
+    "market": "TW",
+    "minP": 50.6,
+    "maxP": 282.95,
+    "lastP": 62.5,
+    "vol": 50.7
+  },
+  {
+    "id": "3533.TW",
+    "name": "嘉澤",
+    "days": 2448,
+    "market": "TW",
+    "minP": 73.6,
+    "maxP": 2710.0,
+    "lastP": 2710.0,
+    "vol": 43.5
+  },
+  {
+    "id": "3558.TWO",
+    "name": "神準",
+    "days": 2448,
+    "market": "TW",
+    "minP": 76.3,
+    "maxP": 357.0,
+    "lastP": 109.5,
+    "vol": 41.2
+  },
+  {
+    "id": "3596.TW",
+    "name": "智易",
+    "days": 2448,
+    "market": "TW",
+    "minP": 40.42,
+    "maxP": 249.5,
+    "lastP": 163.5,
+    "vol": 38.0
+  },
+  {
+    "id": "3661.TW",
+    "name": "世芯-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 23.5,
+    "maxP": 4430.0,
+    "lastP": 4180.0,
+    "vol": 61.7
+  },
+  {
+    "id": "3673.TW",
+    "name": "TPK-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 26.05,
+    "maxP": 131.5,
+    "lastP": 59.0,
+    "vol": 39.6
+  },
+  {
+    "id": "3702.TW",
+    "name": "大聯大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 31.45,
+    "maxP": 102.5,
+    "lastP": 95.7,
+    "vol": 24.3
+  },
+  {
+    "id": "3706.TW",
+    "name": "神達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 12.25,
+    "maxP": 107.0,
+    "lastP": 80.9,
+    "vol": 31.8
+  },
+  {
+    "id": "3711.TW",
+    "name": "日月光投控",
+    "days": 2448,
+    "market": "TW",
+    "minP": 50.2,
+    "maxP": 497.5,
+    "lastP": 497.5,
+    "vol": 34.7
+  },
+  {
+    "id": "4147.TW",
+    "name": "中裕",
+    "days": 253,
+    "market": "TW",
+    "minP": 48.15,
+    "maxP": 95.6,
+    "lastP": 48.3,
+    "vol": 32.0
+  },
+  {
+    "id": "4147.TWO",
+    "name": "中裕",
+    "days": 2448,
+    "market": "TW",
+    "minP": 48.15,
+    "maxP": 341.0,
+    "lastP": 48.3,
+    "vol": 40.1
+  },
+  {
+    "id": "4303.TW",
+    "name": "信立",
+    "days": 253,
+    "market": "TW",
+    "minP": 50.6,
+    "maxP": 81.9,
+    "lastP": 53.8,
+    "vol": 41.1
+  },
+  {
+    "id": "4303.TWO",
+    "name": "信立",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.18,
+    "maxP": 81.9,
+    "lastP": 52.9,
+    "vol": 78.9
+  },
+  {
+    "id": "4438.TW",
+    "name": "廣越",
+    "days": 2447,
+    "market": "TW",
+    "minP": 55.8,
+    "maxP": 217.0,
+    "lastP": 55.8,
+    "vol": 26.4
+  },
+  {
+    "id": "4904.TW",
+    "name": "遠傳",
+    "days": 2448,
+    "market": "TW",
+    "minP": 59.7,
+    "maxP": 98.2,
+    "lastP": 96.0,
+    "vol": 16.3
+  },
+  {
+    "id": "4916.TW",
+    "name": "事欣科",
+    "days": 2448,
+    "market": "TW",
+    "minP": 20.15,
+    "maxP": 69.7,
+    "lastP": 61.6,
+    "vol": 41.7
+  },
+  {
+    "id": "4938.TW",
+    "name": "和碩",
+    "days": 2448,
+    "market": "TW",
+    "minP": 47.4,
+    "maxP": 120.0,
+    "lastP": 82.7,
+    "vol": 27.5
+  },
+  {
+    "id": "4958.TW",
+    "name": "臻鼎-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 52.4,
+    "maxP": 361.0,
+    "lastP": 361.0,
+    "vol": 36.7
+  },
+  {
+    "id": "4966.TW",
+    "name": "譜瑞-KY",
+    "days": 253,
+    "market": "TW",
+    "minP": 463.5,
+    "maxP": 864.0,
+    "lastP": 649.0,
+    "vol": 41.6
+  },
+  {
+    "id": "4966.TWO",
+    "name": "譜瑞-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 283.0,
+    "maxP": 2130.0,
+    "lastP": 609.0,
+    "vol": 45.6
+  },
+  {
+    "id": "5269.TW",
+    "name": "祥碩",
+    "days": 2448,
+    "market": "TW",
+    "minP": 127.38,
+    "maxP": 2550.0,
+    "lastP": 1285.0,
+    "vol": 54.7
+  },
+  {
+    "id": "5274.TWO",
+    "name": "信驊",
+    "days": 2448,
+    "market": "TW",
+    "minP": 242.27,
+    "maxP": 16370.0,
+    "lastP": 16080.0,
+    "vol": 55.1
+  },
+  {
+    "id": "5314.TW",
+    "name": "世紀*",
+    "days": 253,
+    "market": "TW",
+    "minP": 45.0,
+    "maxP": 144.0,
+    "lastP": 77.3,
+    "vol": 67.4
+  },
+  {
+    "id": "5314.TWO",
+    "name": "世紀*",
+    "days": 2448,
+    "market": "TW",
+    "minP": 0.63,
+    "maxP": 144.0,
+    "lastP": 74.2,
+    "vol": 66.1
+  },
+  {
+    "id": "5347.TWO",
+    "name": "世界",
+    "days": 2448,
+    "market": "TW",
+    "minP": 48.1,
+    "maxP": 173.5,
+    "lastP": 138.0,
+    "vol": 38.6
+  },
+  {
+    "id": "5388.TW",
+    "name": "中磊",
+    "days": 2448,
+    "market": "TW",
+    "minP": 43.05,
+    "maxP": 149.0,
+    "lastP": 77.3,
+    "vol": 31.2
+  },
+  {
+    "id": "5871.TW",
+    "name": "中租-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 38.27,
+    "maxP": 251.78,
+    "lastP": 116.5,
+    "vol": 30.7
+  },
+  {
+    "id": "5876.TW",
+    "name": "上海商銀",
+    "days": 2447,
+    "market": "TW",
+    "minP": 25.11,
+    "maxP": 56.24,
+    "lastP": 39.35,
+    "vol": 20.1
+  },
+  {
+    "id": "5880.TW",
+    "name": "合庫金",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.57,
+    "maxP": 26.67,
+    "lastP": 23.0,
+    "vol": 14.3
+  },
+  {
+    "id": "6005.TW",
+    "name": "群益證",
+    "days": 2448,
+    "market": "TW",
+    "minP": 7.36,
+    "maxP": 32.1,
+    "lastP": 28.3,
+    "vol": 24.3
+  },
+  {
+    "id": "6121.TWO",
+    "name": "新普",
+    "days": 2448,
+    "market": "TW",
+    "minP": 149.5,
+    "maxP": 506.0,
+    "lastP": 368.5,
+    "vol": 29.4
+  },
+  {
+    "id": "6147.TWO",
+    "name": "頎邦",
+    "days": 2448,
+    "market": "TW",
+    "minP": 38.95,
+    "maxP": 145.0,
+    "lastP": 130.5,
+    "vol": 31.4
+  },
+  {
+    "id": "6176.TW",
+    "name": "瑞儀",
+    "days": 2448,
+    "market": "TW",
+    "minP": 44.3,
+    "maxP": 219.5,
+    "lastP": 99.4,
+    "vol": 31.8
+  },
+  {
+    "id": "6190.TW",
+    "name": "萬泰科",
+    "days": 253,
+    "market": "TW",
+    "minP": 30.9,
+    "maxP": 74.5,
+    "lastP": 74.5,
+    "vol": 49.7
+  },
+  {
+    "id": "6190.TWO",
+    "name": "萬泰科",
+    "days": 2448,
+    "market": "TW",
+    "minP": 5.19,
+    "maxP": 74.5,
+    "lastP": 71.2,
+    "vol": 38.7
+  },
+  {
+    "id": "6231.TW",
+    "name": "系微",
+    "days": 253,
+    "market": "TW",
+    "minP": 180.0,
+    "maxP": 348.5,
+    "lastP": 324.5,
+    "vol": 51.9
+  },
+  {
+    "id": "6231.TWO",
+    "name": "系微",
+    "days": 2448,
+    "market": "TW",
+    "minP": 18.42,
+    "maxP": 595.0,
+    "lastP": 320.0,
+    "vol": 53.9
+  },
+  {
+    "id": "6239.TW",
+    "name": "力成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 63.0,
+    "maxP": 263.5,
+    "lastP": 216.0,
+    "vol": 31.8
+  },
+  {
+    "id": "6271.TW",
+    "name": "同欣電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 83.9,
+    "maxP": 276.07,
+    "lastP": 173.5,
+    "vol": 41.3
+  },
+  {
+    "id": "6285.TW",
+    "name": "啟碁",
+    "days": 2448,
+    "market": "TW",
+    "minP": 44.4,
+    "maxP": 267.0,
+    "lastP": 211.5,
+    "vol": 35.0
+  },
+  {
+    "id": "6409.TW",
+    "name": "旭隼",
+    "days": 2448,
+    "market": "TW",
+    "minP": 363.71,
+    "maxP": 2370.0,
+    "lastP": 759.0,
+    "vol": 38.7
+  },
+  {
+    "id": "6415.TW",
+    "name": "矽力*-KY",
+    "days": 2448,
+    "market": "TW",
+    "minP": 85.12,
+    "maxP": 1337.5,
+    "lastP": 410.0,
+    "vol": 52.7
+  },
+  {
+    "id": "6446.TW",
+    "name": "藥華藥",
+    "days": 2448,
+    "market": "TW",
+    "minP": 48.71,
+    "maxP": 779.0,
+    "lastP": 602.0,
+    "vol": 45.2
+  },
+  {
+    "id": "6464.TW",
+    "name": "台數科",
+    "days": 2447,
+    "market": "TW",
+    "minP": 72.9,
+    "maxP": 127.84,
+    "lastP": 75.3,
+    "vol": 14.1
+  },
+  {
+    "id": "6488.TWO",
+    "name": "環球晶",
+    "days": 2447,
+    "market": "TW",
+    "minP": 64.8,
+    "maxP": 935.0,
+    "lastP": 616.0,
+    "vol": 46.9
+  },
+  {
+    "id": "6504.TW",
+    "name": "南六",
+    "days": 2448,
+    "market": "TW",
+    "minP": 38.85,
+    "maxP": 315.0,
+    "lastP": 39.3,
+    "vol": 29.3
+  },
+  {
+    "id": "6505.TW",
+    "name": "台塑化",
+    "days": 2448,
+    "market": "TW",
+    "minP": 30.95,
+    "maxP": 148.5,
+    "lastP": 51.8,
+    "vol": 28.9
+  },
+  {
+    "id": "6526.TW",
+    "name": "達發",
+    "days": 615,
+    "market": "TW",
+    "minP": 412.0,
+    "maxP": 810.0,
+    "lastP": 581.0,
+    "vol": 46.2
+  },
+  {
+    "id": "6533.TW",
+    "name": "晶心科",
+    "days": 2447,
+    "market": "TW",
+    "minP": 46.33,
+    "maxP": 627.0,
+    "lastP": 244.0,
+    "vol": 54.7
+  },
+  {
+    "id": "6541.TW",
+    "name": "泰福-KY",
+    "days": 2447,
+    "market": "TW",
+    "minP": 36.95,
+    "maxP": 491.32,
+    "lastP": 39.7,
+    "vol": 48.4
+  },
+  {
+    "id": "6552.TW",
+    "name": "易華電",
+    "days": 2447,
+    "market": "TW",
+    "minP": 23.0,
+    "maxP": 180.72,
+    "lastP": 30.7,
+    "vol": 44.4
+  },
+  {
+    "id": "6584.TW",
+    "name": "南俊國際",
+    "days": 253,
+    "market": "TW",
+    "minP": 113.0,
+    "maxP": 805.0,
+    "lastP": 737.0,
+    "vol": 69.9
+  },
+  {
+    "id": "6584.TWO",
+    "name": "南俊國際",
+    "days": 2365,
+    "market": "TW",
+    "minP": 24.24,
+    "maxP": 805.0,
+    "lastP": 686.0,
+    "vol": 43.5
+  },
+  {
+    "id": "6620.TW",
+    "name": "漢達",
+    "days": 253,
+    "market": "TW",
+    "minP": 65.1,
+    "maxP": 149.0,
+    "lastP": 78.2,
+    "vol": 48.9
+  },
+  {
+    "id": "6620.TWO",
+    "name": "漢達",
+    "days": 2259,
+    "market": "TW",
+    "minP": 15.62,
+    "maxP": 208.71,
+    "lastP": 76.1,
+    "vol": 51.6
+  },
+  {
+    "id": "6624.TW",
+    "name": "萬年清",
+    "days": 253,
+    "market": "TW",
+    "minP": 31.85,
+    "maxP": 72.5,
+    "lastP": 52.5,
+    "vol": 44.9
+  },
+  {
+    "id": "6624.TWO",
+    "name": "萬年清",
+    "days": 2214,
+    "market": "TW",
+    "minP": 27.32,
+    "maxP": 80.97,
+    "lastP": 51.2,
+    "vol": 36.4
+  },
+  {
+    "id": "6643.TW",
+    "name": "M31",
+    "days": 253,
+    "market": "TW",
+    "minP": 374.0,
+    "maxP": 626.0,
+    "lastP": 571.0,
+    "vol": 50.9
+  },
+  {
+    "id": "6643.TWO",
+    "name": "M31",
+    "days": 2085,
+    "market": "TW",
+    "minP": 136.74,
+    "maxP": 1670.79,
+    "lastP": 544.0,
+    "vol": 52.0
+  },
+  {
+    "id": "6669.TW",
+    "name": "緯穎",
+    "days": 2050,
+    "market": "TW",
+    "minP": 97.8,
+    "maxP": 5010.0,
+    "lastP": 5010.0,
+    "vol": 52.9
+  },
+  {
+    "id": "6770.TW",
+    "name": "力積電",
+    "days": 1301,
+    "market": "TW",
+    "minP": 11.95,
+    "maxP": 79.1,
+    "lastP": 54.7,
+    "vol": 45.4
+  },
+  {
+    "id": "6781.TW",
+    "name": "AES-KY",
+    "days": 1237,
+    "market": "TW",
+    "minP": 447.0,
+    "maxP": 1950.0,
+    "lastP": 1185.0,
+    "vol": 55.9
+  },
+  {
+    "id": "6785.TW",
+    "name": "昱展新藥",
+    "days": 253,
+    "market": "TW",
+    "minP": 112.5,
+    "maxP": 309.0,
+    "lastP": 152.0,
+    "vol": 55.3
+  },
+  {
+    "id": "6785.TWO",
+    "name": "昱展新藥",
+    "days": 1347,
+    "market": "TW",
+    "minP": 43.6,
+    "maxP": 460.0,
+    "lastP": 152.0,
+    "vol": 55.1
+  },
+  {
+    "id": "6789.TW",
+    "name": "采鈺",
+    "days": 1228,
+    "market": "TW",
+    "minP": 166.5,
+    "maxP": 604.0,
+    "lastP": 554.0,
+    "vol": 47.2
+  },
+  {
+    "id": "6805.TW",
+    "name": "富世達",
+    "days": 601,
+    "market": "TW",
+    "minP": 277.0,
+    "maxP": 2025.0,
+    "lastP": 2025.0,
+    "vol": 62.2
+  },
+  {
+    "id": "6890.TW",
+    "name": "來億-KY",
+    "days": 452,
+    "market": "TW",
+    "minP": 150.5,
+    "maxP": 498.5,
+    "lastP": 155.5,
+    "vol": 60.8
+  },
+  {
+    "id": "6903.TW",
+    "name": "巨漢",
+    "days": 253,
+    "market": "TW",
+    "minP": 93.7,
+    "maxP": 403.5,
+    "lastP": 384.0,
+    "vol": 55.9
+  },
+  {
+    "id": "6903.TWO",
+    "name": "巨漢",
+    "days": 912,
+    "market": "TW",
+    "minP": 87.6,
+    "maxP": 403.5,
+    "lastP": 400.0,
+    "vol": 45.1
+  },
+  {
+    "id": "6997.TW",
+    "name": "博弘",
+    "days": 251,
+    "market": "TW",
+    "minP": 80.8,
+    "maxP": 113.0,
+    "lastP": 81.4,
+    "vol": 28.0
+  },
+  {
+    "id": "6997.TWO",
+    "name": "博弘",
+    "days": 551,
+    "market": "TW",
+    "minP": 80.8,
+    "maxP": 163.0,
+    "lastP": 81.4,
+    "vol": 35.9
+  },
+  {
+    "id": "7799.TW",
+    "name": "禾榮科",
+    "days": 340,
+    "market": "TW",
+    "minP": 194.0,
+    "maxP": 961.0,
+    "lastP": 374.5,
+    "vol": 82.0
+  },
+  {
+    "id": "8016.TW",
+    "name": "矽創",
+    "days": 2448,
+    "market": "TW",
+    "minP": 70.8,
+    "maxP": 398.5,
+    "lastP": 227.5,
+    "vol": 39.7
+  },
+  {
+    "id": "8021.TW",
+    "name": "尖點",
+    "days": 2448,
+    "market": "TW",
+    "minP": 14.6,
+    "maxP": 471.5,
+    "lastP": 406.0,
+    "vol": 38.3
+  },
+  {
+    "id": "8046.TW",
+    "name": "南電",
+    "days": 2448,
+    "market": "TW",
+    "minP": 22.5,
+    "maxP": 912.0,
+    "lastP": 912.0,
+    "vol": 50.5
+  },
+  {
+    "id": "8047.TW",
+    "name": "星雲",
+    "days": 253,
+    "market": "TW",
+    "minP": 12.35,
+    "maxP": 60.0,
+    "lastP": 56.9,
+    "vol": 60.2
+  },
+  {
+    "id": "8047.TWO",
+    "name": "星雲",
+    "days": 2448,
+    "market": "TW",
+    "minP": 9.35,
+    "maxP": 60.0,
+    "lastP": 54.5,
+    "vol": 38.3
+  },
+  {
+    "id": "8081.TW",
+    "name": "致新",
+    "days": 2448,
+    "market": "TW",
+    "minP": 57.9,
+    "maxP": 320.0,
+    "lastP": 255.5,
+    "vol": 34.6
+  },
+  {
+    "id": "8210.TW",
+    "name": "勤誠",
+    "days": 2448,
+    "market": "TW",
+    "minP": 32.4,
+    "maxP": 1210.0,
+    "lastP": 1125.0,
+    "vol": 40.6
+  },
+  {
+    "id": "8261.TW",
+    "name": "富鼎",
+    "days": 2448,
+    "market": "TW",
+    "minP": 15.05,
+    "maxP": 142.0,
+    "lastP": 118.0,
+    "vol": 46.0
+  },
+  {
+    "id": "8299.TW",
+    "name": "群聯",
+    "days": 253,
+    "market": "TW",
+    "minP": 419.5,
+    "maxP": 2380.0,
+    "lastP": 1680.0,
+    "vol": 65.4
+  },
+  {
+    "id": "8299.TWO",
+    "name": "群聯",
+    "days": 2448,
+    "market": "TW",
+    "minP": 190.0,
+    "maxP": 2380.0,
+    "lastP": 1805.0,
+    "vol": 41.3
+  },
+  {
+    "id": "8454.TW",
+    "name": "富邦媒",
+    "days": 2448,
+    "market": "TW",
+    "minP": 89.33,
+    "maxP": 1443.0,
+    "lastP": 169.0,
+    "vol": 36.5
+  },
+  {
+    "id": "8464.TW",
+    "name": "億豐",
+    "days": 2448,
+    "market": "TW",
+    "minP": 169.5,
+    "maxP": 514.0,
+    "lastP": 349.5,
+    "vol": 38.6
+  },
+  {
+    "id": "9904.TW",
+    "name": "寶成",
+    "days": 2448,
+    "market": "TW",
+    "minP": 22.9,
+    "maxP": 49.5,
+    "lastP": 26.25,
+    "vol": 25.2
+  },
+  {
+    "id": "9910.TW",
+    "name": "豐泰",
+    "days": 2448,
+    "market": "TW",
+    "minP": 70.8,
+    "maxP": 218.75,
+    "lastP": 70.8,
+    "vol": 34.1
+  },
+  {
+    "id": "9914.TW",
+    "name": "美利達",
+    "days": 2448,
+    "market": "TW",
+    "minP": 56.2,
+    "maxP": 356.0,
+    "lastP": 56.2,
+    "vol": 36.7
+  },
+  {
+    "id": "9921.TW",
+    "name": "巨大",
+    "days": 2448,
+    "market": "TW",
+    "minP": 65.7,
+    "maxP": 364.66,
+    "lastP": 65.7,
+    "vol": 34.8
+  },
+  {
+    "id": "9933.TW",
+    "name": "中鼎",
+    "days": 2448,
+    "market": "TW",
+    "minP": 22.91,
+    "maxP": 49.63,
+    "lastP": 36.85,
+    "vol": 24.0
+  },
+  {
+    "id": "9939.TW",
+    "name": "宏全",
+    "days": 2448,
+    "market": "TW",
+    "minP": 40.5,
+    "maxP": 175.5,
+    "lastP": 112.0,
+    "vol": 22.1
+  },
+  {
+    "id": "9941.TW",
+    "name": "裕融",
+    "days": 2448,
+    "market": "TW",
+    "minP": 36.58,
+    "maxP": 189.18,
+    "lastP": 77.6,
+    "vol": 25.6
+  },
+  {
+    "id": "9945.TW",
+    "name": "潤泰新",
+    "days": 2448,
+    "market": "TW",
+    "minP": 10.62,
+    "maxP": 59.48,
+    "lastP": 23.8,
+    "vol": 28.4
   },
   {
     "id": "1477",
-    "name": "聚陽",
-    "days": 495
+    "name": "1477",
+    "days": 495,
+    "market": "US",
+    "minP": 215.0,
+    "maxP": 456.86,
+    "lastP": 217.0,
+    "vol": 38.8
   },
   {
     "id": "1504",
-    "name": "東元",
-    "days": 495
+    "name": "1504",
+    "days": 495,
+    "market": "US",
+    "minP": 43.0,
+    "maxP": 119.5,
+    "lastP": 61.0,
+    "vol": 42.9
   },
   {
     "id": "1590",
-    "name": "亞德客-KY",
-    "days": 495
+    "name": "1590",
+    "days": 495,
+    "market": "US",
+    "minP": 675.0,
+    "maxP": 1380.0,
+    "lastP": 1360.0,
+    "vol": 42.0
   },
   {
     "id": "1611",
-    "name": "中電",
-    "days": 495
+    "name": "1611",
+    "days": 495,
+    "market": "US",
+    "minP": 11.1,
+    "maxP": 21.45,
+    "lastP": 11.95,
+    "vol": 34.0
   },
   {
     "id": "2301",
-    "name": "光寶科",
-    "days": 495
+    "name": "2301",
+    "days": 495,
+    "market": "US",
+    "minP": 71.6,
+    "maxP": 195.0,
+    "lastP": 169.5,
+    "vol": 43.3
   },
   {
     "id": "2308",
-    "name": "台達電",
-    "days": 495
+    "name": "2308",
+    "days": 495,
+    "market": "US",
+    "minP": 280.5,
+    "maxP": 2075.0,
+    "lastP": 2075.0,
+    "vol": 45.7
   },
   {
     "id": "2327",
-    "name": "國巨",
-    "days": 495
-  },
-  {
-    "id": "2330",
-    "name": "台積電",
-    "days": 495
-  },
-  {
-    "id": "2337",
-    "name": "旺宏",
-    "days": 495
-  },
-  {
-    "id": "2353",
-    "name": "宏碁",
-    "days": 495
-  },
-  {
-    "id": "2395",
-    "name": "研華",
-    "days": 495
-  },
-  {
-    "id": "2409",
-    "name": "友達",
-    "days": 495
-  },
-  {
-    "id": "2412",
-    "name": "中華電",
-    "days": 495
-  },
-  {
-    "id": "2634",
-    "name": "漢翔",
-    "days": 495
-  },
-  {
-    "id": "2886",
-    "name": "兆豐金",
-    "days": 495
-  },
-  {
-    "id": "3008",
-    "name": "大立光",
-    "days": 495
-  },
-  {
-    "id": "3035",
-    "name": "智原",
-    "days": 495
-  },
-  {
-    "id": "3045",
-    "name": "台灣大",
-    "days": 495
-  },
-  {
-    "id": "4916",
-    "name": "事欣科",
-    "days": 495
-  },
-  {
-    "id": "4958",
-    "name": "臻鼎-KY",
-    "days": 495
-  },
-  {
-    "id": "6176",
-    "name": "瑞儀",
-    "days": 495
-  },
-  {
-    "id": "6271",
-    "name": "同欣電",
-    "days": 495
-  },
-  {
-    "id": "6526",
-    "name": "達發",
-    "days": 495
-  },
-  {
-    "id": "8464",
-    "name": "億豐",
-    "days": 495
+    "name": "2327",
+    "days": 495,
+    "market": "US",
+    "minP": 96.62,
+    "maxP": 539.0,
+    "lastP": 297.0,
+    "vol": 147.8
   },
   {
     "id": "2328",
-    "name": "廣宇",
-    "days": 254
+    "name": "2328",
+    "days": 254,
+    "market": "US",
+    "minP": 32.5,
+    "maxP": 62.0,
+    "lastP": 44.4,
+    "vol": 44.6
+  },
+  {
+    "id": "2330",
+    "name": "2330",
+    "days": 495,
+    "market": "US",
+    "minP": 742.0,
+    "maxP": 2185.0,
+    "lastP": 2185.0,
+    "vol": 33.8
+  },
+  {
+    "id": "2337",
+    "name": "2337",
+    "days": 495,
+    "market": "US",
+    "minP": 17.05,
+    "maxP": 160.0,
+    "lastP": 132.0,
+    "vol": 67.0
+  },
+  {
+    "id": "2353",
+    "name": "2353",
+    "days": 495,
+    "market": "US",
+    "minP": 25.1,
+    "maxP": 58.5,
+    "lastP": 27.65,
+    "vol": 35.6
+  },
+  {
+    "id": "2395",
+    "name": "2395",
+    "days": 495,
+    "market": "US",
+    "minP": 273.5,
+    "maxP": 418.0,
+    "lastP": 354.0,
+    "vol": 31.8
   },
   {
     "id": "2408",
-    "name": "南亞科",
-    "days": 254
+    "name": "2408",
+    "days": 254,
+    "market": "US",
+    "minP": 32.1,
+    "maxP": 326.5,
+    "lastP": 206.0,
+    "vol": 74.5
+  },
+  {
+    "id": "2409",
+    "name": "2409",
+    "days": 495,
+    "market": "US",
+    "minP": 10.6,
+    "maxP": 20.7,
+    "lastP": 17.2,
+    "vol": 42.6
+  },
+  {
+    "id": "2412",
+    "name": "2412",
+    "days": 495,
+    "market": "US",
+    "minP": 118.5,
+    "maxP": 138.0,
+    "lastP": 135.5,
+    "vol": 11.4
+  },
+  {
+    "id": "2634",
+    "name": "2634",
+    "days": 495,
+    "market": "US",
+    "minP": 40.05,
+    "maxP": 67.2,
+    "lastP": 48.8,
+    "vol": 37.8
+  },
+  {
+    "id": "2886",
+    "name": "2886",
+    "days": 495,
+    "market": "US",
+    "minP": 35.55,
+    "maxP": 43.0,
+    "lastP": 39.55,
+    "vol": 18.0
+  },
+  {
+    "id": "3008",
+    "name": "3008",
+    "days": 495,
+    "market": "US",
+    "minP": 1800.0,
+    "maxP": 3200.0,
+    "lastP": 2520.0,
+    "vol": 38.3
+  },
+  {
+    "id": "3035",
+    "name": "3035",
+    "days": 495,
+    "market": "US",
+    "minP": 139.0,
+    "maxP": 358.5,
+    "lastP": 185.0,
+    "vol": 47.3
+  },
+  {
+    "id": "3045",
+    "name": "3045",
+    "days": 495,
+    "market": "US",
+    "minP": 101.0,
+    "maxP": 119.0,
+    "lastP": 113.0,
+    "vol": 18.4
   },
   {
     "id": "3416",
-    "name": "融程電",
-    "days": 254
+    "name": "3416",
+    "days": 254,
+    "market": "US",
+    "minP": 126.5,
+    "maxP": 203.0,
+    "lastP": 155.5,
+    "vol": 35.3
   },
   {
     "id": "4438",
-    "name": "廣穎",
-    "days": 254
+    "name": "4438",
+    "days": 254,
+    "market": "US",
+    "minP": 55.9,
+    "maxP": 87.8,
+    "lastP": 56.4,
+    "vol": 33.0
+  },
+  {
+    "id": "4916",
+    "name": "4916",
+    "days": 495,
+    "market": "US",
+    "minP": 25.25,
+    "maxP": 69.7,
+    "lastP": 65.8,
+    "vol": 52.9
+  },
+  {
+    "id": "4958",
+    "name": "4958",
+    "days": 495,
+    "market": "US",
+    "minP": 85.8,
+    "maxP": 347.5,
+    "lastP": 347.5,
+    "vol": 47.9
+  },
+  {
+    "id": "6176",
+    "name": "6176",
+    "days": 495,
+    "market": "US",
+    "minP": 88.5,
+    "maxP": 219.5,
+    "lastP": 110.0,
+    "vol": 35.9
+  },
+  {
+    "id": "6271",
+    "name": "6271",
+    "days": 495,
+    "market": "US",
+    "minP": 83.9,
+    "maxP": 189.0,
+    "lastP": 178.0,
+    "vol": 41.7
+  },
+  {
+    "id": "6526",
+    "name": "6526",
+    "days": 495,
+    "market": "US",
+    "minP": 422.5,
+    "maxP": 810.0,
+    "lastP": 601.0,
+    "vol": 43.2
   },
   {
     "id": "6805",
-    "name": "富世達",
-    "days": 254
+    "name": "6805",
+    "days": 254,
+    "market": "US",
+    "minP": 375.5,
+    "maxP": 2000.0,
+    "lastP": 1915.0,
+    "vol": 59.2
   },
   {
-    "id": "7799",
-    "name": "禾榮科",
-    "days": 254
+    "id": "8464",
+    "name": "8464",
+    "days": 495,
+    "market": "US",
+    "minP": 294.5,
+    "maxP": 514.0,
+    "lastP": 356.0,
+    "vol": 40.8
   },
   {
-    "id": "8261",
-    "name": "富鼎",
-    "days": 254
+    "id": "A",
+    "name": "A",
+    "days": 2533,
+    "market": "US",
+    "minP": 39.26,
+    "maxP": 179.28,
+    "lastP": 115.55,
+    "vol": 27.5
   },
   {
-    "id": "1799",
-    "name": "易威",
-    "days": 253
+    "id": "AAPL",
+    "name": "AAPL",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.59,
+    "maxP": 286.19,
+    "lastP": 271.06,
+    "vol": 28.9
   },
   {
-    "id": "3313",
-    "name": "斐成",
-    "days": 253
+    "id": "ABBV",
+    "name": "ABBV",
+    "days": 2533,
+    "market": "US",
+    "minP": 55.78,
+    "maxP": 244.38,
+    "lastP": 198.71,
+    "vol": 26.0
   },
   {
-    "id": "3529",
-    "name": "力旺",
-    "days": 253
+    "id": "ABNB",
+    "name": "ABNB",
+    "days": 1348,
+    "market": "US",
+    "minP": 82.49,
+    "maxP": 216.84,
+    "lastP": 142.82,
+    "vol": 46.3
   },
   {
-    "id": "4147",
-    "name": "中裕",
-    "days": 253
+    "id": "ABT",
+    "name": "ABT",
+    "days": 2533,
+    "market": "US",
+    "minP": 36.95,
+    "maxP": 141.46,
+    "lastP": 91.13,
+    "vol": 23.7
   },
   {
-    "id": "4303",
-    "name": "信立",
-    "days": 253
+    "id": "ACGL",
+    "name": "ACGL",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.24,
+    "maxP": 114.86,
+    "lastP": 96.19,
+    "vol": 27.5
   },
   {
-    "id": "4966",
-    "name": "譜瑞-KY",
-    "days": 253
+    "id": "ACN",
+    "name": "ACN",
+    "days": 2533,
+    "market": "US",
+    "minP": 109.29,
+    "maxP": 415.42,
+    "lastP": 178.36,
+    "vol": 26.5
   },
   {
-    "id": "5314",
-    "name": "世紀",
-    "days": 253
+    "id": "ADBE",
+    "name": "ADBE",
+    "days": 2533,
+    "market": "US",
+    "minP": 90.85,
+    "maxP": 688.37,
+    "lastP": 245.44,
+    "vol": 34.2
   },
   {
-    "id": "6190",
-    "name": "萬泰科",
-    "days": 253
+    "id": "ADI",
+    "name": "ADI",
+    "days": 2533,
+    "market": "US",
+    "minP": 52.55,
+    "maxP": 403.88,
+    "lastP": 399.57,
+    "vol": 32.4
   },
   {
-    "id": "6231",
-    "name": "系微",
-    "days": 253
+    "id": "ADM",
+    "name": "ADM",
+    "days": 2533,
+    "market": "US",
+    "minP": 29.31,
+    "maxP": 98.22,
+    "lastP": 69.23,
+    "vol": 27.3
   },
   {
-    "id": "6584",
-    "name": "南俊國際",
-    "days": 253
+    "id": "ADP",
+    "name": "ADP",
+    "days": 2533,
+    "market": "US",
+    "minP": 85.14,
+    "maxP": 326.81,
+    "lastP": 196.53,
+    "vol": 24.3
   },
   {
-    "id": "6620",
-    "name": "峰源-KY",
-    "days": 253
+    "id": "ADSK",
+    "name": "ADSK",
+    "days": 2533,
+    "market": "US",
+    "minP": 50.54,
+    "maxP": 342.27,
+    "lastP": 237.44,
+    "vol": 36.2
   },
   {
-    "id": "6624",
-    "name": "萬年清",
-    "days": 253
+    "id": "AEE",
+    "name": "AEE",
+    "days": 2533,
+    "market": "US",
+    "minP": 46.47,
+    "maxP": 114.32,
+    "lastP": 111.12,
+    "vol": 21.9
   },
   {
-    "id": "6643",
-    "name": "M31",
-    "days": 253
+    "id": "AEP",
+    "name": "AEP",
+    "days": 2533,
+    "market": "US",
+    "minP": 58.16,
+    "maxP": 137.15,
+    "lastP": 134.73,
+    "vol": 20.9
   },
   {
-    "id": "6785",
-    "name": "昱展新藥",
-    "days": 253
+    "id": "AES",
+    "name": "AES",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.56,
+    "maxP": 29.27,
+    "lastP": 14.49,
+    "vol": 36.2
   },
   {
-    "id": "6903",
-    "name": "巨漢",
-    "days": 253
+    "id": "AFL",
+    "name": "AFL",
+    "days": 2533,
+    "market": "US",
+    "minP": 25.27,
+    "maxP": 117.47,
+    "lastP": 114.62,
+    "vol": 25.6
   },
   {
-    "id": "8047",
-    "name": "星雲",
-    "days": 253
+    "id": "AIG",
+    "name": "AIG",
+    "days": 2533,
+    "market": "US",
+    "minP": 18.78,
+    "maxP": 87.72,
+    "lastP": 75.14,
+    "vol": 32.7
   },
   {
-    "id": "8299",
-    "name": "群聯",
-    "days": 253
+    "id": "AIZ",
+    "name": "AIZ",
+    "days": 2533,
+    "market": "US",
+    "minP": 77.09,
+    "maxP": 243.31,
+    "lastP": 229.8,
+    "vol": 27.0
   },
   {
-    "id": "6997",
-    "name": "博弘",
-    "days": 251
+    "id": "AJG",
+    "name": "AJG",
+    "days": 2533,
+    "market": "US",
+    "minP": 43.43,
+    "maxP": 348.77,
+    "lastP": 215.38,
+    "vol": 23.0
+  },
+  {
+    "id": "AKAM",
+    "name": "AKAM",
+    "days": 2533,
+    "market": "US",
+    "minP": 44.91,
+    "maxP": 128.32,
+    "lastP": 95.25,
+    "vol": 33.3
+  },
+  {
+    "id": "ALB",
+    "name": "ALB",
+    "days": 2533,
+    "market": "US",
+    "minP": 50.76,
+    "maxP": 325.38,
+    "lastP": 188.33,
+    "vol": 48.2
+  },
+  {
+    "id": "ALGN",
+    "name": "ALGN",
+    "days": 2533,
+    "market": "US",
+    "minP": 72.01,
+    "maxP": 729.92,
+    "lastP": 189.61,
+    "vol": 49.5
+  },
+  {
+    "id": "ALL",
+    "name": "ALL",
+    "days": 2533,
+    "market": "US",
+    "minP": 64.95,
+    "maxP": 218.23,
+    "lastP": 212.88,
+    "vol": 24.9
+  },
+  {
+    "id": "ALLE",
+    "name": "ALLE",
+    "days": 2533,
+    "market": "US",
+    "minP": 62.84,
+    "maxP": 179.77,
+    "lastP": 146.1,
+    "vol": 26.7
+  },
+  {
+    "id": "ALNY",
+    "name": "ALNY",
+    "days": 2533,
+    "market": "US",
+    "minP": 31.41,
+    "maxP": 491.22,
+    "lastP": 305.54,
+    "vol": 54.2
+  },
+  {
+    "id": "AMAT",
+    "name": "AMAT",
+    "days": 2533,
+    "market": "US",
+    "minP": 19.61,
+    "maxP": 417.04,
+    "lastP": 417.04,
+    "vol": 42.5
+  },
+  {
+    "id": "AMCR",
+    "name": "AMCR",
+    "days": 2533,
+    "market": "US",
+    "minP": 29.75,
+    "maxP": 67.45,
+    "lastP": 38.95,
+    "vol": 26.2
+  },
+  {
+    "id": "AMD",
+    "name": "AMD",
+    "days": 2533,
+    "market": "US",
+    "minP": 2.62,
+    "maxP": 347.81,
+    "lastP": 347.81,
+    "vol": 57.7
+  },
+  {
+    "id": "AME",
+    "name": "AME",
+    "days": 2533,
+    "market": "US",
+    "minP": 43.88,
+    "maxP": 241.46,
+    "lastP": 232.95,
+    "vol": 24.5
+  },
+  {
+    "id": "AMGN",
+    "name": "AMGN",
+    "days": 2533,
+    "market": "US",
+    "minP": 135.22,
+    "maxP": 388.16,
+    "lastP": 344.55,
+    "vol": 24.7
+  },
+  {
+    "id": "AMP",
+    "name": "AMP",
+    "days": 2533,
+    "market": "US",
+    "minP": 82.88,
+    "maxP": 575.13,
+    "lastP": 464.12,
+    "vol": 34.0
+  },
+  {
+    "id": "AMT",
+    "name": "AMT",
+    "days": 2533,
+    "market": "US",
+    "minP": 100.85,
+    "maxP": 303.62,
+    "lastP": 178.21,
+    "vol": 26.0
+  },
+  {
+    "id": "AMZN",
+    "name": "AMZN",
+    "days": 2533,
+    "market": "US",
+    "minP": 29.31,
+    "maxP": 263.99,
+    "lastP": 263.99,
+    "vol": 32.5
+  },
+  {
+    "id": "ANET",
+    "name": "ANET",
+    "days": 2533,
+    "market": "US",
+    "minP": 3.81,
+    "maxP": 177.73,
+    "lastP": 176.91,
+    "vol": 44.6
+  },
+  {
+    "id": "AON",
+    "name": "AON",
+    "days": 2533,
+    "market": "US",
+    "minP": 100.8,
+    "maxP": 409.32,
+    "lastP": 321.14,
+    "vol": 23.4
+  },
+  {
+    "id": "AOS",
+    "name": "AOS",
+    "days": 2533,
+    "market": "US",
+    "minP": 34.75,
+    "maxP": 91.98,
+    "lastP": 64.38,
+    "vol": 26.8
+  },
+  {
+    "id": "APA",
+    "name": "APA",
+    "days": 2533,
+    "market": "US",
+    "minP": 4.02,
+    "maxP": 67.35,
+    "lastP": 37.73,
+    "vol": 60.9
+  },
+  {
+    "id": "APD",
+    "name": "APD",
+    "days": 2533,
+    "market": "US",
+    "minP": 124.72,
+    "maxP": 338.07,
+    "lastP": 301.76,
+    "vol": 25.9
+  },
+  {
+    "id": "APH",
+    "name": "APH",
+    "days": 2533,
+    "market": "US",
+    "minP": 13.77,
+    "maxP": 166.25,
+    "lastP": 149.71,
+    "vol": 27.4
+  },
+  {
+    "id": "APO",
+    "name": "APO",
+    "days": 2533,
+    "market": "US",
+    "minP": 14.48,
+    "maxP": 178.61,
+    "lastP": 124.26,
+    "vol": 37.7
+  },
+  {
+    "id": "APP",
+    "name": "APP",
+    "days": 1263,
+    "market": "US",
+    "minP": 9.3,
+    "maxP": 733.6,
+    "lastP": 448.29,
+    "vol": 76.0
+  },
+  {
+    "id": "APTV",
+    "name": "APTV",
+    "days": 2533,
+    "market": "US",
+    "minP": 33.55,
+    "maxP": 178.12,
+    "lastP": 60.1,
+    "vol": 41.2
+  },
+  {
+    "id": "ARE",
+    "name": "ARE",
+    "days": 2533,
+    "market": "US",
+    "minP": 42.61,
+    "maxP": 223.57,
+    "lastP": 47.4,
+    "vol": 28.7
+  },
+  {
+    "id": "ARES",
+    "name": "ARES",
+    "days": 2533,
+    "market": "US",
+    "minP": 12.25,
+    "maxP": 198.22,
+    "lastP": 115.23,
+    "vol": 36.6
+  },
+  {
+    "id": "ARM",
+    "name": "ARM",
+    "days": 655,
+    "market": "US",
+    "minP": 47.87,
+    "maxP": 234.81,
+    "lastP": 234.81,
+    "vol": 70.3
+  },
+  {
+    "id": "ASML",
+    "name": "ASML",
+    "days": 2533,
+    "market": "US",
+    "minP": 91.3,
+    "maxP": 1526.51,
+    "lastP": 1457.7,
+    "vol": 38.2
+  },
+  {
+    "id": "ATO",
+    "name": "ATO",
+    "days": 2533,
+    "market": "US",
+    "minP": 68.96,
+    "maxP": 192.29,
+    "lastP": 185.45,
+    "vol": 21.2
+  },
+  {
+    "id": "AVB",
+    "name": "AVB",
+    "days": 2533,
+    "market": "US",
+    "minP": 121.08,
+    "maxP": 258.26,
+    "lastP": 172.38,
+    "vol": 24.7
+  },
+  {
+    "id": "AVGO",
+    "name": "AVGO",
+    "days": 2533,
+    "market": "US",
+    "minP": 14.01,
+    "maxP": 422.76,
+    "lastP": 422.76,
+    "vol": 38.9
+  },
+  {
+    "id": "AVY",
+    "name": "AVY",
+    "days": 2533,
+    "market": "US",
+    "minP": 68.61,
+    "maxP": 229.52,
+    "lastP": 165.5,
+    "vol": 26.8
+  },
+  {
+    "id": "AWK",
+    "name": "AWK",
+    "days": 2533,
+    "market": "US",
+    "minP": 68.26,
+    "maxP": 188.86,
+    "lastP": 132.42,
+    "vol": 23.7
+  },
+  {
+    "id": "AXON",
+    "name": "AXON",
+    "days": 2533,
+    "market": "US",
+    "minP": 17.66,
+    "maxP": 870.97,
+    "lastP": 397.12,
+    "vol": 48.1
+  },
+  {
+    "id": "AXP",
+    "name": "AXP",
+    "days": 2533,
+    "market": "US",
+    "minP": 57.67,
+    "maxP": 384.89,
+    "lastP": 314.08,
+    "vol": 31.4
+  },
+  {
+    "id": "AZO",
+    "name": "AZO",
+    "days": 2533,
+    "market": "US",
+    "minP": 493.15,
+    "maxP": 4354.54,
+    "lastP": 3577.91,
+    "vol": 26.4
+  },
+  {
+    "id": "BA",
+    "name": "BA",
+    "days": 2533,
+    "market": "US",
+    "minP": 95.01,
+    "maxP": 440.62,
+    "lastP": 232.44,
+    "vol": 41.4
+  },
+  {
+    "id": "BAC",
+    "name": "BAC",
+    "days": 2533,
+    "market": "US",
+    "minP": 12.18,
+    "maxP": 57.25,
+    "lastP": 52.05,
+    "vol": 30.7
+  },
+  {
+    "id": "BALL",
+    "name": "BALL",
+    "days": 2533,
+    "market": "US",
+    "minP": 34.17,
+    "maxP": 97.91,
+    "lastP": 61.32,
+    "vol": 28.2
+  },
+  {
+    "id": "BAX",
+    "name": "BAX",
+    "days": 2533,
+    "market": "US",
+    "minP": 15.8,
+    "maxP": 94.14,
+    "lastP": 18.16,
+    "vol": 29.5
+  },
+  {
+    "id": "BBY",
+    "name": "BBY",
+    "days": 2533,
+    "market": "US",
+    "minP": 29.17,
+    "maxP": 138.0,
+    "lastP": 60.45,
+    "vol": 37.9
+  },
+  {
+    "id": "BDX",
+    "name": "BDX",
+    "days": 2533,
+    "market": "US",
+    "minP": 116.44,
+    "maxP": 222.95,
+    "lastP": 152.14,
+    "vol": 23.5
+  },
+  {
+    "id": "BEN",
+    "name": "BEN",
+    "days": 2533,
+    "market": "US",
+    "minP": 15.3,
+    "maxP": 47.28,
+    "lastP": 27.12,
+    "vol": 33.0
+  },
+  {
+    "id": "BF-B",
+    "name": "BF-B",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.8,
+    "maxP": 81.82,
+    "lastP": 28.31,
+    "vol": 27.7
+  },
+  {
+    "id": "BG",
+    "name": "BG",
+    "days": 2533,
+    "market": "US",
+    "minP": 30.25,
+    "maxP": 129.42,
+    "lastP": 124.9,
+    "vol": 30.8
+  },
+  {
+    "id": "BIIB",
+    "name": "BIIB",
+    "days": 2533,
+    "market": "US",
+    "minP": 113.38,
+    "maxP": 414.71,
+    "lastP": 184.38,
+    "vol": 40.0
+  },
+  {
+    "id": "BK",
+    "name": "BK",
+    "days": 2533,
+    "market": "US",
+    "minP": 27.49,
+    "maxP": 137.92,
+    "lastP": 134.05,
+    "vol": 27.2
+  },
+  {
+    "id": "BKNG",
+    "name": "BKNG",
+    "days": 2533,
+    "market": "US",
+    "minP": 46.09,
+    "maxP": 232.64,
+    "lastP": 180.25,
+    "vol": 32.4
+  },
+  {
+    "id": "BKR",
+    "name": "BKR",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.33,
+    "maxP": 68.94,
+    "lastP": 68.94,
+    "vol": 41.6
+  },
+  {
+    "id": "BLDR",
+    "name": "BLDR",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.14,
+    "maxP": 211.12,
+    "lastP": 90.04,
+    "vol": 47.5
+  },
+  {
+    "id": "BLK",
+    "name": "BLK",
+    "days": 2533,
+    "market": "US",
+    "minP": 319.54,
+    "maxP": 1202.59,
+    "lastP": 1044.97,
+    "vol": 27.7
+  },
+  {
+    "id": "BMY",
+    "name": "BMY",
+    "days": 2533,
+    "market": "US",
+    "minP": 39.66,
+    "maxP": 81.13,
+    "lastP": 58.71,
+    "vol": 25.4
+  },
+  {
+    "id": "BR",
+    "name": "BR",
+    "days": 2533,
+    "market": "US",
+    "minP": 58.52,
+    "maxP": 266.89,
+    "lastP": 155.07,
+    "vol": 23.7
+  },
+  {
+    "id": "BRK-B",
+    "name": "BRK-B",
+    "days": 2533,
+    "market": "US",
+    "minP": 138.5,
+    "maxP": 539.8,
+    "lastP": 469.32,
+    "vol": 19.4
+  },
+  {
+    "id": "BRO",
+    "name": "BRO",
+    "days": 2533,
+    "market": "US",
+    "minP": 17.15,
+    "maxP": 124.43,
+    "lastP": 65.9,
+    "vol": 23.5
+  },
+  {
+    "id": "BSX",
+    "name": "BSX",
+    "days": 2533,
+    "market": "US",
+    "minP": 18.81,
+    "maxP": 108.14,
+    "lastP": 62.07,
+    "vol": 27.2
+  },
+  {
+    "id": "BX",
+    "name": "BX",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.96,
+    "maxP": 199.05,
+    "lastP": 121.65,
+    "vol": 35.7
+  },
+  {
+    "id": "BXP",
+    "name": "BXP",
+    "days": 2533,
+    "market": "US",
+    "minP": 47.06,
+    "maxP": 147.51,
+    "lastP": 57.73,
+    "vol": 31.8
+  },
+  {
+    "id": "C",
+    "name": "C",
+    "days": 2533,
+    "market": "US",
+    "minP": 35.39,
+    "maxP": 133.05,
+    "lastP": 127.98,
+    "vol": 33.4
+  },
+  {
+    "id": "CAG",
+    "name": "CAG",
+    "days": 2533,
+    "market": "US",
+    "minP": 14.09,
+    "maxP": 41.5,
+    "lastP": 14.17,
+    "vol": 26.2
+  },
+  {
+    "id": "CAH",
+    "name": "CAH",
+    "days": 2533,
+    "market": "US",
+    "minP": 41.0,
+    "maxP": 229.88,
+    "lastP": 199.85,
+    "vol": 29.5
+  },
+  {
+    "id": "CARR",
+    "name": "CARR",
+    "days": 1533,
+    "market": "US",
+    "minP": 11.54,
+    "maxP": 82.67,
+    "lastP": 60.97,
+    "vol": 37.0
+  },
+  {
+    "id": "CASY",
+    "name": "CASY",
+    "days": 2533,
+    "market": "US",
+    "minP": 96.17,
+    "maxP": 799.55,
+    "lastP": 799.55,
+    "vol": 27.3
+  },
+  {
+    "id": "CAT",
+    "name": "CAT",
+    "days": 2533,
+    "market": "US",
+    "minP": 69.43,
+    "maxP": 835.24,
+    "lastP": 830.79,
+    "vol": 30.6
+  },
+  {
+    "id": "CB",
+    "name": "CB",
+    "days": 2533,
+    "market": "US",
+    "minP": 94.2,
+    "maxP": 342.76,
+    "lastP": 326.12,
+    "vol": 23.8
+  },
+  {
+    "id": "CBOE",
+    "name": "CBOE",
+    "days": 2533,
+    "market": "US",
+    "minP": 61.96,
+    "maxP": 309.38,
+    "lastP": 303.81,
+    "vol": 24.7
+  },
+  {
+    "id": "CBRE",
+    "name": "CBRE",
+    "days": 2533,
+    "market": "US",
+    "minP": 24.54,
+    "maxP": 171.61,
+    "lastP": 148.29,
+    "vol": 32.9
+  },
+  {
+    "id": "CCEP",
+    "name": "CCEP",
+    "days": 2533,
+    "market": "US",
+    "minP": 29.71,
+    "maxP": 110.43,
+    "lastP": 98.06,
+    "vol": 27.9
+  },
+  {
+    "id": "CCI",
+    "name": "CCI",
+    "days": 2533,
+    "market": "US",
+    "minP": 76.96,
+    "maxP": 208.74,
+    "lastP": 86.34,
+    "vol": 25.8
+  },
+  {
+    "id": "CCL",
+    "name": "CCL",
+    "days": 2533,
+    "market": "US",
+    "minP": 6.38,
+    "maxP": 71.94,
+    "lastP": 27.17,
+    "vol": 57.9
+  },
+  {
+    "id": "CDNS",
+    "name": "CDNS",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.98,
+    "maxP": 373.37,
+    "lastP": 332.89,
+    "vol": 33.5
+  },
+  {
+    "id": "CDW",
+    "name": "CDW",
+    "days": 2533,
+    "market": "US",
+    "minP": 38.34,
+    "maxP": 257.87,
+    "lastP": 135.32,
+    "vol": 29.9
+  },
+  {
+    "id": "CEG",
+    "name": "CEG",
+    "days": 1070,
+    "market": "US",
+    "minP": 41.9,
+    "maxP": 403.95,
+    "lastP": 313.53,
+    "vol": 49.0
+  },
+  {
+    "id": "CF",
+    "name": "CF",
+    "days": 2533,
+    "market": "US",
+    "minP": 21.14,
+    "maxP": 137.6,
+    "lastP": 120.93,
+    "vol": 40.5
+  },
+  {
+    "id": "CFG",
+    "name": "CFG",
+    "days": 2533,
+    "market": "US",
+    "minP": 15.32,
+    "maxP": 68.12,
+    "lastP": 63.79,
+    "vol": 38.5
+  },
+  {
+    "id": "CHD",
+    "name": "CHD",
+    "days": 2533,
+    "market": "US",
+    "minP": 42.77,
+    "maxP": 113.2,
+    "lastP": 95.02,
+    "vol": 21.7
+  },
+  {
+    "id": "CHRW",
+    "name": "CHRW",
+    "days": 2533,
+    "market": "US",
+    "minP": 60.11,
+    "maxP": 200.59,
+    "lastP": 183.03,
+    "vol": 28.5
+  },
+  {
+    "id": "CHTR",
+    "name": "CHTR",
+    "days": 2533,
+    "market": "US",
+    "minP": 180.13,
+    "maxP": 821.01,
+    "lastP": 180.13,
+    "vol": 34.4
+  },
+  {
+    "id": "CI",
+    "name": "CI",
+    "days": 2533,
+    "market": "US",
+    "minP": 116.03,
+    "maxP": 366.85,
+    "lastP": 275.64,
+    "vol": 30.8
+  },
+  {
+    "id": "CIEN",
+    "name": "CIEN",
+    "days": 2533,
+    "market": "US",
+    "minP": 15.73,
+    "maxP": 520.8,
+    "lastP": 520.8,
+    "vol": 43.4
+  },
+  {
+    "id": "CINF",
+    "name": "CINF",
+    "days": 2533,
+    "market": "US",
+    "minP": 48.54,
+    "maxP": 172.65,
+    "lastP": 164.48,
+    "vol": 28.7
+  },
+  {
+    "id": "CL",
+    "name": "CL",
+    "days": 2533,
+    "market": "US",
+    "minP": 57.88,
+    "maxP": 108.77,
+    "lastP": 84.65,
+    "vol": 19.6
+  },
+  {
+    "id": "CLX",
+    "name": "CLX",
+    "days": 2533,
+    "market": "US",
+    "minP": 96.85,
+    "maxP": 237.74,
+    "lastP": 98.68,
+    "vol": 24.1
+  },
+  {
+    "id": "CMCSA",
+    "name": "CMCSA",
+    "days": 2533,
+    "market": "US",
+    "minP": 24.8,
+    "maxP": 57.87,
+    "lastP": 27.56,
+    "vol": 26.3
+  },
+  {
+    "id": "CME",
+    "name": "CME",
+    "days": 2533,
+    "market": "US",
+    "minP": 89.09,
+    "maxP": 326.46,
+    "lastP": 285.06,
+    "vol": 24.0
+  },
+  {
+    "id": "CMG",
+    "name": "CMG",
+    "days": 2533,
+    "market": "US",
+    "minP": 5.03,
+    "maxP": 68.55,
+    "lastP": 34.21,
+    "vol": 35.4
+  },
+  {
+    "id": "CMI",
+    "name": "CMI",
+    "days": 2533,
+    "market": "US",
+    "minP": 102.76,
+    "maxP": 660.75,
+    "lastP": 660.75,
+    "vol": 27.9
+  },
+  {
+    "id": "CMS",
+    "name": "CMS",
+    "days": 2533,
+    "market": "US",
+    "minP": 39.38,
+    "maxP": 79.94,
+    "lastP": 76.27,
+    "vol": 20.7
+  },
+  {
+    "id": "CNC",
+    "name": "CNC",
+    "days": 2533,
+    "market": "US",
+    "minP": 25.21,
+    "maxP": 97.22,
+    "lastP": 41.82,
+    "vol": 39.5
+  },
+  {
+    "id": "CNP",
+    "name": "CNP",
+    "days": 2533,
+    "market": "US",
+    "minP": 12.1,
+    "maxP": 44.14,
+    "lastP": 42.47,
+    "vol": 26.1
+  },
+  {
+    "id": "COF",
+    "name": "COF",
+    "days": 2533,
+    "market": "US",
+    "minP": 42.27,
+    "maxP": 257.94,
+    "lastP": 191.39,
+    "vol": 37.3
+  },
+  {
+    "id": "COHR",
+    "name": "COHR",
+    "days": 2533,
+    "market": "US",
+    "minP": 18.02,
+    "maxP": 350.47,
+    "lastP": 336.09,
+    "vol": 55.7
+  },
+  {
+    "id": "COIN",
+    "name": "COIN",
+    "days": 1264,
+    "market": "US",
+    "minP": 32.53,
+    "maxP": 419.78,
+    "lastP": 199.77,
+    "vol": 85.1
+  },
+  {
+    "id": "COO",
+    "name": "COO",
+    "days": 2533,
+    "market": "US",
+    "minP": 38.27,
+    "maxP": 113.98,
+    "lastP": 64.42,
+    "vol": 27.7
+  },
+  {
+    "id": "COP",
+    "name": "COP",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.67,
+    "maxP": 134.94,
+    "lastP": 121.76,
+    "vol": 37.8
+  },
+  {
+    "id": "COR",
+    "name": "COR",
+    "days": 2533,
+    "market": "US",
+    "minP": 69.03,
+    "maxP": 374.75,
+    "lastP": 308.19,
+    "vol": 26.9
+  },
+  {
+    "id": "COST",
+    "name": "COST",
+    "days": 2533,
+    "market": "US",
+    "minP": 141.29,
+    "maxP": 1076.86,
+    "lastP": 1011.15,
+    "vol": 22.0
+  },
+  {
+    "id": "CPAY",
+    "name": "CPAY",
+    "days": 2533,
+    "market": "US",
+    "minP": 131.26,
+    "maxP": 389.55,
+    "lastP": 312.91,
+    "vol": 32.5
+  },
+  {
+    "id": "CPB",
+    "name": "CPB",
+    "days": 2533,
+    "market": "US",
+    "minP": 20.0,
+    "maxP": 67.55,
+    "lastP": 20.62,
+    "vol": 25.6
+  },
+  {
+    "id": "CPRT",
+    "name": "CPRT",
+    "days": 2533,
+    "market": "US",
+    "minP": 5.06,
+    "maxP": 63.84,
+    "lastP": 33.07,
+    "vol": 27.4
+  },
+  {
+    "id": "CPT",
+    "name": "CPT",
+    "days": 2533,
+    "market": "US",
+    "minP": 67.3,
+    "maxP": 178.68,
+    "lastP": 101.75,
+    "vol": 24.4
+  },
+  {
+    "id": "CRH",
+    "name": "CRH",
+    "days": 2533,
+    "market": "US",
+    "minP": 18.64,
+    "maxP": 131.38,
+    "lastP": 118.0,
+    "vol": 31.0
+  },
+  {
+    "id": "CRL",
+    "name": "CRL",
+    "days": 2533,
+    "market": "US",
+    "minP": 67.4,
+    "maxP": 458.3,
+    "lastP": 169.8,
+    "vol": 37.7
+  },
+  {
+    "id": "CRM",
+    "name": "CRM",
+    "days": 2533,
+    "market": "US",
+    "minP": 68.41,
+    "maxP": 367.87,
+    "lastP": 178.16,
+    "vol": 34.9
+  },
+  {
+    "id": "CRWD",
+    "name": "CRWD",
+    "days": 1727,
+    "market": "US",
+    "minP": 33.01,
+    "maxP": 557.53,
+    "lastP": 448.13,
+    "vol": 55.8
+  },
+  {
+    "id": "CSCO",
+    "name": "CSCO",
+    "days": 2533,
+    "market": "US",
+    "minP": 26.21,
+    "maxP": 89.8,
+    "lastP": 89.01,
+    "vol": 25.4
+  },
+  {
+    "id": "CSGP",
+    "name": "CSGP",
+    "days": 2533,
+    "market": "US",
+    "minP": 17.68,
+    "maxP": 99.74,
+    "lastP": 36.44,
+    "vol": 32.5
+  },
+  {
+    "id": "CSX",
+    "name": "CSX",
+    "days": 2533,
+    "market": "US",
+    "minP": 8.16,
+    "maxP": 46.18,
+    "lastP": 45.41,
+    "vol": 27.6
+  },
+  {
+    "id": "CTAS",
+    "name": "CTAS",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.09,
+    "maxP": 227.66,
+    "lastP": 175.9,
+    "vol": 26.6
+  },
+  {
+    "id": "CTRA",
+    "name": "CTRA",
+    "days": 2533,
+    "market": "US",
+    "minP": 13.51,
+    "maxP": 36.31,
+    "lastP": 33.53,
+    "vol": 35.5
+  },
+  {
+    "id": "CTSH",
+    "name": "CTSH",
+    "days": 2533,
+    "market": "US",
+    "minP": 41.61,
+    "maxP": 93.12,
+    "lastP": 55.11,
+    "vol": 28.6
+  },
+  {
+    "id": "CTVA",
+    "name": "CTVA",
+    "days": 1739,
+    "market": "US",
+    "minP": 20.74,
+    "maxP": 85.46,
+    "lastP": 79.8,
+    "vol": 32.8
+  },
+  {
+    "id": "CVNA",
+    "name": "CVNA",
+    "days": 2260,
+    "market": "US",
+    "minP": 3.72,
+    "maxP": 478.45,
+    "lastP": 409.08,
+    "vol": 97.7
+  },
+  {
+    "id": "CVS",
+    "name": "CVS",
+    "days": 2533,
+    "market": "US",
+    "minP": 43.78,
+    "maxP": 110.83,
+    "lastP": 77.94,
+    "vol": 29.2
+  },
+  {
+    "id": "CVX",
+    "name": "CVX",
+    "days": 2533,
+    "market": "US",
+    "minP": 54.22,
+    "maxP": 211.15,
+    "lastP": 185.21,
+    "vol": 29.3
+  },
+  {
+    "id": "D",
+    "name": "D",
+    "days": 2533,
+    "market": "US",
+    "minP": 39.53,
+    "maxP": 89.8,
+    "lastP": 62.58,
+    "vol": 23.6
+  },
+  {
+    "id": "DAL",
+    "name": "DAL",
+    "days": 2533,
+    "market": "US",
+    "minP": 19.19,
+    "maxP": 75.35,
+    "lastP": 68.45,
+    "vol": 42.0
+  },
+  {
+    "id": "DASH",
+    "name": "DASH",
+    "days": 1349,
+    "market": "US",
+    "minP": 43.06,
+    "maxP": 281.74,
+    "lastP": 176.78,
+    "vol": 57.3
+  },
+  {
+    "id": "DD",
+    "name": "DD",
+    "days": 2533,
+    "market": "US",
+    "minP": 11.91,
+    "maxP": 51.53,
+    "lastP": 46.33,
+    "vol": 31.2
+  },
+  {
+    "id": "DDOG",
+    "name": "DDOG",
+    "days": 1658,
+    "market": "US",
+    "minP": 28.04,
+    "maxP": 199.72,
+    "lastP": 129.48,
+    "vol": 58.2
+  },
+  {
+    "id": "DE",
+    "name": "DE",
+    "days": 2533,
+    "market": "US",
+    "minP": 75.75,
+    "maxP": 662.49,
+    "lastP": 562.64,
+    "vol": 30.2
+  },
+  {
+    "id": "DECK",
+    "name": "DECK",
+    "days": 2533,
+    "market": "US",
+    "minP": 7.5,
+    "maxP": 223.11,
+    "lastP": 108.53,
+    "vol": 42.4
+  },
+  {
+    "id": "DELL",
+    "name": "DELL",
+    "days": 2435,
+    "market": "US",
+    "minP": 12.0,
+    "maxP": 216.09,
+    "lastP": 216.09,
+    "vol": 41.7
+  },
+  {
+    "id": "DG",
+    "name": "DG",
+    "days": 2533,
+    "market": "US",
+    "minP": 66.97,
+    "maxP": 260.44,
+    "lastP": 120.71,
+    "vol": 32.2
+  },
+  {
+    "id": "DGX",
+    "name": "DGX",
+    "days": 2533,
+    "market": "US",
+    "minP": 71.43,
+    "maxP": 211.91,
+    "lastP": 196.27,
+    "vol": 23.7
+  },
+  {
+    "id": "DHI",
+    "name": "DHI",
+    "days": 2533,
+    "market": "US",
+    "minP": 27.28,
+    "maxP": 197.06,
+    "lastP": 159.9,
+    "vol": 35.6
+  },
+  {
+    "id": "DHR",
+    "name": "DHR",
+    "days": 2533,
+    "market": "US",
+    "minP": 62.29,
+    "maxP": 294.71,
+    "lastP": 177.25,
+    "vol": 25.3
+  },
+  {
+    "id": "DIS",
+    "name": "DIS",
+    "days": 2533,
+    "market": "US",
+    "minP": 79.32,
+    "maxP": 201.91,
+    "lastP": 102.6,
+    "vol": 28.5
+  },
+  {
+    "id": "DLR",
+    "name": "DLR",
+    "days": 2533,
+    "market": "US",
+    "minP": 85.62,
+    "maxP": 203.91,
+    "lastP": 200.0,
+    "vol": 28.1
+  },
+  {
+    "id": "DLTR",
+    "name": "DLTR",
+    "days": 2533,
+    "market": "US",
+    "minP": 61.21,
+    "maxP": 174.08,
+    "lastP": 103.75,
+    "vol": 36.8
+  },
+  {
+    "id": "DOC",
+    "name": "DOC",
+    "days": 2533,
+    "market": "US",
+    "minP": 15.55,
+    "maxP": 37.93,
+    "lastP": 16.43,
+    "vol": 29.2
+  },
+  {
+    "id": "DOV",
+    "name": "DOV",
+    "days": 2533,
+    "market": "US",
+    "minP": 50.33,
+    "maxP": 233.31,
+    "lastP": 224.78,
+    "vol": 26.8
+  },
+  {
+    "id": "DOW",
+    "name": "DOW",
+    "days": 1785,
+    "market": "US",
+    "minP": 20.65,
+    "maxP": 70.91,
+    "lastP": 38.66,
+    "vol": 39.1
+  },
+  {
+    "id": "DPZ",
+    "name": "DPZ",
+    "days": 2533,
+    "market": "US",
+    "minP": 118.56,
+    "maxP": 564.33,
+    "lastP": 367.83,
+    "vol": 29.7
+  },
+  {
+    "id": "DRI",
+    "name": "DRI",
+    "days": 2533,
+    "market": "US",
+    "minP": 34.16,
+    "maxP": 225.78,
+    "lastP": 201.06,
+    "vol": 35.7
+  },
+  {
+    "id": "DTE",
+    "name": "DTE",
+    "days": 2533,
+    "market": "US",
+    "minP": 65.37,
+    "maxP": 150.98,
+    "lastP": 146.88,
+    "vol": 22.4
+  },
+  {
+    "id": "DUK",
+    "name": "DUK",
+    "days": 2533,
+    "market": "US",
+    "minP": 64.15,
+    "maxP": 133.46,
+    "lastP": 127.27,
+    "vol": 20.4
+  },
+  {
+    "id": "DVA",
+    "name": "DVA",
+    "days": 2533,
+    "market": "US",
+    "minP": 43.42,
+    "maxP": 177.35,
+    "lastP": 151.85,
+    "vol": 34.1
+  },
+  {
+    "id": "DVN",
+    "name": "DVN",
+    "days": 2533,
+    "market": "US",
+    "minP": 5.41,
+    "maxP": 78.04,
+    "lastP": 47.94,
+    "vol": 50.4
+  },
+  {
+    "id": "DXCM",
+    "name": "DXCM",
+    "days": 2533,
+    "market": "US",
+    "minP": 11.12,
+    "maxP": 162.81,
+    "lastP": 61.57,
+    "vol": 49.3
+  },
+  {
+    "id": "EA",
+    "name": "EA",
+    "days": 2533,
+    "market": "US",
+    "minP": 61.85,
+    "maxP": 204.79,
+    "lastP": 202.67,
+    "vol": 28.1
+  },
+  {
+    "id": "EBAY",
+    "name": "EBAY",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.72,
+    "maxP": 107.13,
+    "lastP": 97.94,
+    "vol": 31.1
+  },
+  {
+    "id": "ECL",
+    "name": "ECL",
+    "days": 2533,
+    "market": "US",
+    "minP": 110.67,
+    "maxP": 308.35,
+    "lastP": 269.49,
+    "vol": 24.8
+  },
+  {
+    "id": "ED",
+    "name": "ED",
+    "days": 2533,
+    "market": "US",
+    "minP": 65.35,
+    "maxP": 115.46,
+    "lastP": 109.06,
+    "vol": 21.1
+  },
+  {
+    "id": "EFX",
+    "name": "EFX",
+    "days": 2533,
+    "market": "US",
+    "minP": 90.0,
+    "maxP": 307.13,
+    "lastP": 172.47,
+    "vol": 31.4
+  },
+  {
+    "id": "EG",
+    "name": "EG",
+    "days": 2533,
+    "market": "US",
+    "minP": 161.72,
+    "maxP": 414.59,
+    "lastP": 343.38,
+    "vol": 27.2
+  },
+  {
+    "id": "EIX",
+    "name": "EIX",
+    "days": 2533,
+    "market": "US",
+    "minP": 44.47,
+    "maxP": 88.36,
+    "lastP": 68.86,
+    "vol": 28.3
+  },
+  {
+    "id": "EL",
+    "name": "EL",
+    "days": 2533,
+    "market": "US",
+    "minP": 50.06,
+    "maxP": 371.86,
+    "lastP": 77.82,
+    "vol": 36.6
+  },
+  {
+    "id": "ELV",
+    "name": "ELV",
+    "days": 2533,
+    "market": "US",
+    "minP": 117.42,
+    "maxP": 562.29,
+    "lastP": 344.76,
+    "vol": 30.9
+  },
+  {
+    "id": "EME",
+    "name": "EME",
+    "days": 2533,
+    "market": "US",
+    "minP": 44.97,
+    "maxP": 873.11,
+    "lastP": 869.9,
+    "vol": 33.0
+  },
+  {
+    "id": "EMR",
+    "name": "EMR",
+    "days": 2533,
+    "market": "US",
+    "minP": 38.08,
+    "maxP": 161.69,
+    "lastP": 141.35,
+    "vol": 29.0
+  },
+  {
+    "id": "EOG",
+    "name": "EOG",
+    "days": 2533,
+    "market": "US",
+    "minP": 29.76,
+    "maxP": 149.89,
+    "lastP": 133.13,
+    "vol": 39.6
+  },
+  {
+    "id": "EPAM",
+    "name": "EPAM",
+    "days": 2533,
+    "market": "US",
+    "minP": 60.67,
+    "maxP": 717.49,
+    "lastP": 118.98,
+    "vol": 47.5
+  },
+  {
+    "id": "EQIX",
+    "name": "EQIX",
+    "days": 2533,
+    "market": "US",
+    "minP": 319.89,
+    "maxP": 1115.29,
+    "lastP": 1108.76,
+    "vol": 27.0
+  },
+  {
+    "id": "EQR",
+    "name": "EQR",
+    "days": 2533,
+    "market": "US",
+    "minP": 46.24,
+    "maxP": 93.24,
+    "lastP": 62.26,
+    "vol": 25.1
+  },
+  {
+    "id": "EQT",
+    "name": "EQT",
+    "days": 2533,
+    "market": "US",
+    "minP": 4.96,
+    "maxP": 67.93,
+    "lastP": 58.91,
+    "vol": 48.4
+  },
+  {
+    "id": "ERIE",
+    "name": "ERIE",
+    "days": 2533,
+    "market": "US",
+    "minP": 90.6,
+    "maxP": 544.84,
+    "lastP": 233.62,
+    "vol": 28.9
+  },
+  {
+    "id": "ES",
+    "name": "ES",
+    "days": 2533,
+    "market": "US",
+    "minP": 51.1,
+    "maxP": 98.54,
+    "lastP": 68.64,
+    "vol": 24.3
+  },
+  {
+    "id": "ESS",
+    "name": "ESS",
+    "days": 2533,
+    "market": "US",
+    "minP": 182.23,
+    "maxP": 359.31,
+    "lastP": 255.37,
+    "vol": 25.9
+  },
+  {
+    "id": "ETN",
+    "name": "ETN",
+    "days": 2533,
+    "market": "US",
+    "minP": 55.57,
+    "maxP": 424.5,
+    "lastP": 423.92,
+    "vol": 29.7
+  },
+  {
+    "id": "ETR",
+    "name": "ETR",
+    "days": 2533,
+    "market": "US",
+    "minP": 33.7,
+    "maxP": 117.44,
+    "lastP": 113.64,
+    "vol": 24.1
+  },
+  {
+    "id": "EVRG",
+    "name": "EVRG",
+    "days": 2533,
+    "market": "US",
+    "minP": 44.92,
+    "maxP": 84.41,
+    "lastP": 81.23,
+    "vol": 22.8
+  },
+  {
+    "id": "EW",
+    "name": "EW",
+    "days": 2533,
+    "market": "US",
+    "minP": 27.16,
+    "maxP": 130.68,
+    "lastP": 84.15,
+    "vol": 33.3
+  },
+  {
+    "id": "EXC",
+    "name": "EXC",
+    "days": 2533,
+    "market": "US",
+    "minP": 21.38,
+    "maxP": 50.29,
+    "lastP": 46.92,
+    "vol": 23.9
+  },
+  {
+    "id": "EXE",
+    "name": "EXE",
+    "days": 1307,
+    "market": "US",
+    "minP": 41.6,
+    "maxP": 122.89,
+    "lastP": 96.44,
+    "vol": 34.9
+  },
+  {
+    "id": "EXPD",
+    "name": "EXPD",
+    "days": 2533,
+    "market": "US",
+    "minP": 47.07,
+    "maxP": 165.04,
+    "lastP": 147.56,
+    "vol": 24.9
+  },
+  {
+    "id": "EXPE",
+    "name": "EXPE",
+    "days": 2533,
+    "market": "US",
+    "minP": 45.65,
+    "maxP": 301.31,
+    "lastP": 251.44,
+    "vol": 44.0
+  },
+  {
+    "id": "EXR",
+    "name": "EXR",
+    "days": 2533,
+    "market": "US",
+    "minP": 68.78,
+    "maxP": 226.73,
+    "lastP": 142.09,
+    "vol": 27.0
+  },
+  {
+    "id": "F",
+    "name": "F",
+    "days": 2533,
+    "market": "US",
+    "minP": 4.01,
+    "maxP": 25.19,
+    "lastP": 12.38,
+    "vol": 36.8
+  },
+  {
+    "id": "FANG",
+    "name": "FANG",
+    "days": 2533,
+    "market": "US",
+    "minP": 15.56,
+    "maxP": 210.94,
+    "lastP": 194.79,
+    "vol": 50.2
+  },
+  {
+    "id": "FAST",
+    "name": "FAST",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.54,
+    "maxP": 50.39,
+    "lastP": 44.69,
+    "vol": 26.6
+  },
+  {
+    "id": "FCX",
+    "name": "FCX",
+    "days": 2533,
+    "market": "US",
+    "minP": 5.31,
+    "maxP": 70.36,
+    "lastP": 61.05,
+    "vol": 49.4
+  },
+  {
+    "id": "FDS",
+    "name": "FDS",
+    "days": 2533,
+    "market": "US",
+    "minP": 146.59,
+    "maxP": 495.72,
+    "lastP": 224.12,
+    "vol": 27.1
+  },
+  {
+    "id": "FDX",
+    "name": "FDX",
+    "days": 2533,
+    "market": "US",
+    "minP": 90.49,
+    "maxP": 394.59,
+    "lastP": 387.98,
+    "vol": 32.8
+  },
+  {
+    "id": "FE",
+    "name": "FE",
+    "days": 2533,
+    "market": "US",
+    "minP": 26.56,
+    "maxP": 52.27,
+    "lastP": 49.41,
+    "vol": 25.2
+  },
+  {
+    "id": "FER",
+    "name": "FER",
+    "days": 2533,
+    "market": "US",
+    "minP": 14.3,
+    "maxP": 74.38,
+    "lastP": 69.09,
+    "vol": 36.4
+  },
+  {
+    "id": "FFIV",
+    "name": "FFIV",
+    "days": 2533,
+    "market": "US",
+    "minP": 90.55,
+    "maxP": 343.17,
+    "lastP": 303.16,
+    "vol": 29.7
+  },
+  {
+    "id": "FICO",
+    "name": "FICO",
+    "days": 2533,
+    "market": "US",
+    "minP": 103.33,
+    "maxP": 2382.4,
+    "lastP": 1004.72,
+    "vol": 37.6
+  },
+  {
+    "id": "FIS",
+    "name": "FIS",
+    "days": 2533,
+    "market": "US",
+    "minP": 43.37,
+    "maxP": 157.44,
+    "lastP": 45.73,
+    "vol": 30.4
+  },
+  {
+    "id": "FISV",
+    "name": "FISV",
+    "days": 2532,
+    "market": "US",
+    "minP": 48.38,
+    "maxP": 237.79,
+    "lastP": 60.84,
+    "vol": 33.7
+  },
+  {
+    "id": "FITB",
+    "name": "FITB",
+    "days": 2533,
+    "market": "US",
+    "minP": 11.67,
+    "maxP": 55.08,
+    "lastP": 49.66,
+    "vol": 36.4
+  },
+  {
+    "id": "FIX",
+    "name": "FIX",
+    "days": 2533,
+    "market": "US",
+    "minP": 26.26,
+    "maxP": 1773.91,
+    "lastP": 1726.12,
+    "vol": 42.2
+  },
+  {
+    "id": "FOX",
+    "name": "FOX",
+    "days": 1790,
+    "market": "US",
+    "minP": 19.81,
+    "maxP": 67.76,
+    "lastP": 56.17,
+    "vol": 31.2
+  },
+  {
+    "id": "FOXA",
+    "name": "FOXA",
+    "days": 1791,
+    "market": "US",
+    "minP": 20.2,
+    "maxP": 76.11,
+    "lastP": 62.85,
+    "vol": 32.1
+  },
+  {
+    "id": "FRT",
+    "name": "FRT",
+    "days": 2533,
+    "market": "US",
+    "minP": 65.81,
+    "maxP": 170.35,
+    "lastP": 111.04,
+    "vol": 29.3
+  },
+  {
+    "id": "FSLR",
+    "name": "FSLR",
+    "days": 2533,
+    "market": "US",
+    "minP": 26.33,
+    "maxP": 300.71,
+    "lastP": 193.76,
+    "vol": 49.9
+  },
+  {
+    "id": "FTNT",
+    "name": "FTNT",
+    "days": 2533,
+    "market": "US",
+    "minP": 5.72,
+    "maxP": 114.57,
+    "lastP": 84.34,
+    "vol": 40.4
+  },
+  {
+    "id": "FTV",
+    "name": "FTV",
+    "days": 2466,
+    "market": "US",
+    "minP": 26.49,
+    "maxP": 65.03,
+    "lastP": 61.09,
+    "vol": 26.6
+  },
+  {
+    "id": "GD",
+    "name": "GD",
+    "days": 2533,
+    "market": "US",
+    "minP": 106.6,
+    "maxP": 368.69,
+    "lastP": 313.21,
+    "vol": 22.5
+  },
+  {
+    "id": "GDDY",
+    "name": "GDDY",
+    "days": 2533,
+    "market": "US",
+    "minP": 28.31,
+    "maxP": 214.35,
+    "lastP": 86.04,
+    "vol": 34.2
+  },
+  {
+    "id": "GE",
+    "name": "GE",
+    "days": 2533,
+    "market": "US",
+    "minP": 27.36,
+    "maxP": 345.74,
+    "lastP": 284.6,
+    "vol": 36.0
+  },
+  {
+    "id": "GEHC",
+    "name": "GEHC",
+    "days": 841,
+    "market": "US",
+    "minP": 56.0,
+    "maxP": 93.87,
+    "lastP": 68.83,
+    "vol": 32.2
+  },
+  {
+    "id": "GEN",
+    "name": "GEN",
+    "days": 2533,
+    "market": "US",
+    "minP": 15.46,
+    "maxP": 34.16,
+    "lastP": 19.04,
+    "vol": 37.1
+  },
+  {
+    "id": "GEV",
+    "name": "GEV",
+    "days": 521,
+    "market": "US",
+    "minP": 122.7,
+    "maxP": 1149.53,
+    "lastP": 1149.19,
+    "vol": 53.3
+  },
+  {
+    "id": "GILD",
+    "name": "GILD",
+    "days": 2533,
+    "market": "US",
+    "minP": 56.65,
+    "maxP": 155.8,
+    "lastP": 130.4,
+    "vol": 25.6
+  },
+  {
+    "id": "GIS",
+    "name": "GIS",
+    "days": 2533,
+    "market": "US",
+    "minP": 34.49,
+    "maxP": 90.61,
+    "lastP": 34.97,
+    "vol": 22.1
+  },
+  {
+    "id": "GL",
+    "name": "GL",
+    "days": 2533,
+    "market": "US",
+    "minP": 49.17,
+    "maxP": 153.97,
+    "lastP": 152.56,
+    "vol": 36.2
+  },
+  {
+    "id": "GLW",
+    "name": "GLW",
+    "days": 2533,
+    "market": "US",
+    "minP": 17.75,
+    "maxP": 175.89,
+    "lastP": 175.89,
+    "vol": 32.3
+  },
+  {
+    "id": "GM",
+    "name": "GM",
+    "days": 2533,
+    "market": "US",
+    "minP": 16.8,
+    "maxP": 86.38,
+    "lastP": 78.05,
+    "vol": 36.7
+  },
+  {
+    "id": "GNRC",
+    "name": "GNRC",
+    "days": 2533,
+    "market": "US",
+    "minP": 33.13,
+    "maxP": 505.8,
+    "lastP": 220.93,
+    "vol": 44.8
+  },
+  {
+    "id": "GOOG",
+    "name": "GOOG",
+    "days": 2533,
+    "market": "US",
+    "minP": 33.41,
+    "maxP": 344.9,
+    "lastP": 342.32,
+    "vol": 28.7
+  },
+  {
+    "id": "GOOGL",
+    "name": "GOOGL",
+    "days": 2533,
+    "market": "US",
+    "minP": 34.06,
+    "maxP": 344.4,
+    "lastP": 344.4,
+    "vol": 28.8
+  },
+  {
+    "id": "GPC",
+    "name": "GPC",
+    "days": 2533,
+    "market": "US",
+    "minP": 50.29,
+    "maxP": 187.28,
+    "lastP": 108.74,
+    "vol": 28.2
+  },
+  {
+    "id": "GPN",
+    "name": "GPN",
+    "days": 2533,
+    "market": "US",
+    "minP": 62.7,
+    "maxP": 219.24,
+    "lastP": 67.76,
+    "vol": 34.5
+  },
+  {
+    "id": "GRMN",
+    "name": "GRMN",
+    "days": 2533,
+    "market": "US",
+    "minP": 39.57,
+    "maxP": 267.52,
+    "lastP": 259.39,
+    "vol": 27.9
+  },
+  {
+    "id": "GS",
+    "name": "GS",
+    "days": 2533,
+    "market": "US",
+    "minP": 134.97,
+    "maxP": 975.86,
+    "lastP": 926.91,
+    "vol": 29.7
+  },
+  {
+    "id": "GWW",
+    "name": "GWW",
+    "days": 2533,
+    "market": "US",
+    "minP": 156.25,
+    "maxP": 1220.93,
+    "lastP": 1147.99,
+    "vol": 28.3
+  },
+  {
+    "id": "HAL",
+    "name": "HAL",
+    "days": 2533,
+    "market": "US",
+    "minP": 4.61,
+    "maxP": 58.21,
+    "lastP": 40.36,
+    "vol": 46.8
+  },
+  {
+    "id": "HAS",
+    "name": "HAS",
+    "days": 2533,
+    "market": "US",
+    "minP": 42.88,
+    "maxP": 126.07,
+    "lastP": 95.08,
+    "vol": 33.7
+  },
+  {
+    "id": "HBAN",
+    "name": "HBAN",
+    "days": 2533,
+    "market": "US",
+    "minP": 6.83,
+    "maxP": 19.27,
+    "lastP": 16.4,
+    "vol": 34.5
+  },
+  {
+    "id": "HCA",
+    "name": "HCA",
+    "days": 2533,
+    "market": "US",
+    "minP": 68.13,
+    "maxP": 545.13,
+    "lastP": 432.46,
+    "vol": 32.6
+  },
+  {
+    "id": "HD",
+    "name": "HD",
+    "days": 2533,
+    "market": "US",
+    "minP": 119.89,
+    "maxP": 431.37,
+    "lastP": 335.89,
+    "vol": 24.9
+  },
+  {
+    "id": "HIG",
+    "name": "HIG",
+    "days": 2533,
+    "market": "US",
+    "minP": 26.25,
+    "maxP": 143.53,
+    "lastP": 134.45,
+    "vol": 29.1
+  },
+  {
+    "id": "HII",
+    "name": "HII",
+    "days": 2533,
+    "market": "US",
+    "minP": 136.94,
+    "maxP": 453.73,
+    "lastP": 359.29,
+    "vol": 30.8
+  },
+  {
+    "id": "HLT",
+    "name": "HLT",
+    "days": 2533,
+    "market": "US",
+    "minP": 42.07,
+    "maxP": 342.89,
+    "lastP": 335.63,
+    "vol": 28.7
+  },
+  {
+    "id": "HON",
+    "name": "HON",
+    "days": 2533,
+    "market": "US",
+    "minP": 95.56,
+    "maxP": 248.04,
+    "lastP": 213.17,
+    "vol": 23.3
+  },
+  {
+    "id": "HOOD",
+    "name": "HOOD",
+    "days": 1190,
+    "market": "US",
+    "minP": 6.89,
+    "maxP": 152.46,
+    "lastP": 84.71,
+    "vol": 72.5
+  },
+  {
+    "id": "HPE",
+    "name": "HPE",
+    "days": 2533,
+    "market": "US",
+    "minP": 7.83,
+    "maxP": 28.76,
+    "lastP": 28.16,
+    "vol": 36.0
+  },
+  {
+    "id": "HPQ",
+    "name": "HPQ",
+    "days": 2533,
+    "market": "US",
+    "minP": 11.43,
+    "maxP": 40.34,
+    "lastP": 19.79,
+    "vol": 34.7
+  },
+  {
+    "id": "HRL",
+    "name": "HRL",
+    "days": 2533,
+    "market": "US",
+    "minP": 20.48,
+    "maxP": 54.81,
+    "lastP": 21.55,
+    "vol": 23.2
+  },
+  {
+    "id": "HSIC",
+    "name": "HSIC",
+    "days": 2533,
+    "market": "US",
+    "minP": 43.18,
+    "maxP": 91.96,
+    "lastP": 77.54,
+    "vol": 27.4
+  },
+  {
+    "id": "HST",
+    "name": "HST",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.06,
+    "maxP": 22.25,
+    "lastP": 20.9,
+    "vol": 33.8
+  },
+  {
+    "id": "HSY",
+    "name": "HSY",
+    "days": 2533,
+    "market": "US",
+    "minP": 89.54,
+    "maxP": 276.35,
+    "lastP": 191.48,
+    "vol": 23.3
+  },
+  {
+    "id": "HUBB",
+    "name": "HUBB",
+    "days": 2533,
+    "market": "US",
+    "minP": 86.71,
+    "maxP": 557.85,
+    "lastP": 553.07,
+    "vol": 28.6
+  },
+  {
+    "id": "HUM",
+    "name": "HUM",
+    "days": 2533,
+    "market": "US",
+    "minP": 153.38,
+    "maxP": 563.0,
+    "lastP": 215.23,
+    "vol": 34.5
+  },
+  {
+    "id": "HWM",
+    "name": "HWM",
+    "days": 2382,
+    "market": "US",
+    "minP": 9.19,
+    "maxP": 265.11,
+    "lastP": 242.44,
+    "vol": 39.7
+  },
+  {
+    "id": "IBKR",
+    "name": "IBKR",
+    "days": 2533,
+    "market": "US",
+    "minP": 8.04,
+    "maxP": 81.71,
+    "lastP": 76.62,
+    "vol": 33.2
+  },
+  {
+    "id": "IBM",
+    "name": "IBM",
+    "days": 2533,
+    "market": "US",
+    "minP": 90.6,
+    "maxP": 314.98,
+    "lastP": 231.98,
+    "vol": 25.9
+  },
+  {
+    "id": "ICE",
+    "name": "ICE",
+    "days": 2533,
+    "market": "US",
+    "minP": 46.5,
+    "maxP": 188.45,
+    "lastP": 158.45,
+    "vol": 22.3
+  },
+  {
+    "id": "IDXX",
+    "name": "IDXX",
+    "days": 2533,
+    "market": "US",
+    "minP": 77.75,
+    "maxP": 766.68,
+    "lastP": 565.93,
+    "vol": 32.5
+  },
+  {
+    "id": "IEX",
+    "name": "IEX",
+    "days": 2533,
+    "market": "US",
+    "minP": 79.29,
+    "maxP": 245.87,
+    "lastP": 204.74,
+    "vol": 24.2
+  },
+  {
+    "id": "IFF",
+    "name": "IFF",
+    "days": 2533,
+    "market": "US",
+    "minP": 59.55,
+    "maxP": 156.87,
+    "lastP": 71.14,
+    "vol": 30.0
+  },
+  {
+    "id": "INCY",
+    "name": "INCY",
+    "days": 2533,
+    "market": "US",
+    "minP": 51.18,
+    "maxP": 152.66,
+    "lastP": 94.65,
+    "vol": 34.7
+  },
+  {
+    "id": "INSM",
+    "name": "INSM",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.05,
+    "maxP": 211.41,
+    "lastP": 135.17,
+    "vol": 66.2
+  },
+  {
+    "id": "INTC",
+    "name": "INTC",
+    "days": 2533,
+    "market": "US",
+    "minP": 18.13,
+    "maxP": 82.54,
+    "lastP": 82.54,
+    "vol": 42.7
+  },
+  {
+    "id": "INTU",
+    "name": "INTU",
+    "days": 2533,
+    "market": "US",
+    "minP": 99.89,
+    "maxP": 807.39,
+    "lastP": 395.95,
+    "vol": 32.7
+  },
+  {
+    "id": "INVH",
+    "name": "INVH",
+    "days": 2320,
+    "market": "US",
+    "minP": 16.13,
+    "maxP": 45.34,
+    "lastP": 27.13,
+    "vol": 26.0
+  },
+  {
+    "id": "IP",
+    "name": "IP",
+    "days": 2533,
+    "market": "US",
+    "minP": 25.07,
+    "maxP": 61.63,
+    "lastP": 32.65,
+    "vol": 31.7
+  },
+  {
+    "id": "IQV",
+    "name": "IQV",
+    "days": 2533,
+    "market": "US",
+    "minP": 61.32,
+    "maxP": 282.61,
+    "lastP": 162.28,
+    "vol": 31.3
+  },
+  {
+    "id": "IR",
+    "name": "IR",
+    "days": 2250,
+    "market": "US",
+    "minP": 18.92,
+    "maxP": 105.35,
+    "lastP": 83.81,
+    "vol": 34.3
+  },
+  {
+    "id": "IRM",
+    "name": "IRM",
+    "days": 2533,
+    "market": "US",
+    "minP": 21.52,
+    "maxP": 128.14,
+    "lastP": 116.03,
+    "vol": 29.4
+  },
+  {
+    "id": "ISRG",
+    "name": "ISRG",
+    "days": 2533,
+    "market": "US",
+    "minP": 66.48,
+    "maxP": 610.45,
+    "lastP": 482.22,
+    "vol": 32.1
+  },
+  {
+    "id": "IT",
+    "name": "IT",
+    "days": 2533,
+    "market": "US",
+    "minP": 83.24,
+    "maxP": 551.8,
+    "lastP": 150.55,
+    "vol": 33.2
+  },
+  {
+    "id": "ITW",
+    "name": "ITW",
+    "days": 2533,
+    "market": "US",
+    "minP": 98.7,
+    "maxP": 299.6,
+    "lastP": 269.29,
+    "vol": 23.7
+  },
+  {
+    "id": "IVZ",
+    "name": "IVZ",
+    "days": 2533,
+    "market": "US",
+    "minP": 6.7,
+    "maxP": 38.4,
+    "lastP": 25.51,
+    "vol": 39.6
+  },
+  {
+    "id": "J",
+    "name": "J",
+    "days": 2533,
+    "market": "US",
+    "minP": 33.9,
+    "maxP": 164.44,
+    "lastP": 126.6,
+    "vol": 27.5
+  },
+  {
+    "id": "JBHT",
+    "name": "JBHT",
+    "days": 2533,
+    "market": "US",
+    "minP": 75.38,
+    "maxP": 253.71,
+    "lastP": 248.59,
+    "vol": 29.5
+  },
+  {
+    "id": "JBL",
+    "name": "JBL",
+    "days": 2533,
+    "market": "US",
+    "minP": 16.88,
+    "maxP": 341.65,
+    "lastP": 341.65,
+    "vol": 36.7
+  },
+  {
+    "id": "JCI",
+    "name": "JCI",
+    "days": 2533,
+    "market": "US",
+    "minP": 23.5,
+    "maxP": 145.46,
+    "lastP": 141.92,
+    "vol": 27.9
+  },
+  {
+    "id": "JKHY",
+    "name": "JKHY",
+    "days": 2533,
+    "market": "US",
+    "minP": 79.55,
+    "maxP": 211.07,
+    "lastP": 151.15,
+    "vol": 23.5
+  },
+  {
+    "id": "JNJ",
+    "name": "JNJ",
+    "days": 2533,
+    "market": "US",
+    "minP": 108.2,
+    "maxP": 248.56,
+    "lastP": 227.5,
+    "vol": 18.4
+  },
+  {
+    "id": "JPM",
+    "name": "JPM",
+    "days": 2533,
+    "market": "US",
+    "minP": 57.32,
+    "maxP": 334.61,
+    "lastP": 308.28,
+    "vol": 27.3
+  },
+  {
+    "id": "KDP",
+    "name": "KDP",
+    "days": 2533,
+    "market": "US",
+    "minP": 19.6,
+    "maxP": 123.81,
+    "lastP": 29.22,
+    "vol": 59.0
+  },
+  {
+    "id": "KEY",
+    "name": "KEY",
+    "days": 2533,
+    "market": "US",
+    "minP": 8.16,
+    "maxP": 27.01,
+    "lastP": 21.63,
+    "vol": 40.2
+  },
+  {
+    "id": "KEYS",
+    "name": "KEYS",
+    "days": 2533,
+    "market": "US",
+    "minP": 25.72,
+    "maxP": 346.96,
+    "lastP": 346.96,
+    "vol": 32.0
+  },
+  {
+    "id": "KHC",
+    "name": "KHC",
+    "days": 2533,
+    "market": "US",
+    "minP": 20.06,
+    "maxP": 96.65,
+    "lastP": 21.94,
+    "vol": 27.6
+  },
+  {
+    "id": "KIM",
+    "name": "KIM",
+    "days": 2533,
+    "market": "US",
+    "minP": 7.75,
+    "maxP": 32.17,
+    "lastP": 23.69,
+    "vol": 33.8
+  },
+  {
+    "id": "KKR",
+    "name": "KKR",
+    "days": 2533,
+    "market": "US",
+    "minP": 11.98,
+    "maxP": 167.07,
+    "lastP": 101.83,
+    "vol": 36.5
+  },
+  {
+    "id": "KLAC",
+    "name": "KLAC",
+    "days": 2533,
+    "market": "US",
+    "minP": 67.17,
+    "maxP": 1935.0,
+    "lastP": 1935.0,
+    "vol": 40.9
+  },
+  {
+    "id": "KMB",
+    "name": "KMB",
+    "days": 2533,
+    "market": "US",
+    "minP": 93.05,
+    "maxP": 158.84,
+    "lastP": 97.85,
+    "vol": 21.0
+  },
+  {
+    "id": "KMI",
+    "name": "KMI",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.98,
+    "maxP": 34.07,
+    "lastP": 31.74,
+    "vol": 28.3
+  },
+  {
+    "id": "KO",
+    "name": "KO",
+    "days": 2533,
+    "market": "US",
+    "minP": 37.56,
+    "maxP": 81.56,
+    "lastP": 76.63,
+    "vol": 18.3
+  },
+  {
+    "id": "KR",
+    "name": "KR",
+    "days": 2533,
+    "market": "US",
+    "minP": 19.94,
+    "maxP": 75.6,
+    "lastP": 67.23,
+    "vol": 29.0
+  },
+  {
+    "id": "KVUE",
+    "name": "KVUE",
+    "days": 746,
+    "market": "US",
+    "minP": 14.11,
+    "maxP": 27.5,
+    "lastP": 17.49,
+    "vol": 28.8
+  },
+  {
+    "id": "L",
+    "name": "L",
+    "days": 2533,
+    "market": "US",
+    "minP": 28.8,
+    "maxP": 112.42,
+    "lastP": 110.58,
+    "vol": 25.6
+  },
+  {
+    "id": "LDOS",
+    "name": "LDOS",
+    "days": 2533,
+    "market": "US",
+    "minP": 38.5,
+    "maxP": 201.39,
+    "lastP": 146.06,
+    "vol": 29.0
+  },
+  {
+    "id": "LEN",
+    "name": "LEN",
+    "days": 2533,
+    "market": "US",
+    "minP": 28.41,
+    "maxP": 186.3,
+    "lastP": 94.05,
+    "vol": 37.0
+  },
+  {
+    "id": "LH",
+    "name": "LH",
+    "days": 2533,
+    "market": "US",
+    "minP": 89.62,
+    "maxP": 290.93,
+    "lastP": 263.8,
+    "vol": 26.8
+  },
+  {
+    "id": "LHX",
+    "name": "LHX",
+    "days": 2533,
+    "market": "US",
+    "minP": 74.4,
+    "maxP": 378.48,
+    "lastP": 317.51,
+    "vol": 25.4
+  },
+  {
+    "id": "LII",
+    "name": "LII",
+    "days": 2533,
+    "market": "US",
+    "minP": 133.08,
+    "maxP": 678.43,
+    "lastP": 490.97,
+    "vol": 29.0
+  },
+  {
+    "id": "LIN",
+    "name": "LIN",
+    "days": 2533,
+    "market": "US",
+    "minP": 107.01,
+    "maxP": 510.3,
+    "lastP": 510.3,
+    "vol": 22.8
+  },
+  {
+    "id": "LITE",
+    "name": "LITE",
+    "days": 2533,
+    "market": "US",
+    "minP": 21.71,
+    "maxP": 897.3,
+    "lastP": 881.64,
+    "vol": 56.0
+  },
+  {
+    "id": "LLY",
+    "name": "LLY",
+    "days": 2533,
+    "market": "US",
+    "minP": 65.97,
+    "maxP": 1109.94,
+    "lastP": 883.96,
+    "vol": 29.6
+  },
+  {
+    "id": "LMT",
+    "name": "LMT",
+    "days": 2533,
+    "market": "US",
+    "minP": 221.5,
+    "maxP": 676.7,
+    "lastP": 513.45,
+    "vol": 23.8
+  },
+  {
+    "id": "LNT",
+    "name": "LNT",
+    "days": 2533,
+    "market": "US",
+    "minP": 34.39,
+    "maxP": 73.72,
+    "lastP": 72.31,
+    "vol": 21.2
+  },
+  {
+    "id": "LOW",
+    "name": "LOW",
+    "days": 2533,
+    "market": "US",
+    "minP": 65.02,
+    "maxP": 287.39,
+    "lastP": 244.45,
+    "vol": 29.3
+  },
+  {
+    "id": "LRCX",
+    "name": "LRCX",
+    "days": 2533,
+    "market": "US",
+    "minP": 7.31,
+    "maxP": 272.41,
+    "lastP": 267.78,
+    "vol": 44.1
+  },
+  {
+    "id": "LULU",
+    "name": "LULU",
+    "days": 2533,
+    "market": "US",
+    "minP": 47.91,
+    "maxP": 511.29,
+    "lastP": 143.8,
+    "vol": 40.8
+  },
+  {
+    "id": "LUV",
+    "name": "LUV",
+    "days": 2533,
+    "market": "US",
+    "minP": 22.23,
+    "maxP": 66.29,
+    "lastP": 39.45,
+    "vol": 37.4
+  },
+  {
+    "id": "LVS",
+    "name": "LVS",
+    "days": 2533,
+    "market": "US",
+    "minP": 30.14,
+    "maxP": 81.27,
+    "lastP": 52.81,
+    "vol": 38.9
+  },
+  {
+    "id": "LYB",
+    "name": "LYB",
+    "days": 2533,
+    "market": "US",
+    "minP": 34.9,
+    "maxP": 121.49,
+    "lastP": 69.87,
+    "vol": 36.5
+  },
+  {
+    "id": "LYV",
+    "name": "LYV",
+    "days": 2533,
+    "market": "US",
+    "minP": 21.08,
+    "maxP": 174.06,
+    "lastP": 156.64,
+    "vol": 38.2
+  },
+  {
+    "id": "MA",
+    "name": "MA",
+    "days": 2533,
+    "market": "US",
+    "minP": 86.83,
+    "maxP": 598.96,
+    "lastP": 504.17,
+    "vol": 26.7
+  },
+  {
+    "id": "MAA",
+    "name": "MAA",
+    "days": 2533,
+    "market": "US",
+    "minP": 84.67,
+    "maxP": 229.44,
+    "lastP": 125.66,
+    "vol": 24.3
+  },
+  {
+    "id": "MAR",
+    "name": "MAR",
+    "days": 2533,
+    "market": "US",
+    "minP": 59.08,
+    "maxP": 378.72,
+    "lastP": 367.15,
+    "vol": 32.7
+  },
+  {
+    "id": "MAS",
+    "name": "MAS",
+    "days": 2533,
+    "market": "US",
+    "minP": 27.45,
+    "maxP": 85.71,
+    "lastP": 74.18,
+    "vol": 29.1
+  },
+  {
+    "id": "MCD",
+    "name": "MCD",
+    "days": 2533,
+    "market": "US",
+    "minP": 110.57,
+    "maxP": 341.06,
+    "lastP": 299.36,
+    "vol": 20.3
+  },
+  {
+    "id": "MCHP",
+    "name": "MCHP",
+    "days": 2533,
+    "market": "US",
+    "minP": 23.58,
+    "maxP": 99.49,
+    "lastP": 89.44,
+    "vol": 41.3
+  },
+  {
+    "id": "MCK",
+    "name": "MCK",
+    "days": 2533,
+    "market": "US",
+    "minP": 108.23,
+    "maxP": 995.69,
+    "lastP": 828.11,
+    "vol": 29.0
+  },
+  {
+    "id": "MCO",
+    "name": "MCO",
+    "days": 2533,
+    "market": "US",
+    "minP": 87.88,
+    "maxP": 539.61,
+    "lastP": 456.05,
+    "vol": 27.8
+  },
+  {
+    "id": "MDLZ",
+    "name": "MDLZ",
+    "days": 2533,
+    "market": "US",
+    "minP": 37.57,
+    "maxP": 78.36,
+    "lastP": 57.61,
+    "vol": 21.0
+  },
+  {
+    "id": "MDT",
+    "name": "MDT",
+    "days": 2533,
+    "market": "US",
+    "minP": 69.43,
+    "maxP": 135.17,
+    "lastP": 83.32,
+    "vol": 23.1
+  },
+  {
+    "id": "MELI",
+    "name": "MELI",
+    "days": 2533,
+    "market": "US",
+    "minP": 117.13,
+    "maxP": 2613.63,
+    "lastP": 1835.22,
+    "vol": 48.3
+  },
+  {
+    "id": "MET",
+    "name": "MET",
+    "days": 2533,
+    "market": "US",
+    "minP": 23.53,
+    "maxP": 88.25,
+    "lastP": 77.7,
+    "vol": 30.6
+  },
+  {
+    "id": "META",
+    "name": "META",
+    "days": 2533,
+    "market": "US",
+    "minP": 88.91,
+    "maxP": 790.0,
+    "lastP": 675.03,
+    "vol": 38.8
+  },
+  {
+    "id": "MGM",
+    "name": "MGM",
+    "days": 2533,
+    "market": "US",
+    "minP": 7.14,
+    "maxP": 50.9,
+    "lastP": 39.54,
+    "vol": 45.7
+  },
+  {
+    "id": "MKC",
+    "name": "MKC",
+    "days": 2533,
+    "market": "US",
+    "minP": 44.39,
+    "maxP": 104.89,
+    "lastP": 51.53,
+    "vol": 24.1
+  },
+  {
+    "id": "MLM",
+    "name": "MLM",
+    "days": 2533,
+    "market": "US",
+    "minP": 144.12,
+    "maxP": 708.11,
+    "lastP": 615.3,
+    "vol": 30.6
+  },
+  {
+    "id": "MMM",
+    "name": "MMM",
+    "days": 2533,
+    "market": "US",
+    "minP": 71.57,
+    "maxP": 216.25,
+    "lastP": 145.99,
+    "vol": 26.3
+  },
+  {
+    "id": "MNST",
+    "name": "MNST",
+    "days": 2533,
+    "market": "US",
+    "minP": 20.43,
+    "maxP": 86.66,
+    "lastP": 78.23,
+    "vol": 26.1
+  },
+  {
+    "id": "MO",
+    "name": "MO",
+    "days": 2533,
+    "market": "US",
+    "minP": 31.38,
+    "maxP": 77.71,
+    "lastP": 66.88,
+    "vol": 23.2
+  },
+  {
+    "id": "MOS",
+    "name": "MOS",
+    "days": 2533,
+    "market": "US",
+    "minP": 7.01,
+    "maxP": 78.15,
+    "lastP": 24.0,
+    "vol": 45.3
+  },
+  {
+    "id": "MPC",
+    "name": "MPC",
+    "days": 2533,
+    "market": "US",
+    "minP": 16.62,
+    "maxP": 251.91,
+    "lastP": 224.14,
+    "vol": 40.6
+  },
+  {
+    "id": "MPWR",
+    "name": "MPWR",
+    "days": 2533,
+    "market": "US",
+    "minP": 60.93,
+    "maxP": 1632.06,
+    "lastP": 1632.06,
+    "vol": 46.6
+  },
+  {
+    "id": "MRK",
+    "name": "MRK",
+    "days": 2533,
+    "market": "US",
+    "minP": 50.49,
+    "maxP": 132.96,
+    "lastP": 111.9,
+    "vol": 22.8
+  },
+  {
+    "id": "MRNA",
+    "name": "MRNA",
+    "days": 1854,
+    "market": "US",
+    "minP": 12.26,
+    "maxP": 484.47,
+    "lastP": 50.73,
+    "vol": 71.4
+  },
+  {
+    "id": "MRSH",
+    "name": "MRSH",
+    "days": 2533,
+    "market": "US",
+    "minP": 60.17,
+    "maxP": 244.27,
+    "lastP": 170.1,
+    "vol": 20.8
+  },
+  {
+    "id": "MRVL",
+    "name": "MRVL",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.12,
+    "maxP": 165.56,
+    "lastP": 164.31,
+    "vol": 49.7
+  },
+  {
+    "id": "MS",
+    "name": "MS",
+    "days": 2533,
+    "market": "US",
+    "minP": 23.61,
+    "maxP": 191.62,
+    "lastP": 188.07,
+    "vol": 31.4
+  },
+  {
+    "id": "MSCI",
+    "name": "MSCI",
+    "days": 2533,
+    "market": "US",
+    "minP": 71.86,
+    "maxP": 675.15,
+    "lastP": 592.69,
+    "vol": 31.1
+  },
+  {
+    "id": "MSFT",
+    "name": "MSFT",
+    "days": 2533,
+    "market": "US",
+    "minP": 48.43,
+    "maxP": 542.07,
+    "lastP": 424.62,
+    "vol": 26.9
+  },
+  {
+    "id": "MSI",
+    "name": "MSI",
+    "days": 2533,
+    "market": "US",
+    "minP": 63.08,
+    "maxP": 504.6,
+    "lastP": 438.26,
+    "vol": 24.8
+  },
+  {
+    "id": "MSTR",
+    "name": "MSTR",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.22,
+    "maxP": 473.83,
+    "lastP": 171.02,
+    "vol": 72.9
+  },
+  {
+    "id": "MTB",
+    "name": "MTB",
+    "days": 2533,
+    "market": "US",
+    "minP": 88.1,
+    "maxP": 238.01,
+    "lastP": 214.92,
+    "vol": 32.7
+  },
+  {
+    "id": "MTD",
+    "name": "MTD",
+    "days": 2533,
+    "market": "US",
+    "minP": 343.24,
+    "maxP": 1702.53,
+    "lastP": 1282.45,
+    "vol": 29.1
+  },
+  {
+    "id": "MU",
+    "name": "MU",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.56,
+    "maxP": 496.72,
+    "lastP": 496.72,
+    "vol": 48.8
+  },
+  {
+    "id": "NCLH",
+    "name": "NCLH",
+    "days": 2533,
+    "market": "US",
+    "minP": 7.77,
+    "maxP": 60.93,
+    "lastP": 18.51,
+    "vol": 62.1
+  },
+  {
+    "id": "NDAQ",
+    "name": "NDAQ",
+    "days": 2533,
+    "market": "US",
+    "minP": 20.48,
+    "maxP": 100.98,
+    "lastP": 89.9,
+    "vol": 24.2
+  },
+  {
+    "id": "NDSN",
+    "name": "NDSN",
+    "days": 2533,
+    "market": "US",
+    "minP": 74.35,
+    "maxP": 299.29,
+    "lastP": 282.36,
+    "vol": 28.7
+  },
+  {
+    "id": "NEE",
+    "name": "NEE",
+    "days": 2533,
+    "market": "US",
+    "minP": 28.23,
+    "maxP": 96.25,
+    "lastP": 95.28,
+    "vol": 25.4
+  },
+  {
+    "id": "NEM",
+    "name": "NEM",
+    "days": 2533,
+    "market": "US",
+    "minP": 26.3,
+    "maxP": 131.95,
+    "lastP": 120.7,
+    "vol": 35.9
+  },
+  {
+    "id": "NFLX",
+    "name": "NFLX",
+    "days": 2533,
+    "market": "US",
+    "minP": 8.53,
+    "maxP": 133.91,
+    "lastP": 92.44,
+    "vol": 42.4
+  },
+  {
+    "id": "NI",
+    "name": "NI",
+    "days": 2533,
+    "market": "US",
+    "minP": 20.86,
+    "maxP": 48.47,
+    "lastP": 47.99,
+    "vol": 23.3
+  },
+  {
+    "id": "NKE",
+    "name": "NKE",
+    "days": 2533,
+    "market": "US",
+    "minP": 42.62,
+    "maxP": 177.51,
+    "lastP": 44.69,
+    "vol": 32.2
+  },
+  {
+    "id": "NOC",
+    "name": "NOC",
+    "days": 2533,
+    "market": "US",
+    "minP": 197.9,
+    "maxP": 768.02,
+    "lastP": 575.11,
+    "vol": 25.3
+  },
+  {
+    "id": "NOW",
+    "name": "NOW",
+    "days": 2533,
+    "market": "US",
+    "minP": 12.21,
+    "maxP": 234.08,
+    "lastP": 90.17,
+    "vol": 40.2
+  },
+  {
+    "id": "NRG",
+    "name": "NRG",
+    "days": 2533,
+    "market": "US",
+    "minP": 9.89,
+    "maxP": 184.03,
+    "lastP": 159.81,
+    "vol": 38.8
+  },
+  {
+    "id": "NSC",
+    "name": "NSC",
+    "days": 2533,
+    "market": "US",
+    "minP": 78.72,
+    "maxP": 321.44,
+    "lastP": 319.71,
+    "vol": 27.6
   }
 ]

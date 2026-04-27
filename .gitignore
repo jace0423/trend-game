@@ -1,5 +1,8 @@
-.DS_Store
+# Working logs from crawler runs
+fetch_*.log
+*_test.py
 __pycache__/
 *.pyc
-.vscode/
-.idea/
+
+# Test scaffolding
+.claude/

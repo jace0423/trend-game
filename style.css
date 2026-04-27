@@ -328,6 +328,92 @@ header h1 {
 }
 .who b { color: var(--cyber-cyan); text-shadow: 0 0 6px var(--cyber-cyan); }
 
+/* ----- 起始設定 / 難度切換（登入頁） ----- */
+.setup-box {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(0, 240, 255, 0.2);
+}
+.setup-market {
+  display: flex;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.setup-market .market-btn {
+  flex: 1;
+  padding: 8px 0;
+  font-size: 13px;
+}
+.cyber-select {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 4px;
+  color: var(--cyber-cyan);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.cyber-select:focus { outline: none; border-color: var(--cyber-cyan); }
+.cyber-select option { background: #0e1116; color: var(--cyber-cyan); }
+.diff-toggle {
+  display: flex;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.diff-toggle .diff-btn {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 8px 0;
+  font-size: 13px;
+  color: rgba(0, 240, 255, 0.6);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+.diff-toggle .diff-btn + .diff-btn {
+  border-left: 1px solid rgba(0, 240, 255, 0.25);
+}
+.diff-toggle .diff-btn:hover { color: var(--cyber-cyan); }
+.diff-toggle .diff-btn.active {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyber-cyan);
+  text-shadow: 0 0 6px var(--cyber-cyan);
+}
+
+.market-toggle {
+  display: inline-flex;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.market-toggle .market-btn {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: rgba(0, 240, 255, 0.6);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+.market-toggle .market-btn + .market-btn {
+  border-left: 1px solid rgba(0, 240, 255, 0.25);
+}
+.market-toggle .market-btn:hover { color: var(--cyber-cyan); }
+.market-toggle .market-btn.active {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyber-cyan);
+  text-shadow: 0 0 6px var(--cyber-cyan);
+}
+
 button {
   background: var(--panel);
   color: var(--text);
@@ -356,8 +442,35 @@ main {
   height: calc(100vh - 49px);
 }
 
-.chart-wrap { position: relative; }
-#chart { width: 100%; height: 100%; }
+.chart-wrap { position: relative; display: flex; flex-direction: column; }
+#chart { width: 100%; flex: 1 1 70%; min-height: 0; }
+.ind-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 11px;
+}
+.ind-label {
+  color: var(--cyber-cyan);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1px;
+}
+.ind-select {
+  background: transparent;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 3px;
+  color: var(--cyber-cyan);
+  font-family: 'Share Tech Mono', monospace;
+  padding: 2px 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.ind-select:focus { outline: none; }
+.ind-select option { background: #0e1116; color: var(--cyber-cyan); }
+#ind-chart { width: 100%; flex: 0 0 30%; min-height: 100px; }
 
 .panel {
   background: var(--panel);
@@ -491,6 +604,7 @@ main {
 }
 .verdict.win { color: var(--cyber-cyan); text-shadow: 0 0 10px var(--cyber-cyan); }
 .verdict.lose { color: var(--cyber-magenta); text-shadow: 0 0 10px var(--cyber-magenta); }
+.verdict.mixed { color: var(--cyber-yellow); text-shadow: 0 0 10px var(--cyber-yellow); }
 
 /* ========== RESPONSIVE (直式 / 手機) ========== */
 @media (max-aspect-ratio: 1/1), (max-width: 780px) {
@@ -574,11 +688,12 @@ main {
   }
   .chart-wrap {
     width: 100%;
-    height: 50vh;
-    min-height: 320px;
+    height: 55vh;
+    min-height: 360px;
     flex: 0 0 auto;
   }
-  #chart { width: 100%; height: 100%; }
+  #chart { flex: 1 1 70%; min-height: 0; }
+  #ind-chart { flex: 0 0 30%; min-height: 90px; }
   .panel {
     border-left: 0;
     border-top: 1px solid var(--border);
@@ -593,6 +708,42 @@ main {
   .big { font-size: 16px; }
   #log { max-height: 160px; }
 }
+
+/* ----- 列印樣式（PDF 輸出） ----- */
+@media print {
+  body { background: white !important; color: black !important; }
+  #login-screen, #game-screen,
+  #btnAgain, #btnBackLogin, .result-actions,
+  .scanline, .grid-bg, .corner { display: none !important; }
+  #result-screen { background: white; height: auto; min-height: 0; }
+  .cyber-screen { display: block; padding: 20px; }
+  .cyber-card.result-card {
+    background: white !important;
+    box-shadow: none;
+    border: 2px solid #333;
+    color: black !important;
+    page-break-inside: avoid;
+  }
+  .cyber-glitch { color: black !important; text-shadow: none !important; animation: none; }
+  .cyber-glitch::before, .cyber-glitch::after { display: none !important; }
+  .cyber-sub { color: #555 !important; }
+  .reveal-block, .result-stats { color: black !important; }
+  .reveal-stock, .rs-val, .rs-val.big-val,
+  .reveal-range, .rs-label { color: black !important; text-shadow: none !important; }
+  .verdict, .verdict.win, .verdict.lose, .verdict.mixed {
+    color: black !important; text-shadow: none !important; border: 1px solid #333; padding: 8px;
+  }
+  .good { color: #006400 !important; }
+  .bad { color: #8b0000 !important; }
+}
+
+.result-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  width: 100%;
+}
+.result-actions .cyber-btn { flex: 1; }
 
 /* 超小螢幕 (< 420px) */
 @media (max-width: 420px) {
