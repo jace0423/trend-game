@@ -1494,6 +1494,23 @@ document.getElementById("btnBuy").addEventListener("click", buy);
 document.getElementById("btnSell").addEventListener("click", sell);
 document.getElementById("btnNext")?.addEventListener("click", nextDay);
 document.getElementById("btnNextPanel")?.addEventListener("click", nextDay);
+
+// ----- 交易紀錄收折 -----
+const LS_LOG_OPEN = "trend_log_open";
+function applyLogToggle() {
+  const log = document.getElementById("log");
+  const btn = document.getElementById("btnToggleLog");
+  if (!log || !btn) return;
+  const open = localStorage.getItem(LS_LOG_OPEN) === "1";
+  log.classList.toggle("collapsed", !open);
+  btn.textContent = open ? "▼ 隱藏交易紀錄" : "▶ 顯示交易紀錄";
+}
+document.getElementById("btnToggleLog")?.addEventListener("click", () => {
+  const cur = localStorage.getItem(LS_LOG_OPEN) === "1";
+  localStorage.setItem(LS_LOG_OPEN, cur ? "0" : "1");
+  applyLogToggle();
+});
+function applyPanelCollapse() { applyLogToggle(); }  // 兼容名稱
 document.getElementById("btnNew").addEventListener("click", () => newGame());
 
 function applyMarketUI() {
@@ -1839,6 +1856,7 @@ function setupInAppWarn() {
 
 (async function init() {
   setupInAppWarn();
+  applyPanelCollapse();
   applyUnlocks();          // 先依歷史降級被鎖的選擇
   applyCashUI();
   applyDifficultyUI();

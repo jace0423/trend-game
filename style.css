@@ -407,33 +407,62 @@ header h1 {
   font-size: 11px;
   letter-spacing: 0.5px;
 }
-/* 交易面板可收折區塊 */
-.panel-section {
+/* 交易面板：緊湊資訊網格 + 交易紀錄收折 */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid var(--border);
-  margin: 8px 0 0;
-  padding: 6px 0 0;
 }
-.panel-section > summary {
-  cursor: pointer;
+.info-cell {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 4px 6px;
+  min-width: 0;
+}
+.info-cell-wide { grid-column: 1 / -1; }
+.info-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.5px;
+}
+.info-val {
+  font-size: 13px;
   font-weight: 600;
-  font-size: 14px;
-  color: var(--accent);
-  padding: 4px 0;
-  list-style: none;
-  position: relative;
+  color: var(--text);
+  margin-top: 1px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.panel-toggle {
+  width: 100%;
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 4px;
+  color: var(--cyber-cyan);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
   user-select: none;
 }
-.panel-section > summary::before {
-  content: "▶";
-  display: inline-block;
-  margin-right: 6px;
-  font-size: 10px;
-  transition: transform 0.15s;
-  color: rgba(255, 255, 255, 0.4);
+.panel-toggle:hover {
+  background: rgba(0, 240, 255, 0.12);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
 }
-.panel-section[open] > summary::before { transform: rotate(90deg); }
-.panel-section > summary::-webkit-details-marker { display: none; }
-.panel-section > .row { margin-top: 4px; }
+.log-list {
+  margin-top: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.log-list.collapsed { display: none; }
 
 /* 帳戶餘額顯示 */
 .balance-display {
@@ -896,12 +925,14 @@ main {
   }
   .chart-wrap {
     width: 100%;
-    height: 70vh;
-    min-height: 540px;
+    height: 65vh;
+    min-height: 520px;
     flex: 0 0 auto;
+    display: grid;
+    grid-template-rows: 1fr auto 0.55fr;  /* 主圖 : toolbar : 副圖 ≈ 1 : auto : 0.55 */
   }
-  #chart { flex: 1 1 auto; min-height: 280px; }
-  #ind-chart { flex: 0 0 220px; min-height: 200px; }
+  #chart { width: 100%; min-height: 0; min-width: 0; flex: unset; }
+  #ind-chart { width: 100%; min-height: 0; min-width: 0; flex: unset; }
   .panel {
     border-left: 0;
     border-top: 1px solid var(--border);
