@@ -10,7 +10,7 @@
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="style.css?v=28" />
+<link rel="stylesheet" href="style.css?v=29" />
 </head>
 <body>
 
@@ -47,6 +47,11 @@
 
     <div id="returning-box" class="hidden">
       <div class="welcome-back">歡迎回來,<br><span id="welcomeName" class="neon-cyan"></span></div>
+      <div class="balance-display">
+        <div class="balance-label">目前帳戶餘額</div>
+        <div id="balanceValue" class="balance-value">100,000</div>
+        <div id="balanceDelta" class="balance-delta">—</div>
+      </div>
       <div class="stats-grid">
         <div><span class="stat-label">總局數</span><span id="statGames" class="stat-val">0</span></div>
         <div><span class="stat-label">最佳報酬</span><span id="statBest" class="stat-val">—</span></div>
@@ -115,10 +120,6 @@
   </div>
   <div class="controls">
     <span class="who">👤 <b id="whoLabel">—</b></span>
-    <span class="market-toggle">
-      <button id="btnMarketTW" class="market-btn active" data-market="TW">台股</button>
-      <button id="btnMarketUS" class="market-btn" data-market="US">美股</button>
-    </span>
     <button id="btnNew">新局</button>
     <button id="btnEnd" class="ghost danger">結束遊戲</button>
     <button id="btnMute" class="ghost" title="靜音">🔊</button>
@@ -257,7 +258,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=28"></script>
-<script src="app.js?v=28"></script>
+<script src="sound.js?v=29"></script>
+<script src="app.js?v=29"></script>
 </body>
 </html>

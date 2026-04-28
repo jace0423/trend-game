@@ -14,6 +14,7 @@ const LS_DIFFICULTY = "trend_difficulty";
 const LS_INDICATOR = "trend_indicator";
 const LS_KPERIOD = "trend_kperiod";  // D / W / M
 const LS_COOLDOWN = "trend_cooldown";  // {nick: timestamp_ms_until_unlocked}
+const LS_BALANCE = "trend_balance";    // {nick: 目前帳戶餘額} — 跨局延續
 
 // 帳號輸完冷卻設定
 const COOLDOWN_ROI_THRESHOLD = -90;   // ROI ≤ -90% 觸發
@@ -811,6 +812,8 @@ function showResult({ equity, roi, bench, alpha }) {
   document.getElementById("result-screen").classList.remove("hidden");
   // 賺錢就放贏的音效；只有真的虧錢才放輸
   window.SFX && (roi > 0 || alpha > 0 ? SFX.win() : SFX.lose());
+  // 帳戶餘額更新為本局結算後金額（下一場從這個數開始）
+  setBalance(getNick(), equity);
   // 局結束可能達成解鎖條件
   applyUnlocks();
   refreshPoolHint();
@@ -824,6 +827,8 @@ function showResult({ equity, roi, bench, alpha }) {
       const all = JSON.parse(localStorage.getItem(LS_HIST) || "{}");
       delete all[nick];
       localStorage.setItem(LS_HIST, JSON.stringify(all));
+      // 帳戶餘額也歸零回 100K
+      setBalance(nick, DEFAULT_INITIAL_CASH);
     }
     // 起始資金回預設 10 萬，市場/難度回最低階
     state.initialCash = DEFAULT_INITIAL_CASH;
@@ -1235,6 +1240,25 @@ function getHistory(nick) {
   return all[nick] || [];
 }
 
+// ===== 帳戶餘額（跨局延續）=====
+function getBalance(nick) {
+  if (!nick) return null;
+  const all = JSON.parse(localStorage.getItem(LS_BALANCE) || "{}");
+  return typeof all[nick] === "number" ? all[nick] : null;
+}
+function setBalance(nick, val) {
+  if (!nick) return;
+  const all = JSON.parse(localStorage.getItem(LS_BALANCE) || "{}");
+  all[nick] = Math.round(val);
+  localStorage.setItem(LS_BALANCE, JSON.stringify(all));
+}
+function clearBalance(nick) {
+  if (!nick) return;
+  const all = JSON.parse(localStorage.getItem(LS_BALANCE) || "{}");
+  delete all[nick];
+  localStorage.setItem(LS_BALANCE, JSON.stringify(all));
+}
+
 // ===== 冷卻機制 =====
 function getCooldownUntil(nick) {
   const all = JSON.parse(localStorage.getItem(LS_COOLDOWN) || "{}");
@@ -1333,6 +1357,27 @@ function renderLogin() {
     retBox.classList.remove("hidden");
     newBox.classList.add("hidden");
     document.getElementById("welcomeName").textContent = nick;
+    // 顯示帳戶餘額
+    const bal = getBalance(nick);
+    const balVal = document.getElementById("balanceValue");
+    const balDelta = document.getElementById("balanceDelta");
+    if (balVal) {
+      const showBal = bal != null ? bal : state.initialCash;
+      balVal.textContent = showBal.toLocaleString();
+      // 顯示與目前下拉設定值的差距（首次=0）
+      if (balDelta) {
+        const baseline = state.initialCash;
+        const delta = showBal - baseline;
+        if (bal == null || delta === 0) {
+          balDelta.textContent = "首次帳戶";
+          balDelta.className = "balance-delta";
+        } else {
+          const pct = (delta / baseline) * 100;
+          balDelta.textContent = `${delta >= 0 ? "+" : ""}${delta.toLocaleString()} (${delta >= 0 ? "+" : ""}${pct.toFixed(2)}%) vs 起始`;
+          balDelta.className = "balance-delta " + (delta >= 0 ? "positive" : "negative");
+        }
+      }
+    }
     const s = calcStats(getHistory(nick));
     document.getElementById("statGames").textContent = s.games;
     document.getElementById("statBest").textContent =
@@ -1400,6 +1445,14 @@ function logout() {
 }
 
 async function newGame() {
+  // 帳戶餘額延續：第一場用下拉值，之後用上一場結算後的餘額
+  const _nick = getNick();
+  const _bal = getBalance(_nick);
+  if (_bal != null && _bal > 0) {
+    state.initialCash = _bal;
+  } else if (_nick) {
+    setBalance(_nick, state.initialCash);
+  }
   state.over = false;
   state.cash = state.initialCash;
   state.pos = 0;
@@ -1696,12 +1749,14 @@ document.getElementById("btnLogout").addEventListener("click", () => {
 });
 
 document.getElementById("btnReset")?.addEventListener("click", () => {
-  if (!confirm("確定要清除這個帳號的所有歷史戰績與統計？此操作無法復原。")) return;
+  if (!confirm("確定要清除這個帳號的所有歷史戰績與統計？\n帳戶餘額會回到下拉設定值。\n此操作無法復原。")) return;
   const nick = getNick();
   if (!nick) return;
   const all = JSON.parse(localStorage.getItem(LS_HIST) || "{}");
   delete all[nick];
   localStorage.setItem(LS_HIST, JSON.stringify(all));
+  // 餘額也回到下拉選擇值
+  clearBalance(nick);
   renderLogin();
 });
 
