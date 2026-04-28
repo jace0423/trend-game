@@ -1495,8 +1495,17 @@ document.getElementById("btnSell").addEventListener("click", sell);
 document.getElementById("btnNext")?.addEventListener("click", nextDay);
 document.getElementById("btnNextPanel")?.addEventListener("click", nextDay);
 
-// ----- 交易紀錄收折 -----
+// ----- 資訊欄 / 交易紀錄獨立收折 -----
+const LS_INFO_OPEN = "trend_info_open";
 const LS_LOG_OPEN = "trend_log_open";
+function applyInfoToggle() {
+  const grid = document.getElementById("infoGrid");
+  const btn = document.getElementById("btnToggleInfo");
+  if (!grid || !btn) return;
+  const open = localStorage.getItem(LS_INFO_OPEN) === "1";
+  grid.classList.toggle("collapsed", !open);
+  btn.textContent = open ? "▼ 隱藏帳戶資訊" : "▶ 顯示帳戶資訊";
+}
 function applyLogToggle() {
   const log = document.getElementById("log");
   const btn = document.getElementById("btnToggleLog");
@@ -1505,12 +1514,17 @@ function applyLogToggle() {
   log.classList.toggle("collapsed", !open);
   btn.textContent = open ? "▼ 隱藏交易紀錄" : "▶ 顯示交易紀錄";
 }
+document.getElementById("btnToggleInfo")?.addEventListener("click", () => {
+  const cur = localStorage.getItem(LS_INFO_OPEN) === "1";
+  localStorage.setItem(LS_INFO_OPEN, cur ? "0" : "1");
+  applyInfoToggle();
+});
 document.getElementById("btnToggleLog")?.addEventListener("click", () => {
   const cur = localStorage.getItem(LS_LOG_OPEN) === "1";
   localStorage.setItem(LS_LOG_OPEN, cur ? "0" : "1");
   applyLogToggle();
 });
-function applyPanelCollapse() { applyLogToggle(); }  // 兼容名稱
+function applyPanelCollapse() { applyInfoToggle(); applyLogToggle(); }
 document.getElementById("btnNew").addEventListener("click", () => newGame());
 
 function applyMarketUI() {
