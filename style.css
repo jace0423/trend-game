@@ -407,6 +407,34 @@ header h1 {
   font-size: 11px;
   letter-spacing: 0.5px;
 }
+/* 交易面板可收折區塊 */
+.panel-section {
+  border-top: 1px solid var(--border);
+  margin: 8px 0 0;
+  padding: 6px 0 0;
+}
+.panel-section > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--accent);
+  padding: 4px 0;
+  list-style: none;
+  position: relative;
+  user-select: none;
+}
+.panel-section > summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 10px;
+  transition: transform 0.15s;
+  color: rgba(255, 255, 255, 0.4);
+}
+.panel-section[open] > summary::before { transform: rotate(90deg); }
+.panel-section > summary::-webkit-details-marker { display: none; }
+.panel-section > .row { margin-top: 4px; }
+
 /* 帳戶餘額顯示 */
 .balance-display {
   margin: 12px 0 18px;
@@ -650,7 +678,7 @@ main {
 }
 .ind-select:focus { outline: none; }
 .ind-select option { background: #0e1116; color: var(--cyber-cyan); }
-#ind-chart { width: 100%; flex: 0 0 160px; min-height: 130px; }
+#ind-chart { width: 100%; flex: 0 0 180px; min-height: 150px; }
 
 .panel {
   background: var(--panel);
@@ -868,12 +896,12 @@ main {
   }
   .chart-wrap {
     width: 100%;
-    height: 60vh;
-    min-height: 420px;
+    height: 70vh;
+    min-height: 540px;
     flex: 0 0 auto;
   }
-  #chart { flex: 1 1 auto; min-height: 240px; }
-  #ind-chart { flex: 0 0 140px; min-height: 120px; }
+  #chart { flex: 1 1 auto; min-height: 280px; }
+  #ind-chart { flex: 0 0 220px; min-height: 200px; }
   .panel {
     border-left: 0;
     border-top: 1px solid var(--border);
