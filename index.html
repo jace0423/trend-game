@@ -10,7 +10,7 @@
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="style.css?v=37" />
+<link rel="stylesheet" href="style.css?v=38" />
 </head>
 <body>
 
@@ -130,6 +130,7 @@
 <main>
   <section class="chart-wrap">
     <div id="chart"></div>
+    <div id="drawOverlay" class="draw-overlay"></div>
     <div class="ind-toolbar">
       <label class="ind-label">K線</label>
       <select id="kPeriodSelect" class="ind-select">
@@ -142,6 +143,8 @@
         <option value="kd">KD (9,3,3)</option>
         <option value="rsi">RSI (14)</option>
       </select>
+      <button id="btnDrawBox" class="ind-btn" title="畫框（拖曳新增、雙擊刪除）">畫框</button>
+      <button id="btnClearBoxes" class="ind-btn" title="清除所有框">🗑</button>
     </div>
     <div id="ind-chart"></div>
   </section>
@@ -252,7 +255,7 @@
   <div class="corner br"></div>
 </div>
 
-<script src="sound.js?v=37"></script>
-<script src="app.js?v=37"></script>
+<script src="sound.js?v=38"></script>
+<script src="app.js?v=38"></script>
 </body>
 </html>

@@ -349,13 +349,14 @@ function setupChart() {
     priceLineVisible: false, lastValueVisible: false,
   });
 
-  // 主圖 → 副圖 單向同步（避免雙向訂閱造成迴圈）
+  // 主圖 → 副圖 單向同步（避免雙向訂閱造成迴圈）+ 重畫框
   let _syncing = false;
   chart.timeScale().subscribeVisibleLogicalRangeChange((r) => {
     if (!r || _syncing) return;
     _syncing = true;
     indChart.timeScale().setVisibleLogicalRange(r);
     _syncing = false;
+    renderBoxes();
   });
 
   const resizeCharts = () => {
@@ -363,6 +364,7 @@ function setupChart() {
     if (r1.width > 0 && r1.height > 0) chart.resize(r1.width, r1.height);
     const r2 = indEl.getBoundingClientRect();
     if (r2.width > 0 && r2.height > 0) indChart.resize(r2.width, r2.height);
+    renderBoxes();
   };
   window.addEventListener("resize", resizeCharts);
   if (window.ResizeObserver) {
@@ -370,6 +372,220 @@ function setupChart() {
     new ResizeObserver(resizeCharts).observe(indEl);
   }
   setTimeout(resizeCharts, 50);
+
+  setupDrawTool();
+}
+
+// ============= 畫框工具（區間震盪標註）=============
+const drawState = {
+  active: false,
+  boxes: [],   // [{t1, p1, t2, p2}]
+  drawing: null,
+  drag: null,  // {boxIdx, mode: 'move'|'nw'|'ne'|'sw'|'se', startX, startY, orig:{...}}
+};
+
+function setupDrawTool() {
+  const overlay = document.getElementById("drawOverlay");
+  const btn = document.getElementById("btnDrawBox");
+  const btnClear = document.getElementById("btnClearBoxes");
+  if (!overlay || !btn) return;
+
+  btn.addEventListener("click", () => {
+    drawState.active = !drawState.active;
+    overlay.classList.toggle("active", drawState.active);
+    btn.classList.toggle("active", drawState.active);
+  });
+
+  btnClear?.addEventListener("click", () => {
+    drawState.boxes = [];
+    renderBoxes();
+  });
+
+  // 拖曳新增框
+  overlay.addEventListener("mousedown", onOverlayMouseDown);
+  overlay.addEventListener("touchstart", onOverlayTouchStart, { passive: false });
+}
+
+function getEventXY(e) {
+  if (e.touches?.[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  return { x: e.clientX, y: e.clientY };
+}
+
+function pixelToData(x, y) {
+  const rect = document.getElementById("chart").getBoundingClientRect();
+  const px = x - rect.left;
+  const py = y - rect.top;
+  const t = chart.timeScale().coordinateToTime(px);
+  const p = candleSeries.coordinateToPrice(py);
+  return { t, p };
+}
+function dataToPixel(t, p) {
+  return {
+    x: chart.timeScale().timeToCoordinate(t),
+    y: candleSeries.priceToCoordinate(p),
+  };
+}
+
+function onOverlayMouseDown(e) {
+  if (!drawState.active) return;
+  if (e.target.classList.contains("corner") || e.target.classList.contains("draw-box")) return;
+  e.preventDefault();
+  const { x, y } = getEventXY(e);
+  const { t, p } = pixelToData(x, y);
+  if (t == null || p == null) return;
+  drawState.drawing = { t1: t, p1: p, t2: t, p2: p };
+  document.addEventListener("mousemove", onDrawMove);
+  document.addEventListener("mouseup", onDrawEnd);
+}
+
+function onOverlayTouchStart(e) {
+  if (!drawState.active) return;
+  if (e.target.classList.contains("corner") || e.target.classList.contains("draw-box")) return;
+  e.preventDefault();
+  const { x, y } = getEventXY(e);
+  const { t, p } = pixelToData(x, y);
+  if (t == null || p == null) return;
+  drawState.drawing = { t1: t, p1: p, t2: t, p2: p };
+  document.addEventListener("touchmove", onDrawMove, { passive: false });
+  document.addEventListener("touchend", onDrawEnd);
+}
+
+function onDrawMove(e) {
+  if (!drawState.drawing) return;
+  e.preventDefault?.();
+  const { x, y } = getEventXY(e);
+  const { t, p } = pixelToData(x, y);
+  if (t == null || p == null) return;
+  drawState.drawing.t2 = t;
+  drawState.drawing.p2 = p;
+  renderBoxes();
+}
+
+function onDrawEnd() {
+  document.removeEventListener("mousemove", onDrawMove);
+  document.removeEventListener("mouseup", onDrawEnd);
+  document.removeEventListener("touchmove", onDrawMove);
+  document.removeEventListener("touchend", onDrawEnd);
+  if (drawState.drawing) {
+    const b = drawState.drawing;
+    // 太小的框就丟掉
+    const dt = Math.abs(new Date(b.t2) - new Date(b.t1));
+    const dp = Math.abs(b.p2 - b.p1);
+    if (dt > 0 && dp > 0) drawState.boxes.push(b);
+    drawState.drawing = null;
+    renderBoxes();
+  }
+}
+
+function renderBoxes() {
+  const overlay = document.getElementById("drawOverlay");
+  if (!overlay || !chart || !candleSeries) return;
+  // 重新渲染
+  overlay.querySelectorAll(".draw-box").forEach((el) => el.remove());
+
+  const list = [...drawState.boxes];
+  if (drawState.drawing) list.push(drawState.drawing);
+
+  list.forEach((box, idx) => {
+    const isPreview = (idx === list.length - 1) && drawState.drawing;
+    const realIdx = isPreview ? -1 : idx;
+    const a = dataToPixel(box.t1, box.p1);
+    const b = dataToPixel(box.t2, box.p2);
+    if (a.x == null || b.x == null || a.y == null || b.y == null) return;
+    const x = Math.min(a.x, b.x);
+    const y = Math.min(a.y, b.y);
+    const w = Math.abs(b.x - a.x);
+    const h = Math.abs(b.y - a.y);
+    if (w < 2 || h < 2) return;
+
+    const div = document.createElement("div");
+    div.className = "draw-box";
+    div.style.left = x + "px";
+    div.style.top = y + "px";
+    div.style.width = w + "px";
+    div.style.height = h + "px";
+
+    // 標示 high/low/range
+    const pHi = Math.max(box.p1, box.p2);
+    const pLo = Math.min(box.p1, box.p2);
+    const range = ((pHi - pLo) / pLo * 100).toFixed(2);
+    const info = document.createElement("div");
+    info.className = "info";
+    info.textContent = `${pHi.toFixed(2)} / ${pLo.toFixed(2)} (${range}%)`;
+    div.appendChild(info);
+
+    if (!isPreview) {
+      // 角落 resize handles
+      ["nw", "ne", "sw", "se"].forEach((corner) => {
+        const c = document.createElement("div");
+        c.className = `corner ${corner}`;
+        c.addEventListener("mousedown", (ev) => startBoxDrag(ev, realIdx, corner));
+        c.addEventListener("touchstart", (ev) => startBoxDrag(ev, realIdx, corner), { passive: false });
+        div.appendChild(c);
+      });
+      // 點 box body 拖移
+      div.addEventListener("mousedown", (ev) => startBoxDrag(ev, realIdx, "move"));
+      div.addEventListener("touchstart", (ev) => startBoxDrag(ev, realIdx, "move"), { passive: false });
+      // 雙擊刪除
+      div.addEventListener("dblclick", () => {
+        drawState.boxes.splice(realIdx, 1);
+        renderBoxes();
+      });
+    }
+
+    overlay.appendChild(div);
+  });
+}
+
+function startBoxDrag(e, idx, mode) {
+  if (e.target.classList.contains("info")) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const { x, y } = getEventXY(e);
+  const orig = { ...drawState.boxes[idx] };
+  drawState.drag = { idx, mode, startX: x, startY: y, orig };
+  document.addEventListener("mousemove", onBoxDragMove);
+  document.addEventListener("mouseup", onBoxDragEnd);
+  document.addEventListener("touchmove", onBoxDragMove, { passive: false });
+  document.addEventListener("touchend", onBoxDragEnd);
+}
+
+function onBoxDragMove(e) {
+  if (!drawState.drag) return;
+  e.preventDefault?.();
+  const { x, y } = getEventXY(e);
+  const { idx, mode, startX, startY, orig } = drawState.drag;
+  const startData = pixelToData(startX, startY);
+  const cur = pixelToData(x, y);
+  if (startData.t == null || cur.t == null) return;
+  const box = drawState.boxes[idx];
+  if (mode === "move") {
+    const dt = (new Date(cur.t) - new Date(startData.t));  // ms
+    const dp = cur.p - startData.p;
+    box.t1 = new Date(new Date(orig.t1).getTime() + dt).toISOString().slice(0, 10);
+    box.t2 = new Date(new Date(orig.t2).getTime() + dt).toISOString().slice(0, 10);
+    box.p1 = orig.p1 + dp;
+    box.p2 = orig.p2 + dp;
+  } else {
+    // 角落 resize：mode is nw/ne/sw/se → 對角不動，被拖角更新
+    const tLeft = orig.t1 < orig.t2 ? "t1" : "t2";
+    const tRight = tLeft === "t1" ? "t2" : "t1";
+    const pTop = orig.p1 > orig.p2 ? "p1" : "p2";
+    const pBot = pTop === "p1" ? "p2" : "p1";
+    if (mode.includes("w")) box[tLeft] = cur.t;
+    if (mode.includes("e")) box[tRight] = cur.t;
+    if (mode.includes("n")) box[pTop] = cur.p;
+    if (mode.includes("s")) box[pBot] = cur.p;
+  }
+  renderBoxes();
+}
+
+function onBoxDragEnd() {
+  drawState.drag = null;
+  document.removeEventListener("mousemove", onBoxDragMove);
+  document.removeEventListener("mouseup", onBoxDragEnd);
+  document.removeEventListener("touchmove", onBoxDragMove);
+  document.removeEventListener("touchend", onBoxDragEnd);
 }
 
 function renderIndChart(slice) {
@@ -1460,6 +1676,11 @@ async function newGame() {
   state.realized = 0;
   state.log = [];
   state.trades = 0;
+  // 新局清掉之前畫的框
+  if (typeof drawState !== "undefined") {
+    drawState.boxes = [];
+    renderBoxes && renderBoxes();
+  }
 
   const pool = filteredPool();
   if (!pool.length) {
