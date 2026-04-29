@@ -1676,9 +1676,14 @@ async function newGame() {
   state.realized = 0;
   state.log = [];
   state.trades = 0;
-  // 新局清掉之前畫的框
+  // 新局：清掉之前畫的框 + 關閉畫框模式
   if (typeof drawState !== "undefined") {
     drawState.boxes = [];
+    drawState.active = false;
+    drawState.drawing = null;
+    drawState.drag = null;
+    document.getElementById("drawOverlay")?.classList.remove("active");
+    document.getElementById("btnDrawBox")?.classList.remove("active");
     renderBoxes && renderBoxes();
   }
 
