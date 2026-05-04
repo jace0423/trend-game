@@ -1,5 +1,5 @@
 const DEFAULT_INITIAL_CASH = 100_000;
-const TOTAL_ROUNDS = 100;
+const TOTAL_ROUNDS = 600;  // 約 2.4 年交易日
 const PRE_BARS = 60; // MA60 最少需求，讓短歷史股也能從中間開局
 
 // 市場交易成本：TW 1.425‰ 手續費（最低 NT$20）+ 0.3% 證交稅；US 零佣金、零稅
