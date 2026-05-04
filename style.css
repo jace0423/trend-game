@@ -678,12 +678,16 @@ main {
 
 .chart-wrap { position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; }
 #chart { width: 100%; flex: 1 1 auto; min-height: 220px; min-width: 0; }
-/* 畫框工具 overlay */
+/* 畫框工具 overlay — 透過 JS 同步到 #chart 的 bounding rect */
 .draw-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
   pointer-events: none;
   z-index: 4;
+  overflow: hidden;
 }
 .draw-overlay.active { pointer-events: auto; cursor: crosshair; }
 .draw-overlay.active::before {

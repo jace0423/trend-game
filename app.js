@@ -364,6 +364,7 @@ function setupChart() {
     if (r1.width > 0 && r1.height > 0) chart.resize(r1.width, r1.height);
     const r2 = indEl.getBoundingClientRect();
     if (r2.width > 0 && r2.height > 0) indChart.resize(r2.width, r2.height);
+    syncOverlayBounds();
     renderBoxes();
   };
   window.addEventListener("resize", resizeCharts);
@@ -384,11 +385,24 @@ const drawState = {
   drag: null,  // {boxIdx, mode: 'move'|'nw'|'ne'|'sw'|'se', startX, startY, orig:{...}}
 };
 
+function syncOverlayBounds() {
+  const overlay = document.getElementById("drawOverlay");
+  const chartEl = document.getElementById("chart");
+  if (!overlay || !chartEl) return;
+  // overlay 的 offsetParent = .chart-wrap (position:relative)
+  // 同步到 #chart 在 chart-wrap 內的位置
+  overlay.style.top = chartEl.offsetTop + "px";
+  overlay.style.left = chartEl.offsetLeft + "px";
+  overlay.style.width = chartEl.offsetWidth + "px";
+  overlay.style.height = chartEl.offsetHeight + "px";
+}
+
 function setupDrawTool() {
   const overlay = document.getElementById("drawOverlay");
   const btn = document.getElementById("btnDrawBox");
   const btnClear = document.getElementById("btnClearBoxes");
   if (!overlay || !btn) return;
+  syncOverlayBounds();
 
   btn.addEventListener("click", () => {
     drawState.active = !drawState.active;
