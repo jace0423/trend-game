@@ -290,6 +290,9 @@ function setupChart() {
     crosshair: { mode: 0 },
     rightPriceScale: { borderColor: "#2a313c" },
     timeScale: { borderColor: "#2a313c", rightOffset: 5 },
+    // 互動：手機雙指縮放 + 拖曳平移；桌面滾輪縮放 + 拖曳平移（預設 true，顯式宣告以便維護）
+    handleScroll: { mouseWheel: true, pressedMouseMove: true, horzTouchDrag: true, vertTouchDrag: false },
+    handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
   });
   candleSeries = chart.addCandlestickSeries({
     upColor: "#e05252",
