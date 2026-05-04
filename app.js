@@ -1,5 +1,5 @@
 const DEFAULT_INITIAL_CASH = 100_000;
-const TOTAL_ROUNDS = 600;  // 約 2.4 年交易日
+const TOTAL_ROUNDS = 300;  // 約 1.2 年交易日
 const PRE_BARS = 60; // MA60 最少需求，讓短歷史股也能從中間開局
 
 // 市場交易成本：TW 1.425‰ 手續費（最低 NT$20）+ 0.3% 證交稅；US 零佣金、零稅
@@ -289,7 +289,13 @@ function setupChart() {
     },
     crosshair: { mode: 0 },
     rightPriceScale: { borderColor: "#2a313c" },
-    timeScale: { borderColor: "#2a313c", rightOffset: 5 },
+    timeScale: {
+      borderColor: "#2a313c",
+      rightOffset: 5,
+      barSpacing: 6,
+      shiftVisibleRangeOnNewBar: true,  // 預設 true：新棒自動往右、視窗跟蹤
+      lockVisibleTimeRangeOnResize: true,
+    },
     // 互動：手機雙指縮放 + 拖曳平移；桌面滾輪縮放 + 拖曳平移（預設 true，顯式宣告以便維護）
     handleScroll: { mouseWheel: true, pressedMouseMove: true, horzTouchDrag: true, vertTouchDrag: false },
     handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
@@ -665,13 +671,14 @@ function renderChart(fit = true) {
   bbLower.setData(bb.lo);
   renderIndChart(slice);
   if (fit) {
-    // 預設顯示最後 ~120 根 K 棒（保證每根有足夠寬度），可手動 pan 看更早歷史
+    // 只在新局/換 K 週期時設一次視窗（最後 120 根）
+    // 之後 shiftVisibleRangeOnNewBar 自動跟蹤新棒，appendBar 不再操控
     const ts = chart.timeScale();
     const total = slice.length;
     const visibleBars = Math.min(120, total);
     ts.setVisibleLogicalRange({
       from: total - visibleBars,
-      to: total + 5,  // 右邊留 5 根的空白
+      to: total + 5,
     });
   }
 }
@@ -716,7 +723,7 @@ function appendBar() {
   } else {
     renderChart(false);
   }
-  try { chart.timeScale().scrollToRealTime(); } catch (e) {}
+  // 不再手動 scroll；shiftVisibleRangeOnNewBar:true 會自動跟最新棒
 }
 
 function nowPrice() {
@@ -1764,7 +1771,13 @@ async function enterGame() {
       const ind = document.getElementById("ind-chart");
       if (el?.clientWidth && el?.clientHeight) chart.resize(el.clientWidth, el.clientHeight);
       if (indChart && ind?.clientWidth && ind?.clientHeight) indChart.resize(ind.clientWidth, ind.clientHeight);
-      chart.timeScale().fitContent();
+      // 不 fitContent；改重新套用「最後 120 根」視窗（resize 後可能跑掉）
+      const slice = aggregateBars(state.prices.slice(0, state.cursor + 1), state.kperiod);
+      const total = slice.length;
+      chart.timeScale().setVisibleLogicalRange({
+        from: total - Math.min(120, total),
+        to: total + 5,
+      });
     }
   }, 200);
 }
