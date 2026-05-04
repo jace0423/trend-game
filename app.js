@@ -1365,9 +1365,15 @@ function buildAllHistoryReportElement() {
   return div;
 }
 
-async function exportAllHistory() {
-  const btn = document.getElementById("btnExportAll");
-  if (!window.html2canvas || !window.jspdf) return;
+async function exportAllHistory(ev) {
+  // 自動偵測觸發按鈕（登入頁 / 結算頁），把載入狀態顯示在點擊那顆
+  const btn = ev?.currentTarget?.tagName === "BUTTON"
+    ? ev.currentTarget
+    : (document.getElementById("btnExportAll") || document.getElementById("btnExportAllResult"));
+  if (!window.html2canvas || !window.jspdf) {
+    alert("PDF 套件未載入（CDN 可能被擋）");
+    return;
+  }
   const reportEl = buildAllHistoryReportElement();
   if (!reportEl) {
     alert("尚無戰績可匯出");
@@ -1606,18 +1612,22 @@ function saveResult(r) {
   if (all[nick].length > MAX_HISTORY_PER_NICK) {
     all[nick] = all[nick].slice(-MAX_HISTORY_PER_NICK);
   }
-  // 容錯：若 quota 超過，逐步砍半重試直到可存
-  let cap = all[nick].length;
-  while (cap > 100) {
-    try {
-      localStorage.setItem(LS_HIST, JSON.stringify(all));
-      return;
-    } catch (e) {
-      if (e.name !== "QuotaExceededError") throw e;
+  // 先嘗試儲存；若 quota 超過才砍半重試
+  try {
+    localStorage.setItem(LS_HIST, JSON.stringify(all));
+  } catch (e) {
+    if (e.name !== "QuotaExceededError") throw e;
+    let cap = all[nick].length;
+    while (cap > 10) {
       cap = Math.floor(cap / 2);
       all[nick] = all[nick].slice(-cap);
       console.warn(`[trendgame] localStorage quota exceeded, trim to ${cap}`);
+      try {
+        localStorage.setItem(LS_HIST, JSON.stringify(all));
+        return;
+      } catch (_) { /* 繼續砍半 */ }
     }
+    console.error("[trendgame] localStorage quota: 連砍半都存不下");
   }
 }
 
