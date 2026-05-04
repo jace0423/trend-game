@@ -1591,6 +1591,9 @@ function tickCooldown() {
 }
 
 function renderLogin() {
+  // 回登入頁時還原 state.initialCash 為下拉值（避免被遊戲過程的 balance 覆蓋）
+  const lsCash = +localStorage.getItem(LS_CASH);
+  if (lsCash > 0) state.initialCash = lsCash;
   applyUnlocks();
   applyCashUI();
   applyDifficultyUI();
@@ -1621,17 +1624,17 @@ function renderLogin() {
         const base = baseline != null ? baseline : state.initialCash;
         const delta = showBal - base;
         if (bal == null) {
-          balDelta.textContent = "首次帳戶";
+          balDelta.textContent = "首次挑戰";
           balDelta.className = "balance-delta";
         } else if (delta === 0) {
-          balDelta.textContent = `vs 上次重置 ${base.toLocaleString()}：打平`;
+          balDelta.textContent = `挑戰起點 ${base.toLocaleString()}：持平`;
           balDelta.className = "balance-delta";
         } else {
           const pct = (delta / base) * 100;
           balDelta.textContent =
             `${delta >= 0 ? "+" : ""}${delta.toLocaleString()} ` +
             `(${delta >= 0 ? "+" : ""}${pct.toFixed(2)}%) ` +
-            `vs 上次重置 ${base.toLocaleString()}`;
+            `vs 挑戰起點 ${base.toLocaleString()}`;
           balDelta.className = "balance-delta " + (delta >= 0 ? "positive" : "negative");
         }
       }
@@ -1719,7 +1722,7 @@ async function newGame() {
     state.initialCash = _bal;
   } else if (_nick) {
     setBalance(_nick, state.initialCash);
-    setBaseline(_nick, state.initialCash);  // 首次自動建立 baseline
+    setBaseline(_nick, state.initialCash);  // 首次：挑戰起點 = 下拉值
   }
   state.over = false;
   state.cash = state.initialCash;
@@ -2105,24 +2108,27 @@ document.getElementById("btnResetHistory")?.addEventListener("click", () => {
   renderLogin();
 });
 
-// 重置餘額：只回到下拉選擇值（戰績保留）
+// 重置餘額：只回到「挑戰起點」（下拉選擇值，從 LS_CASH 讀，避免被 newGame 覆蓋）
 document.getElementById("btnResetBalance")?.addEventListener("click", () => {
   const nick = getNick();
   if (!nick) return;
   const bal = getBalance(nick);
-  const target = state.initialCash;
+  // 從 dropdown 讀，而非 state.initialCash（state 可能被遊戲過程覆蓋）
+  const dropdownVal = +document.getElementById("cashSelect")?.value;
+  const target = dropdownVal > 0 ? dropdownVal : DEFAULT_INITIAL_CASH;
   if (bal === target) {
     alert(`餘額已是 ${target.toLocaleString()}，無需重置`);
     return;
   }
   if (!confirm(
-    `重置 ${nick} 的帳戶餘額？\n\n` +
-    `目前：${(bal ?? "—").toLocaleString()}\n` +
-    `重置為：${target.toLocaleString()}（下拉選擇值）\n\n` +
-    `戰績紀錄會保留。`
+    `開新挑戰：重置帳戶為 ${target.toLocaleString()}？\n\n` +
+    `目前餘額：${(bal ?? "—").toLocaleString()}\n` +
+    `挑戰起點：${target.toLocaleString()}\n\n` +
+    `戰績紀錄會保留，但這場挑戰的 baseline 會更新。`
   )) return;
   setBalance(nick, target);
   setBaseline(nick, target);
+  state.initialCash = target;  // 同步 in-memory state
   renderLogin();
 });
 
