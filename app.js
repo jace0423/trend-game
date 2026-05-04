@@ -15,6 +15,7 @@ const LS_INDICATOR = "trend_indicator";
 const LS_KPERIOD = "trend_kperiod";  // D / W / M
 const LS_COOLDOWN = "trend_cooldown";  // {nick: timestamp_ms_until_unlocked}
 const LS_BALANCE = "trend_balance";    // {nick: 目前帳戶餘額} — 跨局延續
+const LS_BASELINE = "trend_baseline";  // {nick: 上次 reset 時的金額} — 計算盈虧基準
 
 // 帳號輸完冷卻設定
 const COOLDOWN_ROI_THRESHOLD = -90;   // ROI ≤ -90% 觸發
@@ -1057,8 +1058,9 @@ function showResult({ equity, roi, bench, alpha }) {
       const all = JSON.parse(localStorage.getItem(LS_HIST) || "{}");
       delete all[nick];
       localStorage.setItem(LS_HIST, JSON.stringify(all));
-      // 帳戶餘額也歸零回 100K
+      // 帳戶餘額也歸零回 100K（同步 baseline）
       setBalance(nick, DEFAULT_INITIAL_CASH);
+      setBaseline(nick, DEFAULT_INITIAL_CASH);
     }
     // 起始資金回預設 10 萬，市場/難度回最低階
     state.initialCash = DEFAULT_INITIAL_CASH;
@@ -1487,6 +1489,25 @@ function clearBalance(nick) {
   const all = JSON.parse(localStorage.getItem(LS_BALANCE) || "{}");
   delete all[nick];
   localStorage.setItem(LS_BALANCE, JSON.stringify(all));
+  clearBaseline(nick);
+}
+// baseline = 該帳號上次 reset 時的金額（用來算盈虧基準）
+function getBaseline(nick) {
+  if (!nick) return null;
+  const all = JSON.parse(localStorage.getItem(LS_BASELINE) || "{}");
+  return typeof all[nick] === "number" ? all[nick] : null;
+}
+function setBaseline(nick, val) {
+  if (!nick) return;
+  const all = JSON.parse(localStorage.getItem(LS_BASELINE) || "{}");
+  all[nick] = Math.round(val);
+  localStorage.setItem(LS_BASELINE, JSON.stringify(all));
+}
+function clearBaseline(nick) {
+  if (!nick) return;
+  const all = JSON.parse(localStorage.getItem(LS_BASELINE) || "{}");
+  delete all[nick];
+  localStorage.setItem(LS_BASELINE, JSON.stringify(all));
 }
 
 // ===== 冷卻機制 =====
@@ -1589,22 +1610,38 @@ function renderLogin() {
     document.getElementById("welcomeName").textContent = nick;
     // 顯示帳戶餘額
     const bal = getBalance(nick);
+    const baseline = getBaseline(nick);
     const balVal = document.getElementById("balanceValue");
     const balDelta = document.getElementById("balanceDelta");
     if (balVal) {
       const showBal = bal != null ? bal : state.initialCash;
       balVal.textContent = showBal.toLocaleString();
-      // 顯示與目前下拉設定值的差距（首次=0）
       if (balDelta) {
-        const baseline = state.initialCash;
-        const delta = showBal - baseline;
-        if (bal == null || delta === 0) {
+        // baseline = 上次重置時的金額；首次玩家還沒 baseline → 用 initialCash
+        const base = baseline != null ? baseline : state.initialCash;
+        const delta = showBal - base;
+        if (bal == null) {
           balDelta.textContent = "首次帳戶";
           balDelta.className = "balance-delta";
+        } else if (delta === 0) {
+          balDelta.textContent = `vs 上次重置 ${base.toLocaleString()}：打平`;
+          balDelta.className = "balance-delta";
         } else {
-          const pct = (delta / baseline) * 100;
-          balDelta.textContent = `${delta >= 0 ? "+" : ""}${delta.toLocaleString()} (${delta >= 0 ? "+" : ""}${pct.toFixed(2)}%) vs 起始`;
+          const pct = (delta / base) * 100;
+          balDelta.textContent =
+            `${delta >= 0 ? "+" : ""}${delta.toLocaleString()} ` +
+            `(${delta >= 0 ? "+" : ""}${pct.toFixed(2)}%) ` +
+            `vs 上次重置 ${base.toLocaleString()}`;
           balDelta.className = "balance-delta " + (delta >= 0 ? "positive" : "negative");
+        }
+      }
+      // 通關彩蛋（D）：餘額 ≥ 10M
+      const trophy = document.getElementById("trophyBadge");
+      if (trophy) {
+        if (showBal >= 10_000_000) {
+          trophy.style.display = "block";
+        } else {
+          trophy.style.display = "none";
         }
       }
     }
@@ -1682,6 +1719,7 @@ async function newGame() {
     state.initialCash = _bal;
   } else if (_nick) {
     setBalance(_nick, state.initialCash);
+    setBaseline(_nick, state.initialCash);  // 首次自動建立 baseline
   }
   state.over = false;
   state.cash = state.initialCash;
@@ -1911,12 +1949,15 @@ document.getElementById("cashSelect")?.addEventListener("change", (e) => {
       e.target.value = state.initialCash;
       return;
     }
-    if (nick) setBalance(nick, newCash);
+    if (nick) {
+      setBalance(nick, newCash);
+      setBaseline(nick, newCash);  // 重置時同步更新 baseline
+    }
   }
   state.initialCash = newCash;
   localStorage.setItem(LS_CASH, String(state.initialCash));
   refreshPoolHint();
-  renderLogin();  // 重新渲染顯示新餘額
+  renderLogin();
 });
 document.getElementById("marketSelect")?.addEventListener("change", (e) => {
   const v = e.target.value;
@@ -2044,15 +2085,44 @@ document.getElementById("btnLogout").addEventListener("click", () => {
   renderLogin();
 });
 
-document.getElementById("btnReset")?.addEventListener("click", () => {
-  if (!confirm("確定要清除這個帳號的所有歷史戰績與統計？\n帳戶餘額會回到下拉設定值。\n此操作無法復原。")) return;
+// 清除戰績：只清歷史，餘額不變
+document.getElementById("btnResetHistory")?.addEventListener("click", () => {
   const nick = getNick();
   if (!nick) return;
+  const hist = getHistory(nick);
+  if (!hist.length) {
+    alert("沒有戰績可清除");
+    return;
+  }
+  if (!confirm(
+    `確定要清除 ${nick} 的全部戰績紀錄？\n\n` +
+    `共 ${hist.length} 場\n` +
+    `解鎖會回到階 0（餘額不變）`
+  )) return;
   const all = JSON.parse(localStorage.getItem(LS_HIST) || "{}");
   delete all[nick];
   localStorage.setItem(LS_HIST, JSON.stringify(all));
-  // 餘額也回到下拉選擇值
-  clearBalance(nick);
+  renderLogin();
+});
+
+// 重置餘額：只回到下拉選擇值（戰績保留）
+document.getElementById("btnResetBalance")?.addEventListener("click", () => {
+  const nick = getNick();
+  if (!nick) return;
+  const bal = getBalance(nick);
+  const target = state.initialCash;
+  if (bal === target) {
+    alert(`餘額已是 ${target.toLocaleString()}，無需重置`);
+    return;
+  }
+  if (!confirm(
+    `重置 ${nick} 的帳戶餘額？\n\n` +
+    `目前：${(bal ?? "—").toLocaleString()}\n` +
+    `重置為：${target.toLocaleString()}（下拉選擇值）\n\n` +
+    `戰績紀錄會保留。`
+  )) return;
+  setBalance(nick, target);
+  setBaseline(nick, target);
   renderLogin();
 });
 
