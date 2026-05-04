@@ -1889,9 +1889,34 @@ document.querySelectorAll(".market-btn").forEach((b) => {
 
 // ----- 設定（起始資金 / 市場 / 難度）handlers -----
 document.getElementById("cashSelect")?.addEventListener("change", (e) => {
-  state.initialCash = +e.target.value || DEFAULT_INITIAL_CASH;
+  const newCash = +e.target.value || DEFAULT_INITIAL_CASH;
+  const opt = e.target.selectedOptions[0];
+  // 鎖定狀態下回退
+  if (opt?.disabled) {
+    e.target.value = state.initialCash;
+    window.SFX && SFX.error();
+    return;
+  }
+  // 確認語意：選新檔位 = 重置帳戶為該金額
+  const nick = getNick();
+  const curBal = nick ? getBalance(nick) : null;
+  if (curBal != null && curBal !== newCash) {
+    const sign = curBal > newCash ? "降低" : "提高";
+    if (!confirm(
+      `重置帳戶為 ${newCash.toLocaleString()}？\n\n` +
+      `目前餘額：${curBal.toLocaleString()}\n` +
+      `重置後：${newCash.toLocaleString()}（${sign}）\n\n` +
+      `戰績紀錄會保留。`
+    )) {
+      e.target.value = state.initialCash;
+      return;
+    }
+    if (nick) setBalance(nick, newCash);
+  }
+  state.initialCash = newCash;
   localStorage.setItem(LS_CASH, String(state.initialCash));
   refreshPoolHint();
+  renderLogin();  // 重新渲染顯示新餘額
 });
 document.getElementById("marketSelect")?.addEventListener("change", (e) => {
   const v = e.target.value;
