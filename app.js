@@ -623,6 +623,25 @@ function renderIndChart(slice) {
   }
 }
 
+// 增量更新副圖（只算最後一點，避免每步全量算 KD/RSI）
+function renderIndChartIncremental(slice) {
+  if (slice.length === 0) return;
+  const t = slice[slice.length - 1].t;
+  if (state.indicator === "rsi") {
+    const rv = rsiValue(slice, slice.length - 1);
+    if (rv != null) rsiLine.update({ time: t, value: rv });
+    rsi70.update({ time: t, value: 70 });
+    rsi30.update({ time: t, value: 30 });
+  } else {
+    // KD：因為 K/D 有遞迴依賴，回退到全算（仍比 chart 全 setData 便宜）
+    const kd = kdSeries(slice);
+    if (kd.k.length) kLine.update(kd.k[kd.k.length - 1]);
+    if (kd.d.length) dLine.update(kd.d[kd.d.length - 1]);
+    rsi70.update({ time: t, value: 80 });
+    rsi30.update({ time: t, value: 20 });
+  }
+}
+
 function applyIndicatorUI() {
   const sel = document.getElementById("indicatorSelect");
   if (sel) sel.value = state.indicator;
@@ -642,27 +661,59 @@ function renderChart(fit = true) {
   bbUpper.setData(bb.up);
   bbLower.setData(bb.lo);
   renderIndChart(slice);
-  if (fit) chart.timeScale().fitContent();
+  if (fit) {
+    // 預設顯示最後 ~120 根 K 棒（保證每根有足夠寬度），可手動 pan 看更早歷史
+    const ts = chart.timeScale();
+    const total = slice.length;
+    const visibleBars = Math.min(120, total);
+    ts.setVisibleLogicalRange({
+      from: total - visibleBars,
+      to: total + 5,  // 右邊留 5 根的空白
+    });
+  }
+}
+
+// 計算單一最新點（O(n)/n 是視窗大小，避免全量重算 O(N²)）
+function maLast(arr, n, key = "c") {
+  if (arr.length < n) return null;
+  let sum = 0;
+  for (let i = arr.length - n; i < arr.length; i++) sum += arr[i][key];
+  return { time: arr[arr.length - 1].t, value: +(sum / n).toFixed(2) };
+}
+function bbLast(arr, n = 20, k = 2) {
+  if (arr.length < n) return null;
+  let sum = 0;
+  for (let i = arr.length - n; i < arr.length; i++) sum += arr[i].c;
+  const m = sum / n;
+  let sq = 0;
+  for (let i = arr.length - n; i < arr.length; i++) sq += (arr[i].c - m) ** 2;
+  const sd = Math.sqrt(sq / n);
+  const t = arr[arr.length - 1].t;
+  return {
+    up: { time: t, value: +(m + k * sd).toFixed(2) },
+    lo: { time: t, value: +(m - k * sd).toFixed(2) },
+  };
 }
 
 function appendBar() {
   if (state.kperiod === "D") {
-    // 日 K 模式：增量更新最後一根 bar，不重畫整圖、不 fitContent，避免跑版閃爍
+    // 日 K 模式：純增量更新（mobile 友善）
     const p = state.prices[state.cursor];
     candleSeries.update(toCandle(p));
     volumeSeries.update(toVol(p));
     const slice = state.prices.slice(0, state.cursor + 1);
-    ma5Line.setData(ma(slice, 5));
-    ma20Line.setData(ma(slice, 20));
-    ma60Line.setData(ma(slice, 60));
-    const bb = bollinger(slice, 20, 2);
-    bbUpper.setData(bb.up);
-    bbLower.setData(bb.lo);
-    renderIndChart(slice);
+    // 只算並更新最後一點，不重畫全部 MA/BB
+    const m5 = maLast(slice, 5);   if (m5) ma5Line.update(m5);
+    const m20 = maLast(slice, 20); if (m20) ma20Line.update(m20);
+    const m60 = maLast(slice, 60); if (m60) ma60Line.update(m60);
+    const bb = bbLast(slice, 20, 2);
+    if (bb) { bbUpper.update(bb.up); bbLower.update(bb.lo); }
+    // 副圖也走增量（KD/RSI 內部會算最後值）
+    renderIndChartIncremental(slice);
   } else {
-    // 周/月 K：最後 bucket 可能會擴展，整段重畫但不 fit（避免縮放跳動）
     renderChart(false);
   }
+  try { chart.timeScale().scrollToRealTime(); } catch (e) {}
 }
 
 function nowPrice() {
